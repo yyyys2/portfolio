@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    color-scheme: light;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+
+img,
+svg,
+video,
+canvas {
+    display: block;
+    max-width: 100%;
+}
+
+:target {
+    scroll-margin-top: 88px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .bg-drift-wrapper {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        background: #fff;
+    }
+
+    .bg-drift-wrapper::before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        z-index: 0;
+        pointer-events: none;
+
+        background:
+                radial-gradient(1200px 700px at 15% 10%, rgba(184, 192, 255, 0.26), transparent 60%),
+                radial-gradient(1100px 600px at 85% 18%, rgba(250, 218, 221, 0.24), transparent 58%),
+                radial-gradient(900px 500px at 60% 95%, rgba(197, 255, 235, 0.16), transparent 55%),
+                #fff;
+
+        transform-origin: 50% 50%;
+        animation: driftSpin 10s ease-in-out infinite alternate;
+        will-change: transform;
+    }
+
+    @keyframes driftSpin {
+        0%   { transform: translate3d(0%, 0%, 0) scale(1.05) rotate(0deg); }
+        50%  { transform: translate3d(-6%, 3%, 0) scale(1.12) rotate(0.8deg); }
+        100% { transform: translate3d(6%, -3%, 0) scale(1.08) rotate(-0.8deg); }
+    }
+}

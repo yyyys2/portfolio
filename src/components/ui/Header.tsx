@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import clsx from "clsx"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import Button from "@/components/ui/Button"
+import ThemeSunIcon from "@/components/icons/ThemeSunIcon"
+import ThemeMoonIcon from "@/components/icons/ThemeMoonIcon"
 import { useI18n } from "@/hooks/useI18n.ts"
 
 export default function Header({
@@ -73,18 +75,15 @@ export default function Header({
                 : t("header.theme.darkMode")
             }
           >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={theme}
-                initial={{ rotate: -60, scale: 0.65, opacity: 0 }}
-                animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                exit={{ rotate: 60, scale: 0.65, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="inline-flex"
-              >
-                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </motion.span>
-            </AnimatePresence>
+            <motion.span
+              key={theme}
+              initial={{ rotate: -45, scale: 0.8, opacity: 0 }}
+              animate={{ rotate: 0, scale: 1, opacity: 1 }}
+              transition={{ duration: 0.22 }}
+              className="inline-flex text-gray-800 dark:text-neutral-100"
+            >
+              {theme === "dark" ? <ThemeSunIcon /> : <ThemeMoonIcon />}
+            </motion.span>
           </Button>
           <Button
             variant="ghost"
@@ -98,40 +97,5 @@ export default function Header({
         </div>
       </div>
     </header>
-  )
-}
-
-function SunIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.9"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="4.2" />
-      <path d="M12 2.8v2.1M12 19.1v2.1M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M2.8 12h2.1M19.1 12h2.1M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5" />
-    </svg>
-  )
-}
-
-function MoonIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.9"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M20.2 14.2A8.5 8.5 0 1 1 9.8 3.8a7 7 0 1 0 10.4 10.4z" />
-    </svg>
   )
 }

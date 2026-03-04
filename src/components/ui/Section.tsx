@@ -19,10 +19,12 @@ export default function Section({
       className={`mx-auto max-w-6xl px-4 py-24 ${className ?? className}`}
     >
       <header className="mb-10">
-        <h2 className="font-display text-2xl font-semibold tracking-tight">
+        <h2 className="font-display text-2xl font-semibold tracking-tight dark:text-neutral-100">
           {title}
         </h2>
-        {subtitle && <p className="mt-2 text-gray-500">{subtitle}</p>}
+        {subtitle && (
+          <p className="mt-2 text-gray-500 dark:text-neutral-400">{subtitle}</p>
+        )}
       </header>
       {children}
     </section>

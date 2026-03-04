@@ -25,8 +25,8 @@ export default function ContactSection() {
     >
       <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-gray-500">Email</p>
-          <p className="mt-1 font-display text-lg font-semibold tracking-tight text-gray-900">
+          <p className="text-sm text-gray-500 dark:text-neutral-400">Email</p>
+          <p className="mt-1 font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
             {EMAIL}
           </p>
         </div>

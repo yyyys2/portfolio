@@ -28,7 +28,7 @@ export default function ProjectsSection() {
         id="projects"
         title={t("projects.title")}
         subtitle={t("projects.desc")}
-        className={"bg-white"}
+        className={"bg-white dark:bg-transparent"}
       >
         <FadeIn>
           <div className="flex flex-wrap gap-2">
@@ -67,9 +67,9 @@ export default function ProjectsSection() {
                       className="h-full w-full object-cover"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/35" />
+                    <div className="absolute inset-0 bg-black/35 dark:bg-black/45" />
                     {p.image.note && (
-                      <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/85 px-3 py-1 text-xs text-gray-800 ring-1 ring-black/10 backdrop-blur">
+                      <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/85 px-3 py-1 text-xs text-gray-800 ring-1 ring-black/10 backdrop-blur dark:bg-neutral-900/85 dark:text-neutral-100 dark:ring-white/15">
                         {p.image.note}
                       </span>
                     )}
@@ -85,15 +85,15 @@ export default function ProjectsSection() {
                     ))}
                   </div>
 
-                  <h3 className="mt-4 text-lg font-semibold tracking-tight text-gray-900">
+                  <h3 className="mt-4 text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
                     {lang === "ko" ? p.title.ko : p.title.en}
                   </h3>
 
-                  <p className="mt-2 text-sm text-gray-600">
+                  <p className="mt-2 text-sm text-gray-600 dark:text-neutral-300">
                     {lang === "ko" ? p.oneLiner.ko : p.oneLiner.en}
                   </p>
 
-                  <p className="mt-4 text-xs text-gray-500">
+                  <p className="mt-4 text-xs text-gray-500 dark:text-neutral-400">
                     {lang === "ko" ? p.role.ko : p.role.en}
                   </p>
                 </div>
@@ -106,7 +106,7 @@ export default function ProjectsSection() {
                       target="_blank"
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800"
+                      className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
                     >
                       Visit site
                     </a>
@@ -142,8 +142,8 @@ function FilterButton({
       className={[
         "rounded-full px-4 py-2 font-display text-sm ring-1 transition",
         active
-          ? "bg-primary/15 text-gray-900 ring-primary/25"
-          : "bg-white/70 text-gray-700 ring-black/10 hover:bg-black/[0.03]",
+          ? "bg-primary/15 text-gray-900 ring-primary/25 dark:bg-primary/25 dark:text-neutral-100 dark:ring-primary/40"
+          : "bg-white/70 text-gray-700 ring-black/10 hover:bg-black/[0.03] dark:bg-neutral-800 dark:text-neutral-300 dark:ring-white/10 dark:hover:bg-neutral-700",
       ].join(" ")}
     >
       {children}

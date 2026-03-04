@@ -21,18 +21,24 @@ export default function ProjectModal({
   return (
     <Modal open={open} title={title} onClose={onClose}>
       <div className="space-y-8">
-        <div className="rounded-2xl bg-black/[0.03] p-5 ring-1 ring-black/5">
-          <p className="text-sm text-gray-600">{pick(project.oneLiner)}</p>
+        <div className="rounded-2xl bg-black/[0.03] p-5 ring-1 ring-black/5 dark:bg-white/[0.03] dark:ring-white/10">
+          <p className="text-sm text-gray-600 dark:text-neutral-300">
+            {pick(project.oneLiner)}
+          </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {project.tags.map((t) => (
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
-          <p className="mt-3 text-sm text-gray-500">{pick(project.role)}</p>
+          <p className="mt-3 text-sm text-gray-500 dark:text-neutral-400">
+            {pick(project.role)}
+          </p>
         </div>
 
         <Block title={lang === "ko" ? "문제" : "Problem"}>
-          <p className="text-gray-700">{pick(project.problem)}</p>
+          <p className="text-gray-700 dark:text-neutral-200">
+            {pick(project.problem)}
+          </p>
         </Block>
 
         <Block title={lang === "ko" ? "접근" : "Approach"}>
@@ -70,7 +76,9 @@ function Block({
 }) {
   return (
     <section>
-      <h3 className="text-base font-semibold tracking-tight">{title}</h3>
+      <h3 className="text-base font-semibold tracking-tight dark:text-neutral-100">
+        {title}
+      </h3>
       <div className="mt-3">{children}</div>
     </section>
   )
@@ -78,10 +86,10 @@ function Block({
 
 function Ul({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-2 text-gray-700">
+    <ul className="space-y-2 text-gray-700 dark:text-neutral-200">
       {items.map((x) => (
         <li key={x} className="flex gap-2">
-          <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300" />
+          <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300 dark:bg-neutral-500" />
           <span>{x}</span>
         </li>
       ))}

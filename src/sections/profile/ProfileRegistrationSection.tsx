@@ -115,7 +115,7 @@ export default function ProfileRegistrationSection() {
               </p>
               <div className="mt-4 flex flex-wrap items-end gap-4">
                 <div className="overflow-hidden inline-flex h-24 w-24 items-center justify-center rounded-[2rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card">
-                  <img src={'public/assets/images/profile/profile.jpeg'} alt={''}/>
+                  <img src={"public/assets/images/profile/profile.jpeg"} alt="" />
                 </div>
                 <div>
                   <h3 className="font-display text-4xl font-semibold tracking-tight">
@@ -128,14 +128,14 @@ export default function ProfileRegistrationSection() {
               </div>
             </div>
 
-            <div className="grid gap-6 p-6">
+            <div className="grid gap-6 bg-white p-6 dark:bg-neutral-900">
               <div className="grid gap-3 sm:grid-cols-3">
                 {profileSummary.stats.map((item, index) => (
                   <div
                     key={item.label}
-                    className="rounded-3xl border border-black/5 bg-white px-5 py-5"
+                    className="rounded-3xl border border-black/5 bg-white px-5 py-5 dark:border-white/10 dark:bg-neutral-800"
                   >
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 font-display">
+                    <p className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-neutral-400">
                       {item.label}
                     </p>
                     <p
@@ -149,7 +149,9 @@ export default function ProfileRegistrationSection() {
                     >
                       {item.value}
                     </p>
-                    <p className="mt-2 text-sm text-gray-600 font-display">{item.desc}</p>
+                    <p className="font-display mt-2 text-sm text-gray-600 dark:text-neutral-300">
+                      {item.desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -158,7 +160,7 @@ export default function ProfileRegistrationSection() {
                 {profileSummary.cards.map((item, index) => (
                   <div
                     key={item.title}
-                    className="rounded-3xl border border-black/5 bg-neutral-50 px-5 py-5"
+                    className="rounded-3xl border border-black/5 bg-neutral-50 px-5 py-5 dark:border-white/10 dark:bg-neutral-800"
                   >
                     <div className="flex items-center gap-3">
                       <div
@@ -172,11 +174,11 @@ export default function ProfileRegistrationSection() {
                       >
                         {item.icon}
                       </div>
-                      <h3 className="font-display text-xl font-semibold tracking-tight text-gray-900">
+                      <h3 className="font-display text-xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
                         {item.title}
                       </h3>
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
                       {item.body}
                     </p>
                   </div>
@@ -184,14 +186,14 @@ export default function ProfileRegistrationSection() {
               </div>
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 dark:text-neutral-400">
                   Strengths
                 </p>
                 <div className="mt-3 grid gap-3">
                   {profileHighlights.map((item) => (
                     <div
                       key={item}
-                      className="rounded-2xl border border-black/5 px-4 py-3 text-sm text-gray-700"
+                      className="rounded-2xl border border-black/5 px-4 py-3 text-sm text-gray-700 dark:border-white/10 dark:text-neutral-300"
                     >
                       {item}
                     </div>
@@ -204,7 +206,7 @@ export default function ProfileRegistrationSection() {
 
         <FadeIn delay={0.06}>
           <Card>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 dark:text-neutral-400">
               Career
             </p>
             <div className="mt-4 grid gap-5">
@@ -213,16 +215,16 @@ export default function ProfileRegistrationSection() {
                   key={`${item.period}-${item.company}`}
                   className="border-l-2 border-primary/40 pl-4"
                 >
-                  <p className="text-xs font-semibold text-gray-400">
+                  <p className="text-xs font-semibold text-gray-400 dark:text-neutral-400">
                     {item.period}
                   </p>
-                  <p className="mt-1 font-display text-lg font-semibold tracking-tight text-gray-900">
+                  <p className="mt-1 font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
                     {item.company}
                   </p>
                   <p className="mt-1 text-sm font-medium text-primary-strong">
                     {item.role}
                   </p>
-                  <ul className="mt-3 grid gap-2 text-sm leading-relaxed text-gray-600">
+                  <ul className="mt-3 grid gap-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
                     {item.details.map((detail) => (
                       <li key={detail}>{detail}</li>
                     ))}

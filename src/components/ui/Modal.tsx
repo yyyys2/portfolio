@@ -38,7 +38,7 @@ export default function Modal({
   return (
     <div className="fixed inset-0 z-50">
       <button
-        className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"
+        className="absolute inset-0 bg-black/30 backdrop-blur-[2px] dark:bg-black/55"
         aria-label="Close modal"
         onClick={onClose}
       />
@@ -50,18 +50,23 @@ export default function Modal({
           aria-modal="true"
           aria-labelledby={titleId}
           tabIndex={-1}
-          className="w-full rounded-3xl bg-white shadow-[0_20px_80px_rgba(0,0,0,0.18)] ring-1 ring-black/5"
+          className="w-full rounded-3xl bg-white shadow-[0_20px_80px_rgba(0,0,0,0.18)] ring-1 ring-black/5 dark:bg-neutral-900 dark:ring-white/10"
         >
-          <div className="flex items-start justify-between gap-4 border-b border-black/5 px-6 py-5">
+          <div className="flex items-start justify-between gap-4 border-b border-black/5 px-6 py-5 dark:border-white/10">
             <div>
-              <h2 id={titleId} className="text-xl font-semibold tracking-tight">
+              <h2
+                id={titleId}
+                className="text-xl font-semibold tracking-tight dark:text-neutral-100"
+              >
                 {title}
               </h2>
-              <p className="mt-1 text-sm text-gray-500">Case Study</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-neutral-400">
+                Case Study
+              </p>
             </div>
             <button
               onClick={onClose}
-              className="rounded-xl px-3 py-2 text-sm text-gray-600 hover:bg-black/5"
+              className="rounded-xl px-3 py-2 text-sm text-gray-600 hover:bg-black/5 dark:text-neutral-300 dark:hover:bg-white/10"
             >
               닫기
             </button>

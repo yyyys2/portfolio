@@ -9,6 +9,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
 @font-face {
   font-family: "Outfit";
   src: url("public/assets/fonts/Outfit-Regular.woff2") format("woff2");
@@ -24,6 +28,11 @@ body {
 
 body {
   margin: 0;
+  background: #fff;
+}
+
+html.dark body {
+  background: #141624;
 }
 
 img,
@@ -44,6 +53,30 @@ canvas {
     overflow: hidden;
     isolation: isolate;
     background: #fff;
+  }
+
+  html.dark .bg-drift-wrapper {
+    background: #141624;
+  }
+
+  html.dark .bg-drift-wrapper::before {
+    background:
+      radial-gradient(
+        1200px 700px at 15% 10%,
+        rgba(94, 119, 255, 0.2),
+        transparent 60%
+      ),
+      radial-gradient(
+        1100px 600px at 85% 18%,
+        rgba(245, 113, 178, 0.14),
+        transparent 58%
+      ),
+      radial-gradient(
+        900px 500px at 60% 95%,
+        rgba(85, 220, 189, 0.12),
+        transparent 55%
+      ),
+      #141624;
   }
 
   .bg-drift-wrapper::before {

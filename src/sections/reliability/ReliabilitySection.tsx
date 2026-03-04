@@ -74,10 +74,10 @@ export default function ReliabilitySection() {
         {items.map((x, i) => (
           <FadeIn key={x.key} delay={i * 0.04}>
             <Card>
-              <h3 className="text-lg font-semibold tracking-tight text-gray-900">
+              <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
                 {lang === "ko" ? x.ko.title : x.en.title}
               </h3>
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-gray-600 dark:text-neutral-300">
                 {lang === "ko" ? x.ko.desc : x.en.desc}
               </p>
             </Card>

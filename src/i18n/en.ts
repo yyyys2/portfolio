@@ -1,7 +1,7 @@
 export const en = {
   app: {
     footer: {
-      thanks: "Thanks for visiting.",
+      thanks: "Thanks for reading all the way through. Have a great day :)",
       copyright: "© 2026 yyyys2",
     },
   },
@@ -26,11 +26,11 @@ export const en = {
   },
   profile: {
     title: "About Me",
-    desc: "This section distills the self-introduction and resume details organized in the Notion portfolio into one focused view.",
+    desc: "A focused summary of my profile and practical experience.",
     formTitle: "Build Your Profile Draft",
     formDesc:
-      "Organize your name, intro, and skills to shape a polished self-introduction section for your portfolio.",
-    helper: "Changes appear in the preview board immediately.",
+      "Organize your name, intro, and skills to quickly shape a polished profile section.",
+    helper: "Any edits are reflected in the preview instantly.",
     submit: "Save Profile",
     saved: "Last saved:",
     roleLabel: "Frontend Developer",
@@ -122,8 +122,8 @@ export const en = {
     },
   },
   hero: {
-    title: "TBD",
-    desc: "TBD TBD TBD",
+    title: "Frontend Engineer Focused on Reliable Product UX",
+    desc: "I build UI that is not only polished on the surface but also dependable in real production environments.",
     keyword: "Operational Frontend",
     photoCaption: "Photography helps me practice noticing details.",
     ctaProjects: "View Projects",
@@ -133,14 +133,14 @@ export const en = {
     featured: {
       title: "Featured Project",
       subtitle:
-        "A key project that best represents the current portfolio direction.",
+        "Projects that best represent how I work today.",
       badge: "Featured Case",
       cta: "View all projects",
     },
     interests: {
       title: "My Interests",
       subtitle:
-        "I keep growing through both deep technical exploration and personal creative practice.",
+        "I keep growing through both technical deep dives and creative personal practice.",
       techTag: "Frontend",
       techTitle: "Technical Interests",
       techKeywords: [
@@ -164,7 +164,7 @@ export const en = {
   },
   projects: {
     title: "Projects",
-    desc: "Selected cases highlighting operational experience.",
+    desc: "Selected projects that reflect real operational experience.",
     all: "All",
     view: "View Case Study",
     visitSite: "Visit site",
@@ -172,7 +172,7 @@ export const en = {
   },
   skills: {
     title: "Skills",
-    desc: "Organized technical capabilities.",
+    desc: "Technologies I use consistently in real work.",
     sortedBy: "Sorted by hiring preference",
     overview: {
       total: "Total Skills",
@@ -199,7 +199,7 @@ export const en = {
   },
   reliability: {
     title: "Reliability",
-    desc: "I care about the details that turn nice UI into stable service.",
+    desc: "I care about the details that make polished UI stay stable in production.",
     summary: [
       {
         label: "Core Principles",
@@ -217,8 +217,8 @@ export const en = {
         desc: "Ship small and verify fast",
       },
     ],
-    principles: "Working Principles",
-    firstChecks: "First Checks",
+    principles: "How I Work",
+    firstChecks: "What I Check First",
     checklist: [
       "Do loading, error, and empty states connect naturally within the user flow?",
       "Are duplicate requests, race conditions, and boundary inputs structurally guarded?",
@@ -249,31 +249,31 @@ export const en = {
   },
   contact: {
     title: "Contact",
-    desc: "Open to project proposals, collaboration, and hiring inquiries.",
-    badge: "Let's Work Together",
-    headline: "If you have a product to build, let's talk.",
+    desc: "Open to career opportunities and frontend role inquiries.",
+    badge: "Open to Opportunities",
+    headline: "If you're hiring for a frontend role, I'd love to connect.",
     message:
-      "I prefer turning requirements into clear, executable scopes and shipping stable increments. Feel free to reach out, even for a short inquiry.",
+      "I want to contribute to product teams with strong ownership and practical execution.",
     sendEmail: "Send Email",
-    response: "I usually reply within 24 hours on weekdays.",
-    channelsTitle: "Channels",
+    response: "I usually reply within a day on weekdays.",
+    channelsTitle: "Where to Reach Me",
     channelEmail: "Email",
     channelGithub: "GitHub",
     channelInstagram: "Instagram",
     channelResume: "Resume PDF",
-    workTitle: "What I Can Help With",
+    workTitle: "Preferred Roles",
     workScope: [
       {
-        title: "Product UI Development",
-        desc: "Frontend implementation for new products and service renewals",
+        title: "Frontend Engineer",
+        desc: "Product development with React and TypeScript",
       },
       {
-        title: "Admin Experience",
-        desc: "Usability and flow improvements for operation-focused admin tools",
+        title: "Operations-focused Role",
+        desc: "Roles that include real service operations and maintenance",
       },
       {
-        title: "Reliability & Performance",
-        desc: "State architecture, API integration, and rendering quality optimization",
+        title: "Product Improvement Team",
+        desc: "Teams focused on performance, reliability, and UX quality",
       },
     ],
     emailLabel: "Email",
@@ -284,10 +284,10 @@ export const en = {
     closeAria: "Close modal",
     caseStudy: "Case Study",
     close: "Close",
-    problem: "Problem",
-    approach: "Approach",
+    problem: "What Was the Problem",
+    approach: "How I Solved It",
     reliabilityOps: "Reliability / Ops",
-    result: "Result",
+    result: "What Changed",
     stack: "Stack",
   },
 } as const

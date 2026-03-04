@@ -1,7 +1,7 @@
 export const ko = {
   app: {
     footer: {
-      thanks: "방문해 주셔서 감사합니다.",
+      thanks: "끝까지 봐주셔서 감사합니다. 좋은 하루 보내세요 :)",
       copyright: "© 2026 yyyys2",
     },
   },
@@ -28,8 +28,8 @@ export const ko = {
     title: "About Me",
     formTitle: "프로필 초안 작성",
     formDesc:
-      "이름, 소개, 스킬을 정리해서 포트폴리오에 들어갈 자기소개 섹션을 빠르게 구성하세요.",
-    helper: "내용을 수정하면 우측 미리보드가 즉시 반영됩니다.",
+      "이름, 소개, 스킬을 정리해 포트폴리오용 자기소개를 빠르게 구성할 수 있어요.",
+    helper: "내용을 수정하면 미리보기 영역에 바로 반영됩니다.",
     submit: "프로필 등록하기",
     saved: "마지막 저장:",
     roleLabel: "Frontend Developer",
@@ -115,8 +115,8 @@ export const ko = {
     },
   },
   hero: {
-    title: "내 소개 타이틀 TBD",
-    desc: "7년차 프론트엔드 개발자로서, 실제 서비스 환경에서 다뤄온 구조 설계와 운영 경험을 기반으로 제작한 포트폴리오입니다.",
+    title: "서비스 운영까지 생각하는 프론트엔드 개발자",
+    desc: "실제 서비스 환경에서 쌓은 구조 설계와 운영 경험을 바탕으로, 오래 유지되는 UI를 만드는 데 집중하고 있습니다.",
     keyword: "Operational Frontend",
     photoCaption: "사진 취미는 ‘디테일을 관찰하는 습관’으로 이어집니다.",
     ctaProjects: "Projects",
@@ -125,14 +125,14 @@ export const ko = {
   home: {
     featured: {
       title: "대표 프로젝트",
-      subtitle: "현재 포트폴리오를 가장 잘 설명하는 핵심 프로젝트입니다.",
+      subtitle: "지금의 저를 가장 잘 보여주는 프로젝트만 골라 담았습니다.",
       badge: "Featured Case",
       cta: "전체 프로젝트 보기",
     },
     interests: {
       title: "나의 관심사",
       subtitle:
-        "기술을 깊게 파고드는 일과 삶의 감각을 키우는 활동을 함께 이어가고 있습니다.",
+        "기술을 깊게 파는 일과 일상에서 감각을 키우는 활동을 함께 이어가고 있습니다.",
       techTag: "Frontend",
       techTitle: "기술적 관심사",
       techKeywords: [
@@ -156,7 +156,7 @@ export const ko = {
   },
   projects: {
     title: "Projects",
-    desc: "운영 경험이 드러나는 대표 케이스를 중심으로 정리했습니다.",
+    desc: "실무 운영 경험이 잘 드러나는 프로젝트를 중심으로 정리했습니다.",
     all: "전체",
     view: "Case Study 보기",
     visitSite: "사이트 보기",
@@ -164,7 +164,7 @@ export const ko = {
   },
   skills: {
     title: "Skills",
-    desc: "정리된 기술 역량입니다.",
+    desc: "실무에서 꾸준히 사용해 온 기술을 정리했습니다.",
     sortedBy: "기업 선호도 순",
     overview: {
       total: "전체 스킬",
@@ -191,7 +191,7 @@ export const ko = {
   },
   reliability: {
     title: "Reliability",
-    desc: "예쁜 UI가 ‘안정적인 서비스’가 되기까지의 디테일을 중요하게 봅니다.",
+    desc: "보기 좋은 UI에서 끝나지 않고, 실제 운영에서 흔들리지 않는 서비스까지 챙깁니다.",
     summary: [
       { label: "핵심 원칙", value: "5", desc: "운영 안정성을 위한 기준" },
       { label: "점검 관점", value: "3", desc: "상태, 예외, 배포 영향" },
@@ -201,8 +201,8 @@ export const ko = {
         desc: "작게 나누고 빠르게 검증",
       },
     ],
-    principles: "실무 원칙",
-    firstChecks: "우선 점검 항목",
+    principles: "실무에서 지키는 기준",
+    firstChecks: "먼저 확인하는 항목",
     checklist: [
       "로딩/에러/빈 상태가 사용자 흐름 안에서 자연스럽게 연결되는가",
       "중복 요청, 레이스 컨디션, 경계값 입력이 구조적으로 방어되는가",
@@ -233,31 +233,30 @@ export const ko = {
   },
   contact: {
     title: "Contact",
-    desc: "프로젝트 제안, 협업, 채용 문의를 환영합니다.",
-    badge: "Let's Work Together",
-    headline: "함께 만들고 싶은 제품이 있다면 연락 주세요.",
-    message:
-      "요구사항을 빠르게 정리하고, 실행 가능한 범위로 나눠 안정적으로 구현하는 방식을 선호합니다. 짧은 문의도 편하게 보내주세요.",
+    desc: "이직/구직 관련 제안과 포지션 문의를 기다리고 있습니다.",
+    badge: "Open to Opportunities",
+    headline: "프론트엔드 포지션 제안, 편하게 연락 주세요.",
+    message: "실무 운영 경험을 바탕으로 안정적인 제품 개발에 기여하고 싶습니다.",
     sendEmail: "이메일 보내기",
-    response: "평일 기준 24시간 이내 회신합니다.",
-    channelsTitle: "연락 채널",
+    response: "평일 기준 하루 이내 답장드립니다.",
+    channelsTitle: "연락 방법",
     channelEmail: "Email",
     channelGithub: "GitHub",
     channelInstagram: "Instagram",
     channelResume: "Resume PDF",
-    workTitle: "협업 가능 영역",
+    workTitle: "선호 포지션",
     workScope: [
       {
-        title: "제품 UI 개발",
-        desc: "신규 서비스와 기존 서비스 리뉴얼 프론트엔드 구현",
+        title: "Frontend Engineer",
+        desc: "React·TypeScript 기반 제품 개발",
       },
       {
-        title: "관리자 화면 개선",
-        desc: "운영형 대시보드/관리도구의 사용성과 흐름 개선",
+        title: "서비스 운영형 역할",
+        desc: "운영/유지보수까지 포함한 실무 포지션",
       },
       {
-        title: "안정성/성능 최적화",
-        desc: "상태관리 구조, API 연동, 렌더링 성능 품질 개선",
+        title: "제품 개선 중심 팀",
+        desc: "성능·안정성·사용성 개선에 집중하는 팀",
       },
     ],
     emailLabel: "Email",
@@ -268,10 +267,10 @@ export const ko = {
     closeAria: "모달 닫기",
     caseStudy: "Case Study",
     close: "닫기",
-    problem: "문제",
-    approach: "접근",
+    problem: "어떤 문제가 있었나",
+    approach: "어떻게 풀었나",
     reliabilityOps: "신뢰성/운영",
-    result: "결과",
+    result: "어떤 변화가 있었나",
     stack: "기술 스택",
   },
 } as const

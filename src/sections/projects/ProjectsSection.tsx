@@ -27,7 +27,6 @@ export default function ProjectsSection() {
       <Section
         id="projects"
         title={t("projects.title")}
-        subtitle={t("projects.desc")}
         className={"bg-white dark:bg-transparent"}
       >
         <FadeIn>
@@ -55,7 +54,7 @@ export default function ProjectsSection() {
             <button
               key={p.id}
               onClick={() => modal.openProject(p)}
-              className="text-left"
+              className="h-full text-left"
             >
               <Card className="group relative flex h-full flex-col overflow-hidden transition-transform hover:-translate-y-1">
                 {p.image && (
@@ -67,9 +66,9 @@ export default function ProjectsSection() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/35 dark:bg-black/45" />
-                    {p.image.note && (
+                    {!p.image.src.includes("/projects/live/") && (
                       <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/85 px-3 py-1 text-xs text-gray-800 ring-1 ring-black/10 backdrop-blur dark:bg-neutral-900/85 dark:text-neutral-100 dark:ring-white/15">
-                        {p.image.note}
+                        {p.image.note ?? t("projects.privateUiNote")}
                       </span>
                     )}
                   </div>
@@ -89,13 +88,9 @@ export default function ProjectsSection() {
                   <p className="mt-2 text-sm text-gray-600 dark:text-neutral-300">
                     {lang === "ko" ? p.oneLiner.ko : p.oneLiner.en}
                   </p>
-
-                  <p className="mt-4 text-xs text-gray-500 dark:text-neutral-400">
-                    {lang === "ko" ? p.role.ko : p.role.en}
-                  </p>
                 </div>
 
-                <div className="relative mt-6 flex flex-wrap gap-2">
+                <div className="relative mt-auto flex flex-wrap gap-2 pt-6">
                   {p.links?.live && (
                     <a
                       href={p.links.live}

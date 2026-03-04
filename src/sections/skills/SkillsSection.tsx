@@ -118,7 +118,9 @@ export default function SkillsSection() {
                     </div>
 
                     <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
-                      {lang === "ko" ? skill.competency.ko : skill.competency.en}
+                      {lang === "ko"
+                        ? skill.competency.ko
+                        : skill.competency.en}
                     </p>
 
                     <div className="mt-3 flex items-center justify-between gap-2">
@@ -146,4 +148,3 @@ export default function SkillsSection() {
     </Section>
   )
 }
-

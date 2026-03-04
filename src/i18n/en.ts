@@ -132,13 +132,15 @@ export const en = {
   home: {
     featured: {
       title: "Featured Project",
-      subtitle: "A key project that best represents the current portfolio direction.",
+      subtitle:
+        "A key project that best represents the current portfolio direction.",
       badge: "Featured Case",
       cta: "View all projects",
     },
     interests: {
       title: "My Interests",
-      subtitle: "I keep growing through both deep technical exploration and personal creative practice.",
+      subtitle:
+        "I keep growing through both deep technical exploration and personal creative practice.",
       techTag: "Frontend",
       techTitle: "Technical Interests",
       techKeywords: [
@@ -166,6 +168,7 @@ export const en = {
     all: "All",
     view: "View Case Study",
     visitSite: "Visit site",
+    privateUiNote: "Some parts of the real UI are private",
   },
   skills: {
     title: "Skills",

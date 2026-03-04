@@ -25,8 +25,8 @@ export default function FeaturedProjectSection() {
       <div className="grid gap-4 md:grid-cols-2">
         {featuredList.map((featured, index) => {
           const title = lang === "ko" ? featured.title.ko : featured.title.en
-          const oneLiner = lang === "ko" ? featured.oneLiner.ko : featured.oneLiner.en
-          const role = lang === "ko" ? featured.role.ko : featured.role.en
+          const oneLiner =
+            lang === "ko" ? featured.oneLiner.ko : featured.oneLiner.en
 
           return (
             <FadeIn key={featured.id} delay={index * 0.06}>
@@ -62,9 +62,6 @@ export default function FeaturedProjectSection() {
                     </h3>
                     <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
                       {oneLiner}
-                    </p>
-                    <p className="mt-2 line-clamp-1 text-xs text-gray-500 dark:text-neutral-400">
-                      {role}
                     </p>
                   </div>
                 </div>

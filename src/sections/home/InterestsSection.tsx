@@ -11,7 +11,9 @@ type InterestKeyword = {
 export default function InterestsSection() {
   const { t, tm } = useI18n()
   const techKeywords = tm<InterestKeyword[]>("home.interests.techKeywords")
-  const personalKeywords = tm<InterestKeyword[]>("home.interests.personalKeywords")
+  const personalKeywords = tm<InterestKeyword[]>(
+    "home.interests.personalKeywords"
+  )
 
   return (
     <Section

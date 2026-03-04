@@ -51,7 +51,10 @@ export const skills: Skill[] = [
     name: "Excel",
     rating: "★★★★☆",
     category: "tooling",
-    competency: { ko: "데이터 관리, 차트 제작", en: "Data handling and charting" },
+    competency: {
+      ko: "데이터 관리, 차트 제작",
+      en: "Data handling and charting",
+    },
     icon: "assets/images/skills/excel.png",
   },
   {
@@ -97,7 +100,10 @@ export const skills: Skill[] = [
     name: "Chat GPT",
     rating: "★★★★☆",
     category: "tooling",
-    competency: { ko: "AI활용, 가설검증", en: "AI utilization and hypothesis testing" },
+    competency: {
+      ko: "AI활용, 가설검증",
+      en: "AI utilization and hypothesis testing",
+    },
   },
   {
     id: "javascript",
@@ -148,7 +154,10 @@ export const skills: Skill[] = [
     name: "Docker",
     rating: "★★★☆☆",
     category: "infra",
-    competency: { ko: "로컬환경 · 기본 빌드/런", en: "Local environment and base build/run" },
+    competency: {
+      ko: "로컬환경 · 기본 빌드/런",
+      en: "Local environment and base build/run",
+    },
     icon: "assets/images/skills/docker.png",
   },
   {

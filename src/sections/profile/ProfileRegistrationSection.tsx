@@ -56,8 +56,11 @@ export default function ProfileRegistrationSection() {
                   {t("profile.roleLabel")}
                 </p>
                 <div className="mt-4 flex flex-wrap items-end gap-4">
-                  <div className="overflow-hidden inline-flex h-24 w-24 items-center justify-center rounded-[2rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card dark:bg-neutral-700">
-                    <img src={"public/assets/images/profile/profile.jpeg"} alt="" />
+                  <div className="inline-flex h-24 w-24 items-center justify-center overflow-hidden rounded-[2rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card dark:bg-neutral-700">
+                    <img
+                      src={"public/assets/images/profile/profile.jpeg"}
+                      alt=""
+                    />
                   </div>
                   <div>
                     <h3 className="font-display text-4xl font-semibold tracking-tight">
@@ -92,7 +95,7 @@ export default function ProfileRegistrationSection() {
                     >
                       {item.value}
                     </p>
-                    <p className="font-display mt-2 text-sm text-gray-600 dark:text-neutral-300">
+                    <p className="mt-2 font-display text-sm text-gray-600 dark:text-neutral-300">
                       {item.desc}
                     </p>
                   </div>

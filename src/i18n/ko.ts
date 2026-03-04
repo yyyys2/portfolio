@@ -131,7 +131,8 @@ export const ko = {
     },
     interests: {
       title: "나의 관심사",
-      subtitle: "기술을 깊게 파고드는 일과 삶의 감각을 키우는 활동을 함께 이어가고 있습니다.",
+      subtitle:
+        "기술을 깊게 파고드는 일과 삶의 감각을 키우는 활동을 함께 이어가고 있습니다.",
       techTag: "Frontend",
       techTitle: "기술적 관심사",
       techKeywords: [
@@ -159,6 +160,7 @@ export const ko = {
     all: "전체",
     view: "Case Study 보기",
     visitSite: "사이트 보기",
+    privateUiNote: "실제 UI 일부 비공개",
   },
   skills: {
     title: "Skills",

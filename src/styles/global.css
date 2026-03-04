@@ -131,12 +131,22 @@ canvas {
   }
 
   @keyframes float1 {
-    0%, 100% { transform: translate3d(0, 0, 0) rotate(2deg); }
-    50%      { transform: translate3d(0, 10px, 0) rotate(1deg); }
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(2deg);
+    }
+    50% {
+      transform: translate3d(0, 10px, 0) rotate(1deg);
+    }
   }
 
   @keyframes float2 {
-    0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
-    50%      { transform: translate3d(0, -12px, 0) rotate(-1deg); }
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(-2deg);
+    }
+    50% {
+      transform: translate3d(0, -12px, 0) rotate(-1deg);
+    }
   }
 }

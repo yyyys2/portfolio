@@ -12,7 +12,7 @@ export type Project = {
   approach: { ko: string[]; en: string[] }
   reliability: { ko: string[]; en: string[] }
   result: { ko: string[]; en: string[] }
-  image?: { src: string; note?: string } // note: "실제 UI는 비공개" 같은 라벨
+  image?: { src: string; note?: string }
   links?: { live?: string; github?: string }
 }
 
@@ -39,151 +39,670 @@ export const projects: Project[] = [
     id: "webos-multi",
     category: "platform",
     title: {
-      ko: "WebOS 기반 멀티 플랫폼 서비스 개발",
-      en: "WebOS Multi-platform Service",
+      ko: "스마트 디스플레이(WebOS) 기반 멀티 플랫폼 서비스 개발",
+      en: "Smart Display (WebOS) Multi-platform Service",
     },
     oneLiner: {
-      ko: "디바이스 제약 환경에서 안정적인 UI/상태 흐름을 설계",
-      en: "Stable UI/state design under device constraints",
+      ko: "WebOS 환경에서 상태 흐름과 운영 안정성을 강화한 멀티 플랫폼 서비스",
+      en: "A multi-platform service focused on stable state flow and operations in WebOS",
     },
-    tags: ["WebOS", "운영", "상태설계"],
+    tags: ["WebOS", "React", "운영"],
     role: {
-      ko: "프론트엔드 설계/구현 · 운영 이슈 대응",
-      en: "FE design/implementation · ops support",
+      ko: "기여도 FE 50% · 완료 후 유지보수 진행",
+      en: "Contribution FE 50% · completed and under maintenance",
     },
-    stack: ["Svelte", "TypeScript", "WebOS", "Git"],
+    stack: ["React", "SCSS", "Webpack", "Redux", "ESLint", "Prettier", "Git"],
     problem: {
-      ko: "리모컨 입력/네트워크/성능 제약에서 상태 꼬임과 UI 불안정이 발생",
-      en: "State/UI instability under remote input, network, and performance constraints",
+      ko: "디바이스 제약과 운영 이슈로 인해 화면 전환 및 상태 관리의 일관성이 필요함",
+      en: "Device constraints and ops issues required consistent navigation and state handling",
     },
     approach: {
-      ko: [
-        "상태 전이를 단순화",
-        "실패/재시도 흐름 표준화",
-        "로그/분기 지점 정리",
-      ],
+      ko: ["상태 흐름 정리", "운영 이슈 재현/수정", "릴리즈 단위 안정화"],
       en: [
-        "Simplified state transitions",
-        "Standardized failure/retry",
-        "Logging/branching points",
+        "Refined state flow",
+        "Reproduced/fixed ops issues",
+        "Stabilized release units",
       ],
     },
     reliability: {
       ko: [
-        "로딩/에러/빈 상태 기본값",
-        "재시도/타임아웃 처리",
-        "예외 케이스 시나리오 정리",
+        "예외 케이스 점검",
+        "오류 대응 루틴 표준화",
+        "유지보수 대응 프로세스화",
       ],
       en: [
-        "Default loading/error/empty",
-        "Retry/timeout",
-        "Edge-case scenarios",
+        "Reviewed edge cases",
+        "Standardized error handling",
+        "Systemized maintenance response",
       ],
     },
     result: {
-      ko: ["운영 이슈 재발 감소", "화면 전환 안정화", "CS 대응 시간 단축"],
+      ko: ["프로젝트 완료", "유지보수 체계 운영", "서비스 안정성 개선"],
       en: [
-        "Fewer recurring ops issues",
-        "Stabilized navigation",
-        "Reduced CS response time",
+        "Delivered project",
+        "Established maintenance workflow",
+        "Improved service stability",
       ],
     },
     image: {
-      src: "public/assets/images/projects/test.jpg",
+      src: "public/assets/images/projects/live/webos-multi.png",
       note: "실제 UI 일부 비공개",
     },
     links: { live: "https://betaprogram.lge.com/" },
   },
   {
-    id: "ai-agent",
+    id: "online-education-platform",
     category: "enterprise",
     title: {
-      ko: "기업용 채팅형 AI Agent 플랫폼",
-      en: "Enterprise Chat-based AI Agent Platform",
+      ko: "온라인 교육 플랫폼(Web·관리자) 개발",
+      en: "Online Education Platform (Web/Admin)",
     },
     oneLiner: {
-      ko: "복잡한 상태/권한/흐름을 ‘예측 가능’하게 구조화",
-      en: "Structured state/permissions into predictable flows",
+      ko: "학습자/관리자 흐름을 분리해 운영 가능한 교육 플랫폼 구축",
+      en: "Built an operable education platform with separated learner/admin flows",
     },
-    tags: ["B2B", "상태정확성", "예외대응"],
+    tags: ["React", "Admin", "교육"],
     role: {
-      ko: "UI 구조/상태 설계 · 운영 플로우 정리",
-      en: "UI architecture/state design · ops flows",
+      ko: "기여도 FE 100%",
+      en: "Contribution FE 100%",
     },
-    stack: ["React", "TypeScript", "Tailwind"],
+    stack: ["React", "SCSS", "Webpack", "Redux", "ESLint", "Prettier", "Git"],
     problem: {
-      ko: "사용자 액션과 비동기 응답이 얽히며 예외 케이스가 많고 운영 대응이 어려움",
-      en: "Many edge cases due to user actions + async responses; hard to operate",
+      ko: "사용자 화면과 관리자 화면의 기능 복잡도가 높아 구조화가 필요함",
+      en: "High complexity across user and admin features required structured implementation",
+    },
+    approach: {
+      ko: ["공통 컴포넌트화", "관리자 기능 분리", "상태 흐름 단순화"],
+      en: [
+        "Component reuse",
+        "Separated admin features",
+        "Simplified state flows",
+      ],
+    },
+    reliability: {
+      ko: ["입력/조회 예외 처리", "운영 시나리오 기반 테스트", "배포 안정화"],
+      en: [
+        "Handled input/query edge cases",
+        "Ops scenario tests",
+        "Stabilized deployment",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "운영 효율 향상"],
+      en: ["Delivered project", "Improved operational efficiency"],
+    },
+    image: {
+      src: "public/assets/images/projects/online_education_platform_admin.jpeg",
+    },
+  },
+  {
+    id: "blockchain-payment-shopping",
+    category: "finance_public",
+    title: {
+      ko: "블록체인 결제 기반 쇼핑 서비스(상용 B2C)",
+      en: "Blockchain Payment Shopping Service (Commercial B2C)",
+    },
+    oneLiner: {
+      ko: "결제 신뢰성이 중요한 상용 B2C 플랫폼의 결제 UX 개선",
+      en: "Improved payment UX for a trust-critical commercial B2C platform",
+    },
+    tags: ["Vue", "결제", "B2C"],
+    role: {
+      ko: "기여도 FE 70%",
+      en: "Contribution FE 70%",
+    },
+    stack: ["Vue2", "Vuetify", "Webpack", "Vuex", "ESLint", "Prettier", "Git"],
+    problem: {
+      ko: "결제 실패/지연 상황에서 사용자 신뢰가 저하될 수 있음",
+      en: "Payment failure/delay scenarios could reduce user trust",
+    },
+    approach: {
+      ko: ["결제 상태별 화면 분리", "재시도 흐름 정리", "에러 메시지 일관화"],
+      en: [
+        "Separated UI by payment state",
+        "Structured retry flow",
+        "Unified error messaging",
+      ],
+    },
+    reliability: {
+      ko: ["결제 상태 추적 강화", "중복 결제 방지", "장애 대응 분기 처리"],
+      en: [
+        "Enhanced payment state tracking",
+        "Prevented duplicate payments",
+        "Handled failure branches",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "결제 흐름 안정성 향상"],
+      en: ["Delivered project", "Improved payment flow stability"],
+    },
+    image: {
+      src: "public/assets/images/projects/blockchain_payment_b2c.png",
+    },
+  },
+  {
+    id: "smart-mobility-promo",
+    category: "enterprise",
+    title: {
+      ko: "스마트 모빌리티 솔루션 홍보 웹사이트",
+      en: "Smart Mobility Solution Promo Website",
+    },
+    oneLiner: {
+      ko: "기업 기술 메시지를 전달하는 반응형 홍보 사이트 구축",
+      en: "Built a responsive promo site for enterprise mobility technology",
+    },
+    tags: ["React", "홍보사이트", "반응형"],
+    role: {
+      ko: "기여도 FE 100%",
+      en: "Contribution FE 100%",
+    },
+    stack: ["React", "SCSS", "Webpack", "Redux", "ESLint", "Prettier", "Git"],
+    problem: {
+      ko: "브랜드 메시지 전달력과 페이지 성능을 동시에 확보해야 함",
+      en: "Needed both strong brand storytelling and solid page performance",
     },
     approach: {
       ko: [
-        "상태/권한 경계를 명확히",
-        "에러 메시지 규격화",
-        "재시도/복구 UX 설계",
+        "콘텐츠 중심 정보구조 설계",
+        "반응형 레이아웃 최적화",
+        "핵심 섹션 재사용",
       ],
       en: [
-        "Clear state/permission boundaries",
-        "Standardized error copy",
-        "Retry/recovery UX",
+        "Designed content-first IA",
+        "Optimized responsive layouts",
+        "Reused key sections",
+      ],
+    },
+    reliability: {
+      ko: ["브라우저 호환성 점검", "배포 전 QA 점검", "운영 이슈 대응"],
+      en: [
+        "Checked browser compatibility",
+        "Pre-release QA",
+        "Handled ops issues",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "대외 홍보 채널 운영"],
+      en: ["Delivered project", "Enabled external promotion channel"],
+    },
+    image: {
+      src: "public/assets/images/projects/smart_mobility_promo_website.jpeg",
+    },
+    links: { live: "http://www.soft-v2x.com/" },
+  },
+  {
+    id: "v2x-sdk-platform",
+    category: "enterprise",
+    title: {
+      ko: "V2X 기반 SDK 제공 플랫폼",
+      en: "V2X SDK Distribution Platform",
+    },
+    oneLiner: {
+      ko: "SDK 배포/문서/권한 관리가 가능한 관리자 플랫폼",
+      en: "Admin platform for SDK distribution, docs, and permissions",
+    },
+    tags: ["B2B", "SDK", "관리자"],
+    role: {
+      ko: "기여도 FE 70%",
+      en: "Contribution FE 70%",
+    },
+    stack: ["React", "SCSS", "Webpack", "Redux", "ESLint", "Prettier", "Git"],
+    problem: {
+      ko: "버전 관리와 권한 제어 로직이 복잡해 운영 실수 가능성이 존재",
+      en: "Complex version and permission logic could cause operational mistakes",
+    },
+    approach: {
+      ko: ["권한 단계 분리", "버전 UI 표준화", "배포 프로세스 단순화"],
+      en: [
+        "Separated permission levels",
+        "Standardized version UI",
+        "Simplified release process",
+      ],
+    },
+    reliability: {
+      ko: ["검증 규칙 추가", "오류 분기 처리", "운영 체크리스트 반영"],
+      en: [
+        "Added validation rules",
+        "Handled error branches",
+        "Applied ops checklists",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "배포 안정성 향상"],
+      en: ["Delivered project", "Improved release stability"],
+    },
+    image: {
+      src: "public/assets/images/projects/v2x_sdk_platform.jpeg",
+    },
+    links: { live: "http://sdk.soft-v2x.com" },
+  },
+  {
+    id: "mobility-rewards-admin",
+    category: "enterprise",
+    title: {
+      ko: "모빌리티 리워드 서비스(모바일 앱·관리자)",
+      en: "Mobility Rewards Service (Mobile/Admin)",
+    },
+    oneLiner: {
+      ko: "리워드 적립/운영 흐름을 관리 가능한 서비스 구조로 구현",
+      en: "Implemented manageable reward accumulation and operation flows",
+    },
+    tags: ["React", "Admin", "리워드"],
+    role: {
+      ko: "기여도 FE 100%",
+      en: "Contribution FE 100%",
+    },
+    stack: ["React", "SCSS", "Webpack", "Redux", "ESLint", "Prettier", "Git"],
+    problem: {
+      ko: "이벤트/적립/관리자 처리 로직이 분산되어 운영 복잡도가 높음",
+      en: "Event/reward/admin logic was fragmented and operationally complex",
+    },
+    approach: {
+      ko: [
+        "기능 흐름 단순화",
+        "관리자 액션 중심 UI 구성",
+        "상태 동기화 구조화",
+      ],
+      en: [
+        "Simplified functional flows",
+        "Admin action-centered UI",
+        "Structured state synchronization",
+      ],
+    },
+    reliability: {
+      ko: ["누락/중복 처리 방지", "운영 로그 포인트 정리", "배포 후 모니터링"],
+      en: [
+        "Prevented missing/duplicate handling",
+        "Defined ops logs",
+        "Post-release monitoring",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "운영 처리 효율 개선"],
+      en: ["Delivered project", "Improved operational efficiency"],
+    },
+    image: {
+      src: "public/assets/images/projects/mobility_rewards_service_admin.jpeg",
+    },
+  },
+  {
+    id: "v2x-control-community",
+    category: "enterprise",
+    title: {
+      ko: "V2X 관제/커뮤니티 관리 시스템",
+      en: "V2X Control & Community Management System",
+    },
+    oneLiner: {
+      ko: "관제와 커뮤니티 운영 기능을 통합한 관리 시스템 구현",
+      en: "Implemented an integrated control and community admin system",
+    },
+    tags: ["React", "관제", "B2B"],
+    role: {
+      ko: "기여도 FE 100%",
+      en: "Contribution FE 100%",
+    },
+    stack: ["React", "SCSS", "Webpack", "Redux", "ESLint", "Prettier", "Git"],
+    problem: {
+      ko: "실시간 관제 화면과 커뮤니티 관리 기능을 한 화면에서 다뤄야 함",
+      en: "Needed to handle real-time control and community admin in one system",
+    },
+    approach: {
+      ko: [
+        "도메인별 화면 분리",
+        "관리 기능 우선 UI 설계",
+        "운영 중심 상태 관리",
+      ],
+      en: [
+        "Separated domain screens",
+        "Admin-first UI design",
+        "Ops-oriented state management",
+      ],
+    },
+    reliability: {
+      ko: ["예외 흐름 분기", "운영 시나리오 점검", "변경 영향 최소화 배포"],
+      en: [
+        "Handled exception branches",
+        "Reviewed ops scenarios",
+        "Minimized release impact",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "운영 안정성 확보"],
+      en: ["Delivered project", "Secured operational stability"],
+    },
+    image: {
+      src: "public/assets/images/projects/v2x_control_community_system.jpeg",
+    },
+  },
+  {
+    id: "daegu-transport-system",
+    category: "finance_public",
+    title: {
+      ko: "대구광역시 어르신 통합 무임 교통카드 발급/관리 시스템",
+      en: "Daegu Senior Transit Card Issuance/Management System",
+    },
+    oneLiner: {
+      ko: "공공 업무 특성에 맞춰 검증/발급 안정성을 강화한 시스템",
+      en: "A public-service system focused on strong validation and issuance stability",
+    },
+    tags: ["공공", "Vue", "검증"],
+    role: {
+      ko: "기여도 FE 100%",
+      en: "Contribution FE 100%",
+    },
+    stack: [
+      "Vue",
+      "Vite",
+      "SCSS",
+      "Vuetify",
+      "Vuex",
+      "ESLint",
+      "Prettier",
+      "Yarn",
+    ],
+    problem: {
+      ko: "공공 발급 프로세스에서 입력 오류와 중복 처리 리스크가 큼",
+      en: "Public issuance process had high risk of input errors and duplicates",
+    },
+    approach: {
+      ko: ["입력 검증 강화", "상태 전이 명확화", "관리자 업무 흐름 최적화"],
+      en: [
+        "Strengthened input validation",
+        "Clarified state transitions",
+        "Optimized admin workflows",
       ],
     },
     reliability: {
       ko: [
-        "실패 시 fallback UI",
-        "액션 단위 로깅 포인트",
-        "재현 가능한 흐름 기록",
+        "오류 메시지 체계화",
+        "재처리 시나리오 정리",
+        "운영 체크 포인트 정의",
       ],
-      en: ["Fallback UI on failure", "Action-level logs", "Reproducible flows"],
+      en: [
+        "Systemized error messages",
+        "Defined reprocess scenarios",
+        "Set operations checkpoints",
+      ],
     },
     result: {
-      ko: ["예외 케이스 누락 감소", "운영 대응 효율 향상", "UI 신뢰도 상승"],
-      en: [
-        "Fewer missed edge cases",
-        "Improved ops efficiency",
-        "Higher UI reliability",
-      ],
+      ko: ["프로젝트 완료", "발급 업무 안정성 향상"],
+      en: ["Delivered project", "Improved issuance stability"],
+    },
+    image: {
+      src: "public/assets/images/projects/daegu_senior_transit_card_system.png",
     },
   },
   {
     id: "finance-renewal",
     category: "finance_public",
     title: {
-      ko: "IM유페이 금융 서비스 리뉴얼 및 관리자 개발",
-      en: "Finance Service Renewal & Admin",
+      ko: "IM유페이 금융 서비스 홈페이지 리뉴얼 및 관리자 개발",
+      en: "IMUPAY Finance Homepage Renewal and Admin Development",
     },
     oneLiner: {
-      ko: "정확성이 중요한 화면에서 검증/예외/상태를 체계화",
-      en: "Systematized validation/edge/state for accuracy-critical UI",
+      ko: "금융 도메인 UX 신뢰성과 관리자 운영성을 강화한 리뉴얼",
+      en: "Renewal focused on trustful UX and operational admin in finance",
     },
-    tags: ["금융", "검증", "안정성"],
+    tags: ["React", "TypeScript", "금융"],
     role: {
-      ko: "화면 구현 · 검증/예외 처리 강화",
-      en: "UI implementation · validation/edge hardening",
+      ko: "기여도 FE 100%",
+      en: "Contribution FE 100%",
     },
-    stack: ["React", "TypeScript"],
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Styled Components",
+      "Zustand",
+      "ESLint",
+      "Prettier",
+      "Git",
+    ],
     problem: {
-      ko: "입력/조회 흐름에서 오류 대응이 부족해 사용자 신뢰가 흔들릴 수 있음",
-      en: "Gaps in error handling could undermine user trust",
+      ko: "금융 서비스에서 입력/조회 오류 발생 시 사용자 신뢰가 크게 저하됨",
+      en: "Input/query errors in finance could significantly hurt user trust",
     },
     approach: {
-      ko: ["검증 규칙 정리", "오류 UX 통일", "중복 요청/레이스 방지"],
+      ko: ["검증 규칙 체계화", "상태/에러 UI 정리", "관리자 화면 동선 개선"],
       en: [
-        "Unified validation rules",
-        "Consistent error UX",
-        "Prevented duplicates/races",
+        "Systemized validation rules",
+        "Refined state/error UI",
+        "Improved admin flow",
       ],
     },
     reliability: {
-      ko: ["필수 상태 체크", "네트워크 오류 분기", "추적 가능한 로그 포인트"],
-      en: ["Required state checks", "Network error branches", "Traceable logs"],
+      ko: ["오류 분기 세분화", "중복 요청 방지", "운영 로그 포인트 정리"],
+      en: [
+        "Detailed error branches",
+        "Prevented duplicate requests",
+        "Organized operations logs",
+      ],
     },
     result: {
-      ko: ["오류 UX 개선", "상태 꼬임 감소", "운영 요청 대응 효율 향상"],
+      ko: ["프로젝트 완료", "금융 UX 안정성 향상"],
+      en: ["Delivered project", "Improved finance UX stability"],
+    },
+    image: {
+      src: "public/assets/images/projects/live/imupay.png",
+    },
+    links: { live: "https://www.imupay.co.kr" },
+  },
+  {
+    id: "cloud-hospitality-signage",
+    category: "enterprise",
+    title: {
+      ko: "클라우드 기반 호스피탈리티 사이니지 관리 솔루션 고도화",
+      en: "Cloud-based Hospitality Signage Management Enhancement",
+    },
+    oneLiner: {
+      ko: "대규모 관리 화면의 데이터 정확성과 운영 효율을 높인 고도화",
+      en: "Enhancement focused on data accuracy and operational efficiency at scale",
+    },
+    tags: ["React", "TanStack", "Zustand"],
+    role: {
+      ko: "기여도 FE 40%",
+      en: "Contribution FE 40%",
+    },
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "module CSS",
+      "Zustand",
+      "Zod",
+      "TanStack Query",
+      "TanStack Table",
+      "TanStack Router",
+      "ESLint",
+      "Prettier",
+      "Git",
+    ],
+    problem: {
+      ko: "데이터량이 큰 관리 화면에서 테이블/필터/상태 흐름 복잡도가 높음",
+      en: "Large data admin screens had complex table/filter/state flows",
+    },
+    approach: {
+      ko: ["쿼리/테이블 구조 분리", "타입 검증 강화", "라우팅 기반 화면 분할"],
       en: [
-        "Better error UX",
-        "Less state corruption",
-        "Improved ops efficiency",
+        "Separated query/table concerns",
+        "Strengthened type validation",
+        "Split screens by routing",
       ],
+    },
+    reliability: {
+      ko: ["데이터 유효성 검증", "필터/정렬 안정화", "운영 이슈 추적성 강화"],
+      en: [
+        "Validated data integrity",
+        "Stabilized filter/sort",
+        "Improved issue traceability",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "관리자 생산성 향상"],
+      en: ["Delivered project", "Improved admin productivity"],
+    },
+    image: {
+      src: "public/assets/images/projects/cloud_hospitality_signage_solution.jpeg",
+    },
+    links: { live: "https://lgbusinesscloud.com/solutions/procentric/" },
+  },
+  {
+    id: "mobile-shopping-webos",
+    category: "platform",
+    title: {
+      ko: "모바일 쇼핑 플랫폼(WebOS 연계)",
+      en: "Mobile Shopping Platform Integrated with WebOS",
+    },
+    oneLiner: {
+      ko: "모바일 쇼핑 경험을 WebOS 서비스와 연계한 크로스 채널 구현",
+      en: "Cross-channel implementation connecting mobile shopping with WebOS services",
+    },
+    tags: ["JSP", "Spring Boot", "WebOS"],
+    role: {
+      ko: "기여도 FE 20% · 완료 후 유지보수 진행",
+      en: "Contribution FE 20% · completed and under maintenance",
+    },
+    stack: ["JSP", "CSS", "Spring Boot", "Git"],
+    problem: {
+      ko: "모바일과 TV 채널 간 흐름 연결 시 상태 전달의 일관성이 필요함",
+      en: "Consistent state handoff was needed between mobile and TV channels",
+    },
+    approach: {
+      ko: ["핵심 사용자 흐름 연결", "페이지 구조 단순화", "연동 포인트 정리"],
+      en: [
+        "Connected key user journeys",
+        "Simplified page structure",
+        "Organized integration points",
+      ],
+    },
+    reliability: {
+      ko: ["연동 시나리오 점검", "유지보수 대응", "운영 오류 최소화"],
+      en: [
+        "Reviewed integration scenarios",
+        "Maintained service",
+        "Minimized operational errors",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "유지보수 진행"],
+      en: ["Delivered project", "Ongoing maintenance"],
+    },
+    image: {
+      src: "public/assets/images/projects/live/shoptime.png",
+    },
+    links: { live: "https://m.shoptime.lgappstv.com/home.jsp?cntryCd=US" },
+  },
+  {
+    id: "digital-signage-management",
+    category: "enterprise",
+    title: {
+      ko: "디지털 사이니지 통합 관리 솔루션 고도화",
+      en: "Digital Signage Integrated Management Enhancement",
+    },
+    oneLiner: {
+      ko: "사이니지 운영 관리의 데이터 정확성과 유지보수성을 높인 개선",
+      en: "Improvement focused on data accuracy and maintainability in signage operations",
+    },
+    tags: ["React", "TypeScript", "Admin"],
+    role: {
+      ko: "기여도 FE 40%",
+      en: "Contribution FE 40%",
+    },
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "module CSS",
+      "Zustand",
+      "Zod",
+      "TanStack Query",
+      "TanStack Table",
+      "TanStack Router",
+      "ESLint",
+      "Prettier",
+      "Git",
+    ],
+    problem: {
+      ko: "대시보드와 리스트 화면에서 데이터 동기화와 예외 처리가 복잡함",
+      en: "Dashboard/list screens had complex synchronization and edge handling",
+    },
+    approach: {
+      ko: ["상태 경계 재정의", "테이블 성능/정확성 개선", "모듈화 강화"],
+      en: [
+        "Redefined state boundaries",
+        "Improved table performance/accuracy",
+        "Strengthened modularization",
+      ],
+    },
+    reliability: {
+      ko: ["조회/수정 흐름 분리", "검증 로직 강화", "운영 대응 시간 단축"],
+      en: [
+        "Separated read/update flows",
+        "Strengthened validation",
+        "Reduced response time",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "운영 관리 품질 향상"],
+      en: ["Delivered project", "Improved operations quality"],
+    },
+    image: {
+      src: "public/assets/images/projects/digital_signage_management_solution.jpeg",
+    },
+    links: { live: "https://lgbusinesscloud.com/solutions/supersign/" },
+  },
+  {
+    id: "energy-b2b-portal",
+    category: "enterprise",
+    title: {
+      ko: "에너지 관리 기업용 B2B 파트너 포털 퍼블리싱",
+      en: "Energy Management B2B Partner Portal Publishing",
+    },
+    oneLiner: {
+      ko: "기업용 파트너 포털의 반응형 퍼블리싱과 화면 품질 확보",
+      en: "Responsive publishing and UI quality for an enterprise partner portal",
+    },
+    tags: ["Next.js", "Tailwind", "Publishing"],
+    role: {
+      ko: "기여도 퍼블리싱 100%",
+      en: "Contribution Publishing 100%",
+    },
+    stack: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Git",
+    ],
+    problem: {
+      ko: "복수 화면 템플릿을 일관된 기준으로 퍼블리싱해야 함",
+      en: "Multiple page templates required consistent publishing standards",
+    },
+    approach: {
+      ko: ["컴포넌트 단위 퍼블리싱", "반응형 우선 구현", "디자인 시스템 반영"],
+      en: [
+        "Component-based publishing",
+        "Responsive-first implementation",
+        "Applied design system",
+      ],
+    },
+    reliability: {
+      ko: ["크로스브라우저 점검", "접근성 기본 준수", "QA 피드백 반영"],
+      en: [
+        "Cross-browser checks",
+        "Basic accessibility compliance",
+        "Integrated QA feedback",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "퍼블리싱 품질 확보"],
+      en: ["Delivered project", "Secured publishing quality"],
+    },
+    image: {
+      src: "public/assets/images/projects/energy_b2b_partner_portal.png",
     },
   },
   {
@@ -194,208 +713,148 @@ export const projects: Project[] = [
       en: "TV Overlay Shopping & Food Recommendation App",
     },
     oneLiner: {
-      ko: "TV 시청 중 Overlay UI로 쇼핑·푸드 추천을 연동",
-      en: "Overlay-based shopping and food recommendation during TV viewing",
+      ko: "TV 시청 중 오버레이 기반 상호작용 UX를 구현한 서비스",
+      en: "An overlay-based interactive UX for TV viewing scenarios",
     },
-    tags: ["WebOS", "Overlay", "리모컨UX"],
+    tags: ["Svelte", "WebOS", "Overlay"],
     role: {
-      ko: "Overlay UI 설계 및 리모컨 입력 기반 UX 구현",
-      en: "Overlay UI design and remote-based UX implementation",
+      ko: "기여도 FE 20%",
+      en: "Contribution FE 20%",
     },
-    stack: ["Svelte", "TypeScript", "WebOS"],
+    stack: ["Svelte", "SCSS", "TypeScript", "WebOS"],
     problem: {
-      ko: "TV 시청을 방해하지 않으면서 상호작용 가능한 UI 필요",
-      en: "Need interactive UI without disrupting TV viewing",
+      ko: "TV 시청 맥락을 해치지 않으면서 추천/쇼핑 인터랙션을 제공해야 함",
+      en: "Needed shopping/recommendation interactions without disrupting TV viewing",
     },
     approach: {
-      ko: [
-        "Overlay 상태 분리",
-        "리모컨 포커스 흐름 설계",
-        "비동기 추천 데이터 처리",
-      ],
+      ko: ["오버레이 상태 분리", "포커스 이동 설계", "추천 데이터 비동기 처리"],
       en: [
-        "Separated overlay state",
-        "Designed remote focus flow",
+        "Separated overlay states",
+        "Designed focus navigation",
         "Handled async recommendation data",
       ],
     },
     reliability: {
-      ko: ["네트워크 실패 대비 UI fallback", "포커스 유실 방지 처리"],
-      en: ["Fallback UI on network failure", "Prevented focus loss"],
+      ko: ["포커스 유실 방지", "네트워크 실패 대비", "전환 안정성 확보"],
+      en: [
+        "Prevented focus loss",
+        "Handled network failure",
+        "Secured transition stability",
+      ],
     },
     result: {
-      ko: ["Overlay 전환 안정성 확보", "UX 일관성 개선"],
-      en: ["Improved overlay stability", "Enhanced UX consistency"],
+      ko: ["프로젝트 완료", "TV 환경 UX 완성도 개선"],
+      en: ["Delivered project", "Improved UX quality on TV environment"],
+    },
+    image: {
+      src: "public/assets/images/projects/tv_overlay_shopping_food_app.jpeg",
+    },
+  },
+  {
+    id: "ai-agent",
+    category: "enterprise",
+    title: {
+      ko: "기업용 채팅형 AI Agent 플랫폼",
+      en: "Enterprise Chat-based AI Agent Platform",
+    },
+    oneLiner: {
+      ko: "복잡한 권한/상태 흐름을 예측 가능하게 구조화한 AI 운영 플랫폼",
+      en: "AI operations platform with predictable permission/state architecture",
+    },
+    tags: ["AI", "React", "B2B"],
+    role: {
+      ko: "기여도 FE 80%",
+      en: "Contribution FE 80%",
+    },
+    stack: [
+      "React",
+      "TypeScript",
+      "module CSS",
+      "Vite",
+      "React Router",
+      "React Query",
+      "Git",
+      "Git CICD",
+    ],
+    problem: {
+      ko: "비동기 응답/권한 분기/운영 요구가 많아 상태 일관성이 깨지기 쉬움",
+      en: "Async responses, permission branches, and ops demands made state consistency difficult",
+    },
+    approach: {
+      ko: [
+        "권한/상태 경계 명확화",
+        "예외 흐름 가시화",
+        "운영 시나리오 우선 설계",
+      ],
+      en: [
+        "Clarified permission/state boundaries",
+        "Visualized exception flows",
+        "Designed for ops scenarios first",
+      ],
+    },
+    reliability: {
+      ko: ["액션 로그 포인트 설계", "재시도/복구 UX 정리", "배포 검증 강화"],
+      en: [
+        "Designed action log points",
+        "Refined retry/recovery UX",
+        "Strengthened release validation",
+      ],
+    },
+    result: {
+      ko: ["프로젝트 완료", "운영 대응 효율 및 UI 신뢰도 향상"],
+      en: ["Delivered project", "Improved ops efficiency and UI trust"],
+    },
+    image: {
+      src: "public/assets/images/projects/enterprise_ai_agent_platform.jpeg",
     },
   },
   {
     id: "smart-display-ai",
     category: "platform",
     title: {
-      ko: "스마트 디스플레이 기반 AI 스타일링·추천 시스템 연동",
-      en: "Smart Display AI Styling & Recommendation Integration",
+      ko: "스마트 디스플레이(WebOS) 기반 AI 스타일링·추천 시스템 연동",
+      en: "WebOS Smart Display AI Styling/Recommendation Integration",
     },
     oneLiner: {
-      ko: "AI 추천 결과를 디바이스 UI에 실시간 반영",
-      en: "Integrated AI recommendation results into device UI",
+      ko: "AI 추천 결과를 디바이스 UI와 안정적으로 연결한 연동 개발",
+      en: "Integrated AI recommendations into device UI with stable behavior",
     },
-    tags: ["AI연동", "WebOS", "실시간데이터"],
+    tags: ["WebOS", "AI", "연동"],
     role: {
-      ko: "추천 데이터 UI 매핑 및 상태 흐름 설계",
-      en: "UI mapping and state flow design for recommendation data",
+      ko: "기여도 FE 50%",
+      en: "Contribution FE 50%",
     },
-    stack: ["Svelte", "TypeScript"],
+    stack: ["HTML", "CSS", "JavaScript"],
     problem: {
-      ko: "추천 결과 변화에 따른 UI 불안정 발생",
-      en: "UI instability due to dynamic recommendation updates",
+      ko: "AI 결과 변화가 잦아 UI 동기화와 사용자 인지 일관성이 필요함",
+      en: "Frequent AI updates required synchronized UI and consistent user perception",
     },
     approach: {
-      ko: ["상태 스냅샷 기반 렌더링", "비동기 흐름 단순화"],
-      en: ["Snapshot-based rendering", "Simplified async flow"],
+      ko: [
+        "데이터 매핑 규칙 정리",
+        "UI 반영 타이밍 제어",
+        "실패 시 fallback 제공",
+      ],
+      en: [
+        "Defined data mapping rules",
+        "Controlled update timing",
+        "Provided fallback on failure",
+      ],
     },
     reliability: {
-      ko: ["데이터 유효성 검증", "로딩/빈 상태 명확화"],
-      en: ["Data validation", "Clear loading/empty states"],
+      ko: ["데이터 유효성 검증", "로딩/빈 상태 분리", "연동 에러 대응 분기"],
+      en: [
+        "Validated data integrity",
+        "Separated loading/empty states",
+        "Handled integration errors",
+      ],
     },
     result: {
-      ko: ["실시간 추천 반영 안정화", "사용자 인지 혼란 감소"],
-      en: ["Stabilized real-time updates", "Reduced user confusion"],
+      ko: ["프로젝트 완료", "AI 추천 연동 안정성 향상"],
+      en: ["Delivered project", "Improved AI integration stability"],
     },
-  },
-  {
-    id: "mobile-shopping-webos",
-    category: "platform",
-    title: {
-      ko: "모바일 쇼핑 플랫폼(WebOS 연계)",
-      en: "Mobile Shopping Platform integrated with WebOS",
-    },
-    oneLiner: {
-      ko: "TV-모바일 간 사용자 플로우 연결",
-      en: "Connected TV and mobile user flows",
-    },
-    tags: ["CrossPlatform", "WebOS", "쇼핑"],
-    role: {
-      ko: "플랫폼 간 상태 동기화 UI 구현",
-      en: "Implemented cross-platform state synchronization",
-    },
-    stack: ["React", "TypeScript"],
-    problem: {
-      ko: "디바이스 간 상태 불일치 문제",
-      en: "State mismatch across devices",
-    },
-    approach: {
-      ko: ["세션 기반 상태 관리", "이벤트 기반 동기화 처리"],
-      en: ["Session-based state management", "Event-driven synchronization"],
-    },
-    reliability: {
-      ko: ["재연결 시 상태 복구 처리", "중복 요청 방지"],
-      en: ["State recovery on reconnect", "Prevented duplicate requests"],
-    },
-    result: {
-      ko: ["TV-모바일 UX 연속성 확보"],
-      en: ["Ensured continuity between TV and mobile UX"],
-    },
-  },
-  {
-    id: "v2x-sdk-platform",
-    category: "enterprise",
-    title: {
-      ko: "V2X 기반 SDK 제공 플랫폼",
-      en: "V2X SDK Distribution Platform",
-    },
-    oneLiner: {
-      ko: "SDK 문서·관리·배포를 위한 관리자 중심 플랫폼",
-      en: "Admin-centered platform for SDK documentation and distribution",
-    },
-    tags: ["B2B", "SDK", "관리자"],
-    role: {
-      ko: "관리자 UI 설계 및 배포 플로우 구현",
-      en: "Designed admin UI and deployment flows",
-    },
-    stack: ["React", "TypeScript"],
-    problem: {
-      ko: "SDK 버전 관리 및 권한 제어 복잡도",
-      en: "Complex versioning and permission management",
-    },
-    approach: {
-      ko: ["권한 레벨 분리", "버전 관리 UI 체계화"],
-      en: ["Separated permission levels", "Structured version management UI"],
-    },
-    reliability: {
-      ko: ["잘못된 배포 방지 로직 추가"],
-      en: ["Added safeguards against incorrect releases"],
-    },
-    result: {
-      ko: ["배포 안정성 향상"],
-      en: ["Improved deployment stability"],
-    },
-  },
-  {
-    id: "daegu-transport-system",
-    category: "finance_public",
-    title: {
-      ko: "대구광역시 어르신 통합 무임 교통카드 발급 관리 시스템",
-      en: "Daegu Public Transport Card Issuance System",
-    },
-    oneLiner: {
-      ko: "공공 서비스 특성에 맞는 안정적 발급 관리 UI 구현",
-      en: "Built stable issuance management UI for public service",
-    },
-    tags: ["공공", "검증", "안정성"],
-    role: {
-      ko: "입력 검증 및 상태 흐름 설계",
-      en: "Validation and state flow design",
-    },
-    stack: ["React", "TypeScript"],
-    problem: {
-      ko: "잘못된 입력/중복 발급 리스크",
-      en: "Risk of invalid input and duplicate issuance",
-    },
-    approach: {
-      ko: ["입력 검증 강화", "중복 처리 방지"],
-      en: ["Enhanced input validation", "Prevented duplicates"],
-    },
-    reliability: {
-      ko: ["에러 메시지 통일", "상태 체크 강화"],
-      en: ["Unified error messages", "Strengthened state checks"],
-    },
-    result: {
-      ko: ["발급 오류 감소"],
-      en: ["Reduced issuance errors"],
-    },
-  },
-  {
-    id: "blockchain-payment-shopping",
-    category: "finance_public",
-    title: {
-      ko: "블록체인 결제 기반 쇼핑 서비스",
-      en: "Blockchain-based Payment Shopping Service",
-    },
-    oneLiner: {
-      ko: "결제 신뢰성이 중요한 B2C 쇼핑 플랫폼",
-      en: "Trust-critical B2C shopping platform with blockchain payment",
-    },
-    tags: ["결제", "B2C", "안정성"],
-    role: {
-      ko: "결제 흐름 UI 및 예외 처리 강화",
-      en: "Implemented payment flow UI and strengthened edge handling",
-    },
-    stack: ["React", "TypeScript"],
-    problem: {
-      ko: "결제 실패/지연 시 사용자 불안감 증가",
-      en: "User anxiety on payment delay/failure",
-    },
-    approach: {
-      ko: ["상태별 UX 분리", "재시도 및 타임아웃 처리"],
-      en: ["Separated UX by state", "Retry and timeout handling"],
-    },
-    reliability: {
-      ko: ["결제 상태 추적 로직 강화"],
-      en: ["Enhanced payment state tracking"],
-    },
-    result: {
-      ko: ["결제 흐름 신뢰도 향상"],
-      en: ["Improved payment flow reliability"],
+    image: {
+      src: "public/assets/images/projects/webos_ai_styling_recommendation.jpeg",
     },
   },
 ]

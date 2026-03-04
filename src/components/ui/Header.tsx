@@ -61,7 +61,7 @@ export default function Header({
           <Button
             variant="ghost"
             onClick={onToggleTheme}
-            className="h-10 w-10 px-0 bg-white/60 ring-black/10 backdrop-blur dark:bg-neutral-800/70 dark:ring-white/15 hover:bg-white/80 dark:hover:bg-neutral-700/80"
+            className="h-10 w-10 bg-white/60 px-0 ring-black/10 backdrop-blur hover:bg-white/80 dark:bg-neutral-800/70 dark:ring-white/15 dark:hover:bg-neutral-700/80"
             aria-label={
               theme === "dark"
                 ? t("header.theme.switchToLight")

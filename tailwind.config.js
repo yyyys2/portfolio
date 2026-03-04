@@ -1,4 +1,4 @@
-import plugin from "tailwindcss/plugin";
+import plugin from "tailwindcss/plugin"
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -59,7 +59,7 @@ export default {
 
       backgroundImage: {
         "soft-gradient":
-            "linear-gradient(135deg, #FF7EB6 0%, #B8C0FF 50%, #7FE0C3 100%)",
+          "linear-gradient(135deg, #FF7EB6 0%, #B8C0FF 50%, #7FE0C3 100%)",
       },
     },
   },
@@ -68,13 +68,12 @@ export default {
       addUtilities({
         ".bg-soft-pastel": {
           background:
-              "radial-gradient(1200px 700px at 15% 10%, rgba(184, 192, 255, 0.26), transparent 60%)," +
-              "radial-gradient(1100px 600px at 85% 18%, rgba(250, 218, 221, 0.24), transparent 58%)," +
-              "radial-gradient(900px 500px at 60% 95%, rgba(197, 255, 235, 0.16), transparent 55%)," +
-              "#fff",
+            "radial-gradient(1200px 700px at 15% 10%, rgba(184, 192, 255, 0.26), transparent 60%)," +
+            "radial-gradient(1100px 600px at 85% 18%, rgba(250, 218, 221, 0.24), transparent 58%)," +
+            "radial-gradient(900px 500px at 60% 95%, rgba(197, 255, 235, 0.16), transparent 55%)," +
+            "#fff",
         },
-      });
+      })
     }),
   ],
 }
-

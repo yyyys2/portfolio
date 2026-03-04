@@ -1,5 +1,5 @@
-import type {ReactNode} from "react";
+import type { ReactNode } from "react"
 
 export default function PageLayout({ children }: { children: ReactNode }) {
-    return <main className="min-h-screen">{children}</main>
+  return <main className="min-h-screen">{children}</main>
 }

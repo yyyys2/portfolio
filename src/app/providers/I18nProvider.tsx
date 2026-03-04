@@ -14,17 +14,26 @@ export default function I18nProvider({ children }: I18nProviderProps) {
   const [lang, setLang] = useState<Lang>("ko")
   const messages: Messages = lang === "ko" ? ko : en
 
-  const t = (path: string): string => {
+  const resolvePath = (path: string): unknown => {
     return path.split(".").reduce<unknown>((obj, key) => {
       if (typeof obj === "object" && obj !== null && key in obj) {
         return (obj as Record<string, unknown>)[key]
       }
-      return ""
-    }, messages) as string
+      return undefined
+    }, messages)
+  }
+
+  const t = (path: string): string => {
+    const value = resolvePath(path)
+    return typeof value === "string" ? value : ""
+  }
+
+  const tm = <T,>(path: string): T => {
+    return resolvePath(path) as T
   }
 
   return (
-    <I18nContext.Provider value={{ t, lang, setLang }}>
+    <I18nContext.Provider value={{ t, tm, lang, setLang }}>
       {children}
     </I18nContext.Provider>
   )

@@ -6,6 +6,7 @@ import ProfileRegistrationSection from "@/sections/profile/ProfileRegistrationSe
 import ProjectsSection from "@/sections/projects/ProjectsSection"
 import ReliabilitySection from "@/sections/reliability/ReliabilitySection"
 import ContactSection from "@/sections/contact/ContactSection"
+import { useI18n } from "@/hooks/useI18n.ts"
 
 function getViewFromHash() {
   return window.location.hash.startsWith("#/profile") ? "profile" : "home"
@@ -22,6 +23,7 @@ function getInitialTheme(): Theme {
 }
 
 export default function App() {
+  const { t } = useI18n()
   const [view, setView] = useState(getViewFromHash)
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
   const [themeTransitionKey, setThemeTransitionKey] = useState(0)
@@ -78,8 +80,9 @@ export default function App() {
         </>
       )}
       <footer className="mx-auto max-w-6xl px-4 pb-10 font-display text-sm text-gray-500 dark:text-neutral-400">
-        Thanks for visiting.
-        <br />© 2026 yyyys2
+        {t("app.footer.thanks")}
+        <br />
+        {t("app.footer.copyright")}
       </footer>
     </main>
   )

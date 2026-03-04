@@ -3,115 +3,42 @@ import Card from "@/components/ui/Card"
 import Section from "@/components/ui/Section"
 import { useI18n } from "@/hooks/useI18n.ts"
 
-const profileHighlights = [
-  "사용자 경험의 디테일을 놓치지 않는 프론트엔드 개발자",
-  "실서비스와 관리자 시스템을 모두 다뤄온 운영형 개발 경험",
-  "React·TypeScript 기반 구조화, 상태관리, API 연동, 성능 개선 중심",
-]
+type ProfileStat = {
+  label: string
+  value: string
+  desc: string
+}
 
-const experience = [
-  {
-    period: "2021.03 - 현재",
-    company: "주식회사 오큐브",
-    role: "선임 연구원",
-    details: [
-      "React·TypeScript 기반 웹 서비스 및 관리자 시스템 개발",
-      "UI 구현, Zustand/Query 기반 상태관리, API 연동, 성능 개선 담당",
-      "WebOS TV 앱, 공공 행정 시스템, 기업 홈페이지 등 다양한 환경 경험",
-    ],
-  },
-  {
-    period: "2020.08 - 2021.02",
-    company: "엘컴퓨터학원",
-    role: "개발팀",
-    details: ["HTML/CSS, Spring Boot 기반 학생 관리 프로그램 개발"],
-  },
-  {
-    period: "2020.04 - 2020.08",
-    company: "운김",
-    role: "대표",
-    details: ["SI 업무를 통한 웹 기획, 디자인, 프론트엔드 담당"],
-  },
-  {
-    period: "2018.12 - 2020.04",
-    company: "주식회사 위컴(WECOM)",
-    role: "주임 연구원",
-    details: ["자사 솔루션 모바일 웹 및 웹사이트 프론트엔드 담당"],
-  },
-]
+type ProfileCard = {
+  title: string
+  icon: string
+  body: string
+}
 
-const profileSummaryByLang = {
-  ko: {
-    stats: [
-      { label: "총 경력", value: "7+", desc: "Years in Frontend" },
-      { label: "대표 프로젝트", value: "12+", desc: "Production Projects" },
-      { label: "서비스 도메인", value: "3+", desc: "Domains Operated" },
-    ],
-    cards: [
-      {
-        title: "Frontend Specialist",
-        icon: "FE",
-        body: "2018년부터 프론트엔드 개발을 이어오며 React·TypeScript 기반의 실서비스와 관리자 시스템을 안정적으로 구축해왔습니다. 구현 속도보다 유지보수성과 예외 대응력을 우선합니다.",
-      },
-      {
-        title: "Collaboration Philosophy",
-        icon: "COL",
-        body: "기획·디자인·백엔드와의 커뮤니케이션에서 요구사항과 제약 조건을 먼저 정리합니다. 상태 흐름과 실패 시나리오를 팀 단위로 맞추는 과정을 중요하게 생각합니다.",
-      },
-      {
-        title: "Future & Growth",
-        icon: "GRW",
-        body: "WebOS/플랫폼 환경에서의 운영 경험을 바탕으로, 복잡한 UI 상태를 더 예측 가능하게 만드는 아키텍처에 집중하고 있습니다. 사용자 신뢰를 높이는 안정성 개선이 핵심 목표입니다.",
-      },
-    ],
-  },
-  en: {
-    stats: [
-      { label: "Career Span", value: "7+", desc: "Years in Frontend" },
-      { label: "Case Projects", value: "12+", desc: "Production Projects" },
-      { label: "Service Areas", value: "3+", desc: "Domains Operated" },
-    ],
-    cards: [
-      {
-        title: "Frontend Specialist",
-        icon: "FE",
-        body: "Since 2018, I have built production services and admin systems with React and TypeScript. I prioritize maintainability and edge-case handling over short-term delivery speed.",
-      },
-      {
-        title: "Collaboration Philosophy",
-        icon: "COL",
-        body: "I align requirements and constraints first with product, design, and backend teams. Shared understanding of state flows and failure scenarios is a core part of my process.",
-      },
-      {
-        title: "Future & Growth",
-        icon: "GRW",
-        body: "Building on WebOS and platform operations experience, I focus on making complex UI states more predictable. Improving reliability to increase user trust is my main direction.",
-      },
-    ],
-  },
-} as const
+type ExperienceItem = {
+  period: string
+  company: string
+  role: string
+  details: string[]
+}
 
 export default function ProfileRegistrationSection() {
-  const { t, lang } = useI18n()
-  const profileSummary = profileSummaryByLang[lang]
+  const { t, tm } = useI18n()
 
-  const intro =
-    lang === "ko"
-      ? "안녕하세요. 여행지의 순간을 사진으로 기록하듯, 사용자 경험의 디테일을 놓치지 않는 프론트엔드 개발자 김윤영입니다."
-      : "Hello. I am Yunyeong Kim, a frontend developer who treats user experience with the same attention to detail used to capture meaningful moments in travel photography."
+  const profileSummary = tm<{ stats: ProfileStat[]; cards: ProfileCard[] }>(
+    "profile.summary"
+  )
+  const profileHighlights = tm<string[]>("profile.highlights")
+  const experience = tm<ExperienceItem[]>("profile.experience")
 
   return (
-    <Section
-      id="profile"
-      title={t("profile.title")}
-      className="py-28"
-    >
+    <Section id="profile" title={t("profile.title")} className="py-28">
       <div className="grid gap-6">
         <FadeIn>
           <Card className="relative overflow-hidden p-0">
             <div className="bg-soft-gradient px-6 py-8 text-white">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/80">
-                Frontend Developer
+                {t("profile.roleLabel")}
               </p>
               <div className="mt-4 flex flex-wrap items-end gap-4">
                 <div className="overflow-hidden inline-flex h-24 w-24 items-center justify-center rounded-[2rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card">
@@ -119,10 +46,10 @@ export default function ProfileRegistrationSection() {
                 </div>
                 <div>
                   <h3 className="font-display text-4xl font-semibold tracking-tight">
-                    김윤영
+                    {t("profile.name")}
                   </h3>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/85">
-                    {intro}
+                    {t("profile.intro")}
                   </p>
                 </div>
               </div>
@@ -187,7 +114,7 @@ export default function ProfileRegistrationSection() {
 
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 dark:text-neutral-400">
-                  Strengths
+                  {t("profile.strengthsTitle")}
                 </p>
                 <div className="mt-3 grid gap-3">
                   {profileHighlights.map((item) => (
@@ -207,7 +134,7 @@ export default function ProfileRegistrationSection() {
         <FadeIn delay={0.06}>
           <Card>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 dark:text-neutral-400">
-              Career
+              {t("profile.careerTitle")}
             </p>
             <div className="mt-4 grid gap-5">
               {experience.map((item) => (

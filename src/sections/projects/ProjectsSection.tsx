@@ -108,7 +108,7 @@ export default function ProjectsSection() {
                       onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
                     >
-                      Visit site
+                      {t("projects.visitSite")}
                     </a>
                   )}
                 </div>

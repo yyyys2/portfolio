@@ -12,7 +12,7 @@ export default function ProjectModal({
   project: Project | null
   onClose: () => void
 }) {
-  const { lang } = useI18n()
+  const { lang, t } = useI18n()
   if (!project) return null
 
   const pick = <T,>(v: { ko: T; en: T }) => (lang === "ko" ? v.ko : v.en)
@@ -35,25 +35,25 @@ export default function ProjectModal({
           </p>
         </div>
 
-        <Block title={lang === "ko" ? "문제" : "Problem"}>
+        <Block title={t("modal.problem")}>
           <p className="text-gray-700 dark:text-neutral-200">
             {pick(project.problem)}
           </p>
         </Block>
 
-        <Block title={lang === "ko" ? "접근" : "Approach"}>
+        <Block title={t("modal.approach")}>
           <Ul items={pick(project.approach)} />
         </Block>
 
-        <Block title={lang === "ko" ? "신뢰성/운영" : "Reliability / Ops"}>
+        <Block title={t("modal.reliabilityOps")}>
           <Ul items={pick(project.reliability)} />
         </Block>
 
-        <Block title={lang === "ko" ? "결과" : "Result"}>
+        <Block title={t("modal.result")}>
           <Ul items={pick(project.result)} />
         </Block>
 
-        <Block title={lang === "ko" ? "기술 스택" : "Stack"}>
+        <Block title={t("modal.stack")}>
           <div className="flex flex-wrap gap-2">
             {project.stack.map((s) => (
               <Tag key={s} tone="soft">

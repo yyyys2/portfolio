@@ -61,24 +61,16 @@ export default function Header({
           <Button
             variant="ghost"
             onClick={onToggleTheme}
-            className="h-10 w-10 px-0"
+            className="h-10 w-10 px-0 bg-white/60 ring-black/10 backdrop-blur dark:bg-neutral-800/70 dark:ring-white/15 hover:bg-white/80 dark:hover:bg-neutral-700/80"
             aria-label={
               theme === "dark"
-                ? lang === "ko"
-                  ? "라이트 모드로 전환"
-                  : "Switch to light mode"
-                : lang === "ko"
-                  ? "다크 모드로 전환"
-                  : "Switch to dark mode"
+                ? t("header.theme.switchToLight")
+                : t("header.theme.switchToDark")
             }
             title={
               theme === "dark"
-                ? lang === "ko"
-                  ? "라이트 모드"
-                  : "Light mode"
-                : lang === "ko"
-                  ? "다크 모드"
-                  : "Dark mode"
+                ? t("header.theme.lightMode")
+                : t("header.theme.darkMode")
             }
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -99,7 +91,9 @@ export default function Header({
             onClick={() => setLang(lang === "ko" ? "en" : "ko")}
             className="h-10 px-4"
           >
-            {lang === "ko" ? "EN" : "KO"}
+            {lang === "ko"
+              ? t("header.language.toEnglish")
+              : t("header.language.toKorean")}
           </Button>
         </div>
       </div>

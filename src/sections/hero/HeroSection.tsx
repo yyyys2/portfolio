@@ -3,7 +3,7 @@ import Button from "@/components/ui/Button"
 import { useI18n } from "@/hooks/useI18n.ts"
 
 export default function HeroSection() {
-  const { t, lang } = useI18n()
+  const { t } = useI18n()
 
   return (
     <section id="top" className="bg-drift-wrapper relative">
@@ -13,7 +13,7 @@ export default function HeroSection() {
             <FadeIn>
               <div className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs text-gray-700 ring-1 ring-black/5 dark:bg-neutral-800/80 dark:text-neutral-200 dark:ring-white/10">
                 <span className="h-2 w-2 rounded-full bg-primary"></span>
-                <span className={"font-display"}>Keyword keyword</span>
+                <span className={"font-display"}>{t("hero.keyword")}</span>
               </div>
             </FadeIn>
 
@@ -76,9 +76,7 @@ export default function HeroSection() {
 
               {/* tiny caption */}
               <p className="mt-4 text-xs text-gray-500 dark:text-neutral-400">
-                {lang === "ko"
-                  ? "사진 취미는 ‘디테일을 관찰하는 습관’으로 이어집니다."
-                  : "Photography helps me practice noticing details."}
+                {t("hero.photoCaption")}
               </p>
             </div>
           </div>

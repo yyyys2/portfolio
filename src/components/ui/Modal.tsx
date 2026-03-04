@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useId, useRef } from "react"
 import useBodyScrollLock from "@/hooks/useBodyScrollLock"
 import useKeydown from "@/hooks/useKeydown"
 import { trapTabKey } from "@/lib/focus"
+import { useI18n } from "@/hooks/useI18n.ts"
 
 export default function Modal({
   open,
@@ -14,6 +15,7 @@ export default function Modal({
   onClose: () => void
   children: ReactNode
 }) {
+  const { t } = useI18n()
   const titleId = useId()
   const dialogRef = useRef<HTMLDivElement | null>(null)
   const lastActiveRef = useRef<HTMLElement | null>(null)
@@ -39,7 +41,7 @@ export default function Modal({
     <div className="fixed inset-0 z-50">
       <button
         className="absolute inset-0 bg-black/30 backdrop-blur-[2px] dark:bg-black/55"
-        aria-label="Close modal"
+        aria-label={t("modal.closeAria")}
         onClick={onClose}
       />
 
@@ -61,14 +63,14 @@ export default function Modal({
                 {title}
               </h2>
               <p className="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-                Case Study
+                {t("modal.caseStudy")}
               </p>
             </div>
             <button
               onClick={onClose}
               className="rounded-xl px-3 py-2 text-sm text-gray-600 hover:bg-black/5 dark:text-neutral-300 dark:hover:bg-white/10"
             >
-              닫기
+              {t("modal.close")}
             </button>
           </div>
 

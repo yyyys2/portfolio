@@ -11,7 +11,7 @@ export default function ContactSection() {
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL)
-      alert("Copied!")
+      alert(t("contact.copied"))
     } catch {
       // ignore
     }
@@ -25,7 +25,9 @@ export default function ContactSection() {
     >
       <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-gray-500 dark:text-neutral-400">Email</p>
+          <p className="text-sm text-gray-500 dark:text-neutral-400">
+            {t("contact.emailLabel")}
+          </p>
           <p className="mt-1 font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
             {EMAIL}
           </p>

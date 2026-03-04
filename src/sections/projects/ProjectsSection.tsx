@@ -1,5 +1,6 @@
 import { type ReactNode, useMemo, useState } from "react"
 import Section from "@/components/ui/Section"
+import Card from "@/components/ui/Card"
 import Tag from "@/components/ui/Tag"
 import FadeIn from "@/components/animation/FadeIn"
 import {
@@ -20,12 +21,6 @@ export default function ProjectsSection() {
     if (category === "all") return projects
     return projects.filter((p) => p.category === category)
   }, [category])
-
-  const categoryLabel = (categoryId: ProjectCategory) => {
-    const matched = PROJECT_CATEGORIES.find((c) => c.id === categoryId)
-    if (!matched) return categoryId
-    return lang === "ko" ? matched.label.ko : matched.label.en
-  }
 
   return (
     <>
@@ -55,77 +50,66 @@ export default function ProjectsSection() {
           </div>
         </FadeIn>
 
-        <div className="mt-8 grid gap-4">
-          {list.map((p, idx) => (
-            <FadeIn key={p.id} delay={idx * 0.03}>
-              <article className="grid gap-4 rounded-2xl border border-black/5 bg-white/70 p-4 backdrop-blur transition hover:border-primary/40 dark:border-white/10 dark:bg-neutral-800/65 md:grid-cols-[84px_1fr_auto] md:items-start md:gap-6 md:p-5">
-                <div className="flex items-center gap-3 md:block">
-                  <p className="font-display text-xs font-semibold tracking-[0.22em] text-gray-400 dark:text-neutral-500">
-                    {String(idx + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-0 text-xs text-gray-500 dark:text-neutral-400 md:mt-2">
-                    {categoryLabel(p.category)}
-                  </p>
-                </div>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {list.map((p) => (
+            <button
+              key={p.id}
+              onClick={() => modal.openProject(p)}
+              className="text-left"
+            >
+              <Card className="group relative flex h-full flex-col overflow-hidden transition-transform hover:-translate-y-1">
+                {p.image && (
+                  <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    <img
+                      src={p.image.src}
+                      alt=""
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/35 dark:bg-black/45" />
+                    {p.image.note && (
+                      <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/85 px-3 py-1 text-xs text-gray-800 ring-1 ring-black/10 backdrop-blur dark:bg-neutral-900/85 dark:text-neutral-100 dark:ring-white/15">
+                        {p.image.note}
+                      </span>
+                    )}
+                  </div>
+                )}
 
-                <div>
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
-                    {lang === "ko" ? p.title.ko : p.title.en}
-                  </h3>
-
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
-                    {lang === "ko" ? p.oneLiner.ko : p.oneLiner.en}
-                  </p>
-
-                  <p className="mt-3 text-xs text-gray-500 dark:text-neutral-400">
-                    {lang === "ko" ? p.role.ko : p.role.en}
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {p.tags.slice(0, 4).map((x) => (
+                <div className="relative flex-1 transition-opacity duration-200 group-hover:opacity-0">
+                  <div className="flex flex-wrap gap-2">
+                    {p.tags.slice(0, 3).map((x) => (
                       <Tag key={x}>{x}</Tag>
                     ))}
                   </div>
 
-                  {p.image?.note && (
-                    <p className="mt-3 text-xs text-gray-500 dark:text-neutral-400">
-                      {p.image.note}
-                    </p>
-                  )}
+                  <h3 className="mt-4 text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                    {lang === "ko" ? p.title.ko : p.title.en}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-gray-600 dark:text-neutral-300">
+                    {lang === "ko" ? p.oneLiner.ko : p.oneLiner.en}
+                  </p>
+
+                  <p className="mt-4 text-xs text-gray-500 dark:text-neutral-400">
+                    {lang === "ko" ? p.role.ko : p.role.en}
+                  </p>
                 </div>
 
-                <div className="flex gap-2 md:flex-col md:items-end">
-                  <button
-                    onClick={() => modal.openProject(p)}
-                    className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm text-white transition hover:bg-gray-800 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
-                  >
-                    {t("projects.view")}
-                  </button>
-
+                <div className="relative mt-6 flex flex-wrap gap-2">
                   {p.links?.live && (
                     <a
                       href={p.links.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm text-gray-800 ring-1 ring-black/10 transition hover:bg-black/[0.03] dark:bg-neutral-800 dark:text-neutral-100 dark:ring-white/10 dark:hover:bg-neutral-700"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
                     >
                       {t("projects.visitSite")}
                     </a>
                   )}
                 </div>
-
-                {p.image && (
-                  <div className="hidden md:col-span-3 md:mt-1 md:block">
-                    <img
-                      src={p.image.src}
-                      alt={lang === "ko" ? p.title.ko : p.title.en}
-                      className="h-28 w-full rounded-xl object-cover ring-1 ring-black/5 dark:ring-white/10"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-              </article>
-            </FadeIn>
+              </Card>
+            </button>
           ))}
         </div>
       </Section>

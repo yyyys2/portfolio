@@ -22,21 +22,20 @@ export default function Header({
 
   const navItems = [
     { key: "profile", href: "#/profile", label: t("nav.profile") },
-    { key: "projects", href: "#projects", label: t("nav.projects") },
-    { key: "reliability", href: "#reliability", label: t("nav.reliability") },
-    { key: "contact", href: "#contact", label: t("nav.contact") },
+    { key: "projects", href: "#/projects", label: t("nav.projects") },
+    { key: "reliability", href: "#/reliability", label: t("nav.reliability") },
+    { key: "contact", href: "#/contact", label: t("nav.contact") },
   ] as const
 
   const isActive = (href: string) => {
-    if (href === "#/profile") return currentHash.startsWith("#/profile")
-    return currentHash === href
+    return currentHash.startsWith(href)
   }
 
   return (
     <header className="sticky top-0 z-40 border-b border-black/5 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-neutral-900/75">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a
-          href="#top"
+          href="#/"
           className="font-display font-black tracking-tight dark:text-neutral-100"
         >
           Portfolio

@@ -31,10 +31,10 @@ export default function HeroSection() {
 
             <FadeIn delay={0.15}>
               <div className="mt-10 flex flex-wrap gap-3">
-                <a href="#projects">
+                <a href="#/projects">
                   <Button>{t("hero.ctaProjects")}</Button>
                 </a>
-                <a href="#contact">
+                <a href="#/contact">
                   <Button variant="ghost">{t("hero.ctaResume")}</Button>
                 </a>
               </div>

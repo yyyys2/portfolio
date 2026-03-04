@@ -7,9 +7,16 @@ import ProjectsSection from "@/sections/projects/ProjectsSection"
 import ReliabilitySection from "@/sections/reliability/ReliabilitySection"
 import ContactSection from "@/sections/contact/ContactSection"
 import { useI18n } from "@/hooks/useI18n.ts"
+import FeaturedProjectSection from "@/sections/home/FeaturedProjectSection"
+import InterestsSection from "@/sections/home/InterestsSection"
 
 function getViewFromHash() {
-  return window.location.hash.startsWith("#/profile") ? "profile" : "home"
+  const hash = window.location.hash || "#/"
+  if (hash.startsWith("#/profile")) return "profile"
+  if (hash.startsWith("#/projects")) return "projects"
+  if (hash.startsWith("#/reliability")) return "reliability"
+  if (hash.startsWith("#/contact")) return "contact"
+  return "home"
 }
 
 type Theme = "light" | "dark"
@@ -69,16 +76,17 @@ export default function App() {
           }}
         />
       </AnimatePresence>
-      {view === "profile" ? (
-        <ProfileRegistrationSection />
-      ) : (
+      {view === "home" && (
         <>
           <HeroSection />
-          <ProjectsSection />
-          <ReliabilitySection />
-          <ContactSection />
+          <FeaturedProjectSection />
+          <InterestsSection />
         </>
       )}
+      {view === "profile" && <ProfileRegistrationSection />}
+      {view === "projects" && <ProjectsSection />}
+      {view === "reliability" && <ReliabilitySection />}
+      {view === "contact" && <ContactSection />}
       <footer className="mx-auto max-w-6xl px-4 pb-10 font-display text-sm text-gray-500 dark:text-neutral-400">
         {t("app.footer.thanks")}
         <br />

@@ -121,6 +121,37 @@ export const ko = {
     ctaProjects: "Projects",
     ctaResume: "Resume",
   },
+  home: {
+    featured: {
+      title: "대표 프로젝트",
+      subtitle: "현재 포트폴리오를 가장 잘 설명하는 핵심 프로젝트입니다.",
+      badge: "Featured Case",
+      cta: "전체 프로젝트 보기",
+    },
+    interests: {
+      title: "나의 관심사",
+      subtitle: "기술을 깊게 파고드는 일과 삶의 감각을 키우는 활동을 함께 이어가고 있습니다.",
+      techTag: "Frontend",
+      techTitle: "기술적 관심사",
+      techKeywords: [
+        { label: "React", href: "https://react.dev/" },
+        { label: "TypeScript", href: "https://www.typescriptlang.org/" },
+        { label: "TanStack Query", href: "https://tanstack.com/query/latest" },
+        { label: "State Architecture" },
+        { label: "UX Reliability" },
+        { label: "Web Performance", href: "https://web.dev/performance/" },
+      ],
+      personalTag: "Photography",
+      personalTitle: "개인적 관심사",
+      personalKeywords: [
+        { label: "Street Photography" },
+        { label: "Travel Snap" },
+        { label: "Light & Composition" },
+        { label: "Color Grading", href: "https://lightroom.adobe.com/" },
+        { label: "Film Look" },
+      ],
+    },
+  },
   projects: {
     title: "Projects",
     desc: "운영 경험이 드러나는 대표 케이스를 중심으로 정리했습니다.",

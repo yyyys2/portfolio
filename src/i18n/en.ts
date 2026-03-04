@@ -128,6 +128,37 @@ export const en = {
     ctaProjects: "View Projects",
     ctaResume: "Resume",
   },
+  home: {
+    featured: {
+      title: "Featured Project",
+      subtitle: "A key project that best represents the current portfolio direction.",
+      badge: "Featured Case",
+      cta: "View all projects",
+    },
+    interests: {
+      title: "My Interests",
+      subtitle: "I keep growing through both deep technical exploration and personal creative practice.",
+      techTag: "Frontend",
+      techTitle: "Technical Interests",
+      techKeywords: [
+        { label: "React", href: "https://react.dev/" },
+        { label: "TypeScript", href: "https://www.typescriptlang.org/" },
+        { label: "TanStack Query", href: "https://tanstack.com/query/latest" },
+        { label: "State Architecture" },
+        { label: "UX Reliability" },
+        { label: "Web Performance", href: "https://web.dev/performance/" },
+      ],
+      personalTag: "Photography",
+      personalTitle: "Personal Interest",
+      personalKeywords: [
+        { label: "Street Photography" },
+        { label: "Travel Snap" },
+        { label: "Light & Composition" },
+        { label: "Color Grading", href: "https://lightroom.adobe.com/" },
+        { label: "Film Look" },
+      ],
+    },
+  },
   projects: {
     title: "Projects",
     desc: "Selected cases highlighting operational experience.",

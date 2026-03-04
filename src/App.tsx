@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import Header from "@/components/ui/Header"
+import Footer from "@/components/ui/Footer"
 import HeroSection from "@/sections/hero/HeroSection"
 import ProfileRegistrationSection from "@/sections/profile/ProfileRegistrationSection"
 import ProjectsSection from "@/sections/projects/ProjectsSection"
 import ReliabilitySection from "@/sections/reliability/ReliabilitySection"
 import ContactSection from "@/sections/contact/ContactSection"
-import { useI18n } from "@/hooks/useI18n.ts"
 import FeaturedProjectSection from "@/sections/home/FeaturedProjectSection"
 import InterestsSection from "@/sections/home/InterestsSection"
 import SkillsSection from "@/sections/skills/SkillsSection"
@@ -32,7 +32,6 @@ function getInitialTheme(): Theme {
 }
 
 export default function App() {
-  const { t } = useI18n()
   const [view, setView] = useState(getViewFromHash)
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
   const [themeTransitionKey, setThemeTransitionKey] = useState(0)
@@ -60,7 +59,7 @@ export default function App() {
   }
 
   return (
-    <main className="relative min-h-screen bg-white text-gray-900 transition-colors dark:bg-neutral-900 dark:text-neutral-100">
+    <main className="relative flex min-h-screen flex-col bg-white text-gray-900 transition-colors dark:bg-neutral-900 dark:text-neutral-100">
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <AnimatePresence>
         <motion.div
@@ -78,23 +77,21 @@ export default function App() {
           }}
         />
       </AnimatePresence>
-      {view === "home" && (
-        <>
-          <HeroSection />
-          <FeaturedProjectSection />
-          <InterestsSection />
-        </>
-      )}
-      {view === "profile" && <ProfileRegistrationSection />}
-      {view === "skills" && <SkillsSection />}
-      {view === "projects" && <ProjectsSection />}
-      {view === "reliability" && <ReliabilitySection />}
-      {view === "contact" && <ContactSection />}
-      <footer className="mx-auto max-w-6xl px-4 pb-10 font-display text-sm text-gray-500 dark:text-neutral-400">
-        {t("app.footer.thanks")}
-        <br />
-        {t("app.footer.copyright")}
-      </footer>
+      <div className="flex-1">
+        {view === "home" && (
+          <>
+            <HeroSection />
+            <FeaturedProjectSection />
+            <InterestsSection />
+          </>
+        )}
+        {view === "profile" && <ProfileRegistrationSection />}
+        {view === "skills" && <SkillsSection />}
+        {view === "projects" && <ProjectsSection />}
+        {view === "reliability" && <ReliabilitySection />}
+        {view === "contact" && <ContactSection />}
+      </div>
+      <Footer />
     </main>
   )
 }

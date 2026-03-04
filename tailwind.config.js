@@ -49,7 +49,8 @@ export default {
       },
 
       fontFamily: {
-        sans: ["Inter", "Pretendard", "system-ui", "sans-serif"],
+        sans: ["Pretendard", "system-ui", "sans-serif"],
+        display: ["Outfit", "Pretendard", "sans-serif"],
       },
 
       transitionTimingFunction: {

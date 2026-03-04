@@ -22,11 +22,11 @@ export default function ContactSection() {
             <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                     <p className="text-sm text-gray-500">Email</p>
-                    <p className="mt-1 text-lg font-semibold tracking-tight text-gray-900">{EMAIL}</p>
+                    <p className="mt-1 text-lg font-display font-semibold tracking-tight text-gray-900">{EMAIL}</p>
                 </div>
 
                 <div className="flex gap-2">
-                    <Button onClick={copyEmail}>{t("contact.emailCopy")}Copy</Button>
+                    <Button onClick={copyEmail}>{t("contact.emailCopy")}</Button>
                     <Button variant="ghost" onClick={() => window.open("https://github.com/yyyys2", "_blank")}>
                         GitHub
                     </Button>

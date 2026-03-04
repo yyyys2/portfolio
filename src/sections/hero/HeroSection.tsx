@@ -13,18 +13,18 @@ export default function HeroSection() {
                         <div
                             className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs text-gray-700 ring-1 ring-black/5">
                             <span className="h-2 w-2 rounded-full bg-primary"></span>
-                            <span>Keyword keyword</span>
+                            <span className={'font-display'}>Keyword keyword</span>
                         </div>
                     </FadeIn>
 
                     <FadeIn delay={0.05}>
-                        <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-gray-900 sm:text-5xl">
+                        <h1 className="mt-6 max-w-4xl text-4xl font-display font-semibold leading-tight tracking-tight text-gray-900 sm:text-5xl">
                             {t("hero.title")}
                         </h1>
                     </FadeIn>
 
                     <FadeIn delay={0.1}>
-                        <p className="mt-6 max-w-2xl whitespace-pre-line text-lg leading-relaxed text-gray-600">
+                        <p className="mt-6 max-w-2xl whitespace-pre-line text-base leading-relaxed text-gray-600 font-sans">
                             {t("hero.desc")}
                         </p>
                     </FadeIn>

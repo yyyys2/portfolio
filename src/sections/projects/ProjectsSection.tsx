@@ -87,7 +87,7 @@ function FilterButton({
         <button
             onClick={onClick}
             className={[
-                "rounded-full px-4 py-2 text-sm ring-1 transition",
+                "rounded-full px-4 py-2 text-sm ring-1 transition font-display",
                 active
                     ? "bg-primary/15 ring-primary/25 text-gray-900"
                     : "bg-white/70 ring-black/10 text-gray-700 hover:bg-black/[0.03]",

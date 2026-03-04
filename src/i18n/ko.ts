@@ -236,7 +236,8 @@ export const ko = {
     desc: "이직/구직 관련 제안과 포지션 문의를 기다리고 있습니다.",
     badge: "Open to Opportunities",
     headline: "프론트엔드 포지션 제안, 편하게 연락 주세요.",
-    message: "실무 운영 경험을 바탕으로 안정적인 제품 개발에 기여하고 싶습니다.",
+    message:
+      "실무 운영 경험을 바탕으로 안정적인 제품 개발에 기여하고 싶습니다.",
     sendEmail: "이메일 보내기",
     response: "평일 기준 하루 이내 답장드립니다.",
     channelsTitle: "연락 방법",

@@ -132,8 +132,7 @@ export const en = {
   home: {
     featured: {
       title: "Featured Project",
-      subtitle:
-        "Projects that best represent how I work today.",
+      subtitle: "Projects that best represent how I work today.",
       badge: "Featured Case",
       cta: "View all projects",
     },

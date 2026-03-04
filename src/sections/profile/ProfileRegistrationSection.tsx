@@ -36,21 +36,37 @@ export default function ProfileRegistrationSection() {
       <div className="grid gap-6">
         <FadeIn>
           <Card className="relative overflow-hidden p-0">
-            <div className="bg-soft-gradient px-6 py-8 text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/80">
-                {t("profile.roleLabel")}
-              </p>
-              <div className="mt-4 flex flex-wrap items-end gap-4">
-                <div className="overflow-hidden inline-flex h-24 w-24 items-center justify-center rounded-[2rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card">
-                  <img src={"public/assets/images/profile/profile.jpeg"} alt="" />
-                </div>
-                <div>
-                  <h3 className="font-display text-4xl font-semibold tracking-tight">
-                    {t("profile.name")}
-                  </h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/85">
-                    {t("profile.intro")}
-                  </p>
+            <div className="relative overflow-hidden border-b-2 border-primary/35 bg-white px-6 py-8 text-gray-900 dark:border-primary/45 dark:bg-neutral-800 dark:text-neutral-100">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-100 dark:hidden"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 12% 18%, rgba(184,192,255,0.35) 0, transparent 18%), radial-gradient(circle at 32% 72%, rgba(250,218,221,0.38) 0, transparent 17%), radial-gradient(circle at 58% 28%, rgba(197,255,235,0.32) 0, transparent 19%), radial-gradient(circle at 78% 60%, rgba(184,192,255,0.28) 0, transparent 16%), radial-gradient(circle at 92% 22%, rgba(250,218,221,0.34) 0, transparent 14%)",
+                }}
+              />
+              <div
+                className="pointer-events-none absolute inset-0 hidden opacity-100 dark:block"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 10% 16%, rgba(94,119,255,0.22) 0, transparent 18%), radial-gradient(circle at 28% 74%, rgba(245,113,178,0.2) 0, transparent 16%), radial-gradient(circle at 54% 26%, rgba(85,220,189,0.18) 0, transparent 18%), radial-gradient(circle at 76% 62%, rgba(94,119,255,0.17) 0, transparent 16%), radial-gradient(circle at 90% 20%, rgba(245,113,178,0.18) 0, transparent 14%)",
+                }}
+              />
+              <div className="relative">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gray-500 dark:text-neutral-400">
+                  {t("profile.roleLabel")}
+                </p>
+                <div className="mt-4 flex flex-wrap items-end gap-4">
+                  <div className="overflow-hidden inline-flex h-24 w-24 items-center justify-center rounded-[2rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card dark:bg-neutral-700">
+                    <img src={"public/assets/images/profile/profile.jpeg"} alt="" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-4xl font-semibold tracking-tight">
+                      {t("profile.name")}
+                    </h3>
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700 dark:text-neutral-300">
+                      {t("profile.intro")}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

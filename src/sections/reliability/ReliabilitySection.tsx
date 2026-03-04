@@ -8,44 +8,55 @@ const items = [
     key: "states",
     ko: {
       title: "Failure-friendly UI",
-      desc: "로딩/에러/빈 상태를 기본값으로 설계해 운영 리스크를 줄입니다.",
+      desc: "로딩, 에러, 빈 상태를 예외가 아니라 기본 흐름으로 두고 UI를 설계합니다.",
     },
     en: {
       title: "Failure-friendly UI",
-      desc: "I treat loading/error/empty states as defaults to reduce ops risk.",
+      desc: "Loading, error, and empty states are treated as part of the normal flow, not exceptions.",
     },
   },
   {
     key: "logging",
     ko: {
       title: "Operable by design",
-      desc: "액션 단위 로깅 포인트와 재현 가능한 흐름을 남겨 문제 해결 속도를 높입니다.",
+      desc: "문제가 생겼을 때 빠르게 원인을 찾을 수 있도록 액션 단위의 로그와 재현 가능한 흐름을 남깁니다.",
     },
     en: {
       title: "Operable by design",
-      desc: "Action-level logs and reproducible flows accelerate debugging.",
+      desc: "I leave action-level logs and reproducible flows so issues can be traced and fixed quickly.",
     },
   },
   {
     key: "edges",
     ko: {
       title: "Edge cases first",
-      desc: "경계값/중복 요청/레이스 컨디션을 먼저 정의하고 구조로 막습니다.",
+      desc: "경계값, 중복 요청, 레이스 컨디션 같은 상황을 먼저 떠올리고 구조적으로 방지합니다.",
     },
     en: {
       title: "Edge cases first",
-      desc: "I define boundaries/duplicates/races first and block them structurally.",
+      desc: "I think through boundaries, duplicate requests, and race conditions early and handle them structurally.",
     },
   },
   {
     key: "release",
     ko: {
       title: "Release mindset",
-      desc: "브랜치/릴리즈 흐름을 이해하고, 변경 영향을 줄이는 단위로 배포합니다.",
+      desc: "브랜치와 릴리즈 흐름을 이해하고, 변경 영향을 최소화하는 단위로 나누어 배포합니다.",
     },
     en: {
       title: "Release mindset",
-      desc: "I ship in impact-limiting slices with release/branch awareness.",
+      desc: "I ship changes in small, controlled slices with an understanding of the branch and release flow.",
+    },
+  },
+  {
+    key: "state",
+    ko: {
+      title: "Predictable state flow",
+      desc: "비동기 흐름에서도 UI 상태가 예측 가능하도록 상태 경계를 명확히 나눕니다.",
+    },
+    en: {
+      title: "Predictable state flow",
+      desc: "State boundaries keep UI predictable even during async updates.",
     },
   },
 ]

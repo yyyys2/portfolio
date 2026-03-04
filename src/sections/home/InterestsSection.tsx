@@ -19,7 +19,6 @@ export default function InterestsSection() {
     <Section
       id="interests"
       title={t("home.interests.title")}
-      subtitle={t("home.interests.subtitle")}
       className="pt-4"
     >
       <div className="grid gap-6 md:grid-cols-2">

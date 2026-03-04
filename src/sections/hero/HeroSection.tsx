@@ -73,11 +73,6 @@ export default function HeroSection() {
                   loading="lazy"
                 />
               </div>
-
-              {/* tiny caption */}
-              <p className="mt-4 text-xs text-gray-500 dark:text-neutral-400">
-                {t("hero.photoCaption")}
-              </p>
             </div>
           </div>
         </div>

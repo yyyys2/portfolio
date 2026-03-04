@@ -19,7 +19,6 @@ export default function FeaturedProjectSection() {
     <Section
       id="featured"
       title={t("home.featured.title")}
-      subtitle={t("home.featured.subtitle")}
       className="pt-8"
     >
       <div className="grid gap-4 md:grid-cols-2">

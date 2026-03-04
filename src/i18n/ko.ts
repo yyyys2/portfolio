@@ -192,6 +192,18 @@ export const ko = {
   reliability: {
     title: "Reliability",
     desc: "예쁜 UI가 ‘안정적인 서비스’가 되기까지의 디테일을 중요하게 봅니다.",
+    summary: [
+      { label: "핵심 원칙", value: "5", desc: "운영 안정성을 위한 기준" },
+      { label: "점검 관점", value: "3", desc: "상태, 예외, 배포 영향" },
+      { label: "릴리즈 방식", value: "Small Batch", desc: "작게 나누고 빠르게 검증" },
+    ],
+    principles: "실무 원칙",
+    firstChecks: "우선 점검 항목",
+    checklist: [
+      "로딩/에러/빈 상태가 사용자 흐름 안에서 자연스럽게 연결되는가",
+      "중복 요청, 레이스 컨디션, 경계값 입력이 구조적으로 방어되는가",
+      "배포 단위가 작고, 문제 발생 시 되돌림 경로가 명확한가",
+    ],
     items: [
       {
         title: "Failure-friendly UI",

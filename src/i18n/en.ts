@@ -200,6 +200,18 @@ export const en = {
   reliability: {
     title: "Reliability",
     desc: "I care about the details that turn nice UI into stable service.",
+    summary: [
+      { label: "Core Principles", value: "5", desc: "Standards for stable operations" },
+      { label: "Review Angles", value: "3", desc: "State, failure, release impact" },
+      { label: "Release Style", value: "Small Batch", desc: "Ship small and verify fast" },
+    ],
+    principles: "Working Principles",
+    firstChecks: "First Checks",
+    checklist: [
+      "Do loading, error, and empty states connect naturally within the user flow?",
+      "Are duplicate requests, race conditions, and boundary inputs structurally guarded?",
+      "Is the release scope small enough with a clear rollback path when issues happen?",
+    ],
     items: [
       {
         title: "Failure-friendly UI",

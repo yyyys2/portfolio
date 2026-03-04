@@ -61,17 +61,17 @@ export default function SkillsSection() {
 
   return (
     <Section id="skills" title={t("skills.title")}>
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-2">
+      <div className="mt-5">
+        <div className="flex gap-2 overflow-x-auto py-1">
           {tabs.map((item) => (
             <button
               key={item}
               onClick={() => setTab(item)}
               className={clsx(
-                "rounded-full px-4 py-2 text-sm font-medium ring-1 transition",
+                "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition sm:px-4 sm:py-2 sm:text-sm",
                 tab === item
-                  ? "bg-primary/15 text-gray-900 ring-primary/30 dark:bg-primary/25 dark:text-neutral-100 dark:ring-primary/40"
-                  : "bg-white text-gray-600 ring-black/10 hover:bg-black/[0.03] dark:bg-neutral-800 dark:text-neutral-300 dark:ring-white/10 dark:hover:bg-neutral-700"
+                  ? "border-primary/30 bg-primary/15 text-gray-900 dark:border-primary/40 dark:bg-primary/25 dark:text-neutral-100"
+                  : "border-black/10 bg-white text-gray-600 hover:bg-black/[0.03] dark:border-white/10 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
               )}
             >
               {t(`skills.tabs.${item}`)}
@@ -80,7 +80,7 @@ export default function SkillsSection() {
         </div>
       </div>
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-4 grid gap-3 sm:mt-5 sm:grid-cols-2 xl:grid-cols-3">
         {sortedSkills.map((skill, index) => {
           const score = getScore(skill.rating)
           const levelKey = getLevelKey(score)
@@ -92,12 +92,12 @@ export default function SkillsSection() {
             <FadeIn key={skill.id} delay={index * 0.015}>
               <Card className="p-4">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-neutral-100 ring-1 ring-black/5 dark:bg-neutral-700 dark:ring-white/10">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-neutral-100 ring-1 ring-black/5 dark:bg-neutral-700 dark:ring-white/10 sm:h-10 sm:w-10">
                     {iconSrc ? (
                       <img
                         src={iconSrc}
                         alt={skill.name}
-                        className="h-6 w-6 object-contain"
+                        className="h-5 w-5 object-contain sm:h-6 sm:w-6"
                         loading="lazy"
                       />
                     ) : (
@@ -108,8 +108,8 @@ export default function SkillsSection() {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <h3 className="line-clamp-1 font-display text-base font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <h3 className="line-clamp-1 font-display text-sm font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-base">
                         {skill.name}
                       </h3>
                       <span className="rounded-full bg-secondary-soft px-2 py-0.5 text-[10px] font-medium text-gray-600 ring-1 ring-black/5 dark:bg-neutral-700 dark:text-neutral-300 dark:ring-white/10">

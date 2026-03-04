@@ -195,7 +195,11 @@ export const ko = {
     summary: [
       { label: "핵심 원칙", value: "5", desc: "운영 안정성을 위한 기준" },
       { label: "점검 관점", value: "3", desc: "상태, 예외, 배포 영향" },
-      { label: "릴리즈 방식", value: "Small Batch", desc: "작게 나누고 빠르게 검증" },
+      {
+        label: "릴리즈 방식",
+        value: "Small Batch",
+        desc: "작게 나누고 빠르게 검증",
+      },
     ],
     principles: "실무 원칙",
     firstChecks: "우선 점검 항목",

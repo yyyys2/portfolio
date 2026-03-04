@@ -16,18 +16,14 @@ export default function InterestsSection() {
   )
 
   return (
-    <Section
-      id="interests"
-      title={t("home.interests.title")}
-      className="pt-4"
-    >
-      <div className="grid gap-6 md:grid-cols-2">
+    <Section id="interests" title={t("home.interests.title")}>
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
         <FadeIn>
           <Card>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-strong">
               {t("home.interests.techTag")}
             </p>
-            <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+            <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-2xl">
               {t("home.interests.techTitle")}
             </h3>
             <div className="mt-5 flex flex-wrap gap-2.5">
@@ -60,7 +56,7 @@ export default function InterestsSection() {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary dark:text-secondary">
               {t("home.interests.personalTag")}
             </p>
-            <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+            <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-2xl">
               {t("home.interests.personalTitle")}
             </h3>
             <div className="mt-5 flex flex-wrap gap-2.5">

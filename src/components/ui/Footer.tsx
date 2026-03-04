@@ -9,9 +9,9 @@ export default function Footer() {
   const { t } = useI18n()
 
   return (
-    <footer className="mt-10 border-t border-black/5 bg-white/70 dark:border-white/10 dark:bg-neutral-900/70">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 text-xs text-gray-500 dark:text-neutral-400">
-        <p>
+    <footer className="mt-6 border-t border-black/5 bg-white/70 dark:border-white/10 dark:bg-neutral-900/70 sm:mt-8">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-4 py-4 text-xs text-gray-500 dark:text-neutral-400 sm:justify-between">
+        <p className="text-center sm:text-left">
           {t("app.footer.copyright")} · {t("app.footer.thanks")}
         </p>
         <div className="flex items-center gap-2">
@@ -33,7 +33,7 @@ export default function Footer() {
             <InstagramIcon />
           </FooterIconLink>
           <FooterIconLink
-            href={`${import.meta.env.BASE_URL}assets/resume/yunyeong_kim_resume.pdf`}
+            href={`${import.meta.env.BASE_URL}assets/resume/kim_yun_young_resume.pdf`}
             label="Resume PDF"
             download
           >

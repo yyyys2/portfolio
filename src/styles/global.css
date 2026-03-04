@@ -26,6 +26,22 @@ body {
   height: 100%;
 }
 
+html {
+  font-size: 15px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 17px;
+  }
+}
+
 body {
   margin: 0;
   background: #fff;
@@ -129,6 +145,9 @@ canvas {
   .photo-float2 {
     animation: float2 3s ease-in-out infinite;
   }
+  .photo-float3 {
+    animation: float3 3s ease-in-out infinite;
+  }
 
   @keyframes float1 {
     0%,
@@ -147,6 +166,16 @@ canvas {
     }
     50% {
       transform: translate3d(0, -12px, 0) rotate(-1deg);
+    }
+  }
+
+  @keyframes float3 {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(1deg);
+    }
+    50% {
+      transform: translate3d(0, 11px, 0) rotate(2deg);
     }
   }
 }

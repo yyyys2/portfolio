@@ -16,12 +16,8 @@ export default function FeaturedProjectSection() {
   if (featuredList.length === 0) return null
 
   return (
-    <Section
-      id="featured"
-      title={t("home.featured.title")}
-      className="pt-8"
-    >
-      <div className="grid gap-4 md:grid-cols-2">
+    <Section id="featured" title={t("home.featured.title")}>
+      <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
         {featuredList.map((featured, index) => {
           const title = lang === "ko" ? featured.title.ko : featured.title.en
           const oneLiner =
@@ -30,8 +26,8 @@ export default function FeaturedProjectSection() {
           return (
             <FadeIn key={featured.id} delay={index * 0.06}>
               <Card className="p-4">
-                <div className="flex gap-4">
-                  <div className="h-24 w-28 shrink-0 overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10">
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <div className="h-40 w-full shrink-0 overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10 sm:h-24 sm:w-28">
                     {featured.image ? (
                       <img
                         src={featured.image.src}
@@ -45,7 +41,7 @@ export default function FeaturedProjectSection() {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <span className="inline-flex items-center rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-medium text-gray-800 ring-1 ring-black/10 backdrop-blur dark:bg-neutral-900/80 dark:text-neutral-100 dark:ring-white/10">
                         {t("home.featured.badge")}
                       </span>
@@ -59,7 +55,7 @@ export default function FeaturedProjectSection() {
                     <h3 className="mt-2 line-clamp-1 font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
                       {title}
                     </h3>
-                    <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-gray-600 dark:text-neutral-300 sm:text-sm">
                       {oneLiner}
                     </p>
                   </div>

@@ -59,7 +59,7 @@ export default function App() {
   }
 
   return (
-    <main className="relative flex min-h-screen flex-col bg-white text-gray-900 transition-colors dark:bg-neutral-900 dark:text-neutral-100">
+    <main className="relative flex min-h-screen flex-col overflow-x-clip bg-white text-gray-900 transition-colors dark:bg-neutral-900 dark:text-neutral-100">
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <AnimatePresence>
         <motion.div

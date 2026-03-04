@@ -27,11 +27,8 @@ export default function ContactSection() {
   }
 
   return (
-    <Section
-      id="contact"
-      title={t("contact.title")}
-    >
-      <div className="border-y border-black/8 py-4 dark:border-white/12">
+    <Section id="contact" title={t("contact.title")}>
+      <div className="border-y border-black/[0.08] py-4 dark:border-white/[0.12]">
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-neutral-400">
           {t("contact.workTitle")}
         </p>
@@ -39,10 +36,10 @@ export default function ContactSection() {
           {workScope.map((item, index) => (
             <article
               key={item.title}
-              className="md:px-4 md:first:pl-0 md:last:pr-0 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:border-black/8 md:[&:not(:first-child)]:dark:border-white/12"
+              className="md:px-4 md:first:pl-0 md:last:pr-0 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:border-black/[0.08] md:[&:not(:first-child)]:dark:border-white/[0.12]"
             >
               <div className="flex items-start gap-3">
-                <span className="inline-flex h-5 min-w-[28px] shrink-0 items-center justify-center rounded-full bg-primary/12 px-2 text-[10px] font-semibold text-primary-strong dark:bg-primary/25 dark:text-primary">
+                <span className="bg-primary/12 inline-flex h-5 min-w-[28px] shrink-0 items-center justify-center rounded-full px-2 text-[10px] font-semibold text-primary-strong dark:bg-primary/25 dark:text-primary">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="min-w-0">
@@ -59,24 +56,31 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-6 lg:items-start lg:grid-cols-[1.25fr_0.75fr]">
+      <div className="mt-5 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">
         <Card className="relative overflow-hidden p-6 md:p-7 lg:self-start">
           <div className="pointer-events-none absolute right-0 top-0 h-32 w-32 rounded-full bg-primary/15 blur-3xl dark:bg-primary/20" />
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-strong dark:text-primary">
             {t("contact.badge")}
           </p>
-          <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 md:text-3xl">
+          <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-2xl md:text-3xl">
             {t("contact.headline")}
           </h3>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
             {t("contact.message")}
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            <Button onClick={() => window.open(`mailto:${EMAIL}`)} className={'!bg-primary-strong'}>
+          <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+            <Button
+              onClick={() => window.open(`mailto:${EMAIL}`)}
+              className="w-full !bg-primary-strong sm:w-auto"
+            >
               {t("contact.sendEmail")}
             </Button>
-            <Button variant="ghost" onClick={copyEmail}>
+            <Button
+              variant="ghost"
+              onClick={copyEmail}
+              className="w-full sm:w-auto"
+            >
               {copied ? t("contact.copied") : t("contact.emailCopy")}
             </Button>
           </div>
@@ -92,7 +96,10 @@ export default function ContactSection() {
               {t("contact.channelsTitle")}
             </p>
             <div className="mt-3 space-y-2">
-              <ContactLink href={`mailto:${EMAIL}`} label={t("contact.channelEmail")}>
+              <ContactLink
+                href={`mailto:${EMAIL}`}
+                label={t("contact.channelEmail")}
+              >
                 <MailIcon />
               </ContactLink>
               <ContactLink
@@ -110,7 +117,7 @@ export default function ContactSection() {
                 <InstagramIcon />
               </ContactLink>
               <ContactLink
-                href={`${import.meta.env.BASE_URL}assets/resume/yunyeong_kim_resume.pdf`}
+                href={`${import.meta.env.BASE_URL}assets/resume/kim_yun_young_resume.pdf`}
                 label={t("contact.channelResume")}
                 download
               >

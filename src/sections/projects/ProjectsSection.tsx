@@ -30,7 +30,7 @@ export default function ProjectsSection() {
         className={"bg-white dark:bg-transparent"}
       >
         <FadeIn>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
             <FilterButton
               active={category === "all"}
               onClick={() => setCategory("all")}
@@ -49,12 +49,12 @@ export default function ProjectsSection() {
           </div>
         </FadeIn>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {list.map((p) => (
             <button
               key={p.id}
               onClick={() => modal.openProject(p)}
-              className="h-full text-left"
+              className="h-full w-full text-left"
             >
               <Card className="group relative flex h-full flex-col overflow-hidden transition-transform hover:-translate-y-1">
                 {p.image && (
@@ -81,7 +81,7 @@ export default function ProjectsSection() {
                     ))}
                   </div>
 
-                  <h3 className="mt-4 text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                  <h3 className="mt-3 text-base font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:mt-4 sm:text-lg">
                     {lang === "ko" ? p.title.ko : p.title.en}
                   </h3>
 
@@ -131,10 +131,10 @@ function FilterButton({
     <button
       onClick={onClick}
       className={[
-        "rounded-full px-4 py-2 font-display text-sm ring-1 transition",
+        "w-full rounded-full border px-3 py-1.5 text-center font-display text-xs transition sm:w-auto sm:px-4 sm:py-2 sm:text-sm",
         active
-          ? "bg-primary/15 text-gray-900 ring-primary/25 dark:bg-primary/25 dark:text-neutral-100 dark:ring-primary/40"
-          : "bg-white/70 text-gray-700 ring-black/10 hover:bg-black/[0.03] dark:bg-neutral-800 dark:text-neutral-300 dark:ring-white/10 dark:hover:bg-neutral-700",
+          ? "border-primary/30 bg-primary/15 text-gray-900 dark:border-primary/40 dark:bg-primary/25 dark:text-neutral-100"
+          : "border-black/10 bg-white/70 text-gray-700 hover:bg-black/[0.03] dark:border-white/10 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700",
       ].join(" ")}
     >
       {children}

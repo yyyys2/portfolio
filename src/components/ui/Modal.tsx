@@ -3,6 +3,7 @@ import useBodyScrollLock from "@/hooks/useBodyScrollLock"
 import useKeydown from "@/hooks/useKeydown"
 import { trapTabKey } from "@/lib/focus"
 import { useI18n } from "@/hooks/useI18n.ts"
+import CloseIcon from "@/components/icons/CloseIcon"
 
 export default function Modal({
   open,
@@ -45,7 +46,7 @@ export default function Modal({
         onClick={onClose}
       />
 
-      <div className="relative mx-auto flex h-full max-w-3xl items-center px-4">
+      <div className="relative mx-auto flex h-full max-w-3xl items-end px-3 py-3 sm:items-center sm:px-4 sm:py-0">
         <div
           ref={dialogRef}
           role="dialog"
@@ -54,27 +55,31 @@ export default function Modal({
           tabIndex={-1}
           className="w-full rounded-3xl bg-white shadow-[0_20px_80px_rgba(0,0,0,0.18)] ring-1 ring-black/5 dark:bg-neutral-900 dark:ring-white/10"
         >
-          <div className="flex items-start justify-between gap-4 border-b border-black/5 px-6 py-5 dark:border-white/10">
-            <div>
+          <div className="flex items-start justify-between gap-3 border-b border-black/5 px-4 py-4 dark:border-white/10 sm:px-6 sm:py-5">
+            <div className="min-w-0">
               <h2
                 id={titleId}
-                className="text-xl font-semibold tracking-tight dark:text-neutral-100"
+                className="break-words text-base font-semibold leading-snug tracking-tight text-gray-900 dark:text-neutral-100 sm:text-xl"
               >
                 {title}
               </h2>
-              <p className="mt-1 text-sm text-gray-500 dark:text-neutral-400">
+              <p className="mt-1 text-xs text-gray-500 dark:text-neutral-400 sm:text-sm">
                 {t("modal.caseStudy")}
               </p>
             </div>
             <button
               onClick={onClose}
-              className="rounded-xl px-3 py-2 text-sm text-gray-600 hover:bg-black/5 dark:text-neutral-300 dark:hover:bg-white/10"
+              className="dark:border-white/12 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-black/10 text-gray-600 transition hover:bg-black/5 dark:text-neutral-300 dark:hover:bg-white/10"
+              aria-label={t("modal.closeAria")}
+              title={t("modal.close")}
             >
-              {t("modal.close")}
+              <CloseIcon />
             </button>
           </div>
 
-          <div className="max-h-[70vh] overflow-auto px-6 py-6">{children}</div>
+          <div className="max-h-[75vh] overflow-auto px-4 py-4 sm:max-h-[70vh] sm:px-6 sm:py-6">
+            {children}
+          </div>
         </div>
       </div>
     </div>

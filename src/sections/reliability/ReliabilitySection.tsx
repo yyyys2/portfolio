@@ -21,18 +21,15 @@ export default function ReliabilitySection() {
   const checklist = tm<string[]>("reliability.checklist")
 
   return (
-    <Section
-      id="reliability"
-      title={t("reliability.title")}
-    >
-      <div className="grid gap-4 md:grid-cols-3">
+    <Section id="reliability" title={t("reliability.title")}>
+      <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
         {summary.map((stat, i) => (
           <FadeIn key={`${stat.label}-${i}`} delay={i * 0.04}>
             <Card className="p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-neutral-400">
                 {stat.label}
               </p>
-              <p className="mt-2 font-display text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              <p className="mt-2 font-display text-xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-2xl">
                 {stat.value}
               </p>
               <p className="mt-1 text-sm text-gray-600 dark:text-neutral-300">
@@ -43,7 +40,7 @@ export default function ReliabilitySection() {
         ))}
       </div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1.35fr_0.85fr]">
+      <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-6 lg:grid-cols-[1.35fr_0.85fr]">
         <FadeIn>
           <Card className="p-5 md:p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-neutral-400">

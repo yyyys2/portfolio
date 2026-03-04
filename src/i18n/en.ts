@@ -34,9 +34,9 @@ export const en = {
     submit: "Save Profile",
     saved: "Last saved:",
     roleLabel: "Frontend Developer",
-    name: "Yunyeong Kim",
+    name: "Kim Yun Young",
     intro:
-      "Hello. I am Yunyeong Kim, a frontend developer who treats user experience with the same attention to detail used to capture meaningful moments in travel photography.",
+      "Hello. I am Kim Yun Young, a frontend developer who treats user experience with the same attention to detail used to capture meaningful moments in travel photography.",
     strengthsTitle: "Strengths",
     careerTitle: "Career",
     highlights: [
@@ -201,9 +201,21 @@ export const en = {
     title: "Reliability",
     desc: "I care about the details that turn nice UI into stable service.",
     summary: [
-      { label: "Core Principles", value: "5", desc: "Standards for stable operations" },
-      { label: "Review Angles", value: "3", desc: "State, failure, release impact" },
-      { label: "Release Style", value: "Small Batch", desc: "Ship small and verify fast" },
+      {
+        label: "Core Principles",
+        value: "5",
+        desc: "Standards for stable operations",
+      },
+      {
+        label: "Review Angles",
+        value: "3",
+        desc: "State, failure, release impact",
+      },
+      {
+        label: "Release Style",
+        value: "Small Batch",
+        desc: "Ship small and verify fast",
+      },
     ],
     principles: "Working Principles",
     firstChecks: "First Checks",

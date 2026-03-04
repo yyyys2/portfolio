@@ -16,9 +16,9 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`mx-auto max-w-6xl px-4 py-24 ${className ?? className}`}
+      className={`mx-auto max-w-6xl px-4 pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12 ${className ?? ""}`}
     >
-      <header className="mb-10">
+      <header className="mb-6 sm:mb-8">
         <h2 className="font-display text-2xl font-semibold tracking-tight dark:text-neutral-100">
           {title}
         </h2>

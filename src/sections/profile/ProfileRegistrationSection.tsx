@@ -32,11 +32,11 @@ export default function ProfileRegistrationSection() {
   const experience = tm<ExperienceItem[]>("profile.experience")
 
   return (
-    <Section id="profile" title={t("profile.title")} className="py-28">
+    <Section id="profile" title={t("profile.title")}>
       <div className="grid gap-6">
         <FadeIn>
           <Card className="relative overflow-hidden p-0">
-            <div className="relative overflow-hidden border-b-2 border-primary/35 bg-white px-6 py-8 text-gray-900 dark:border-primary/45 dark:bg-neutral-800 dark:text-neutral-100">
+            <div className="relative overflow-hidden border-b-2 border-primary/35 bg-white px-4 py-6 text-gray-900 dark:border-primary/45 dark:bg-neutral-800 dark:text-neutral-100 sm:px-6 sm:py-8">
               <div
                 className="pointer-events-none absolute inset-0 opacity-100 dark:hidden"
                 style={{
@@ -55,18 +55,18 @@ export default function ProfileRegistrationSection() {
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gray-500 dark:text-neutral-400">
                   {t("profile.roleLabel")}
                 </p>
-                <div className="mt-4 flex flex-wrap items-end gap-4">
-                  <div className="inline-flex h-24 w-24 items-center justify-center overflow-hidden rounded-[2rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card dark:bg-neutral-700">
+                <div className="mt-4 flex flex-wrap items-end gap-3 sm:gap-4">
+                  <div className="inline-flex h-20 w-20 items-center justify-center overflow-hidden rounded-[1.4rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card dark:bg-neutral-700 sm:h-24 sm:w-24 sm:rounded-[2rem]">
                     <img
                       src={"public/assets/images/profile/profile.jpeg"}
                       alt=""
                     />
                   </div>
                   <div>
-                    <h3 className="font-display text-4xl font-semibold tracking-tight">
+                    <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                       {t("profile.name")}
                     </h3>
-                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700 dark:text-neutral-300">
+                    <p className="mt-2 max-w-2xl text-xs leading-relaxed text-gray-700 dark:text-neutral-300 sm:text-sm">
                       {t("profile.intro")}
                     </p>
                   </div>
@@ -74,7 +74,7 @@ export default function ProfileRegistrationSection() {
               </div>
             </div>
 
-            <div className="grid gap-6 bg-white p-6 dark:bg-neutral-900">
+            <div className="grid gap-6 bg-white p-4 dark:bg-neutral-900 sm:p-6">
               <div className="grid gap-3 sm:grid-cols-3">
                 {profileSummary.stats.map((item, index) => (
                   <div
@@ -120,11 +120,11 @@ export default function ProfileRegistrationSection() {
                       >
                         {item.icon}
                       </div>
-                      <h3 className="font-display text-xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                      <h3 className="font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-xl">
                         {item.title}
                       </h3>
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+                    <p className="mt-3 text-xs leading-relaxed text-gray-600 dark:text-neutral-300 sm:mt-4 sm:text-sm">
                       {item.body}
                     </p>
                   </div>

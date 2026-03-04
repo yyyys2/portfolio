@@ -11,7 +11,7 @@ export default function Button({
   return (
     <button
       className={clsx(
-        "inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-medium transition",
+        "inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-xs font-medium transition sm:rounded-2xl sm:px-5 sm:py-3 sm:text-sm",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
         variant === "primary" &&
           "bg-primary/80 text-white shadow-sm hover:bg-primary dark:bg-primary-strong dark:hover:bg-primary",

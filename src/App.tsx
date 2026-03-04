@@ -9,10 +9,12 @@ import ContactSection from "@/sections/contact/ContactSection"
 import { useI18n } from "@/hooks/useI18n.ts"
 import FeaturedProjectSection from "@/sections/home/FeaturedProjectSection"
 import InterestsSection from "@/sections/home/InterestsSection"
+import SkillsSection from "@/sections/skills/SkillsSection"
 
 function getViewFromHash() {
   const hash = window.location.hash || "#/"
   if (hash.startsWith("#/profile")) return "profile"
+  if (hash.startsWith("#/skills")) return "skills"
   if (hash.startsWith("#/projects")) return "projects"
   if (hash.startsWith("#/reliability")) return "reliability"
   if (hash.startsWith("#/contact")) return "contact"
@@ -84,6 +86,7 @@ export default function App() {
         </>
       )}
       {view === "profile" && <ProfileRegistrationSection />}
+      {view === "skills" && <SkillsSection />}
       {view === "projects" && <ProjectsSection />}
       {view === "reliability" && <ReliabilitySection />}
       {view === "contact" && <ContactSection />}

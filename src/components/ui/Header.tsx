@@ -22,6 +22,7 @@ export default function Header({
 
   const navItems = [
     { key: "profile", href: "#/profile", label: t("nav.profile") },
+    { key: "skills", href: "#/skills", label: t("nav.skills") },
     { key: "projects", href: "#/projects", label: t("nav.projects") },
     { key: "reliability", href: "#/reliability", label: t("nav.reliability") },
     { key: "contact", href: "#/contact", label: t("nav.contact") },

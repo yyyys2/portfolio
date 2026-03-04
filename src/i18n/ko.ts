@@ -7,6 +7,7 @@ export const ko = {
   },
   nav: {
     profile: "Profile",
+    skills: "Skills",
     projects: "Projects",
     reliability: "Reliability",
     contact: "Contact",
@@ -158,6 +159,33 @@ export const ko = {
     all: "전체",
     view: "Case Study 보기",
     visitSite: "사이트 보기",
+  },
+  skills: {
+    title: "Skills",
+    desc: "정리된 기술 역량입니다.",
+    sortedBy: "기업 선호도 순",
+    overview: {
+      total: "전체 스킬",
+      strong: "상급 이상",
+      average: "평균 숙련도",
+    },
+    level: {
+      expert: "전문",
+      advanced: "상급",
+      intermediate: "중급",
+      basic: "기초",
+    },
+    tabs: {
+      all: "전체",
+      frontend: "Frontend",
+      tooling: "Tooling",
+      infra: "Infra",
+    },
+    categoryLabel: {
+      frontend: "프론트엔드",
+      tooling: "도구/협업",
+      infra: "인프라",
+    },
   },
   reliability: {
     title: "Reliability",

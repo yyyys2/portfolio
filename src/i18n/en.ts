@@ -7,6 +7,7 @@ export const en = {
   },
   nav: {
     profile: "Profile",
+    skills: "Skills",
     projects: "Projects",
     reliability: "Reliability",
     contact: "Contact",
@@ -165,6 +166,33 @@ export const en = {
     all: "All",
     view: "View Case Study",
     visitSite: "Visit site",
+  },
+  skills: {
+    title: "Skills",
+    desc: "Organized technical capabilities.",
+    sortedBy: "Sorted by hiring preference",
+    overview: {
+      total: "Total Skills",
+      strong: "Advanced+",
+      average: "Average Level",
+    },
+    level: {
+      expert: "Expert",
+      advanced: "Advanced",
+      intermediate: "Intermediate",
+      basic: "Basic",
+    },
+    tabs: {
+      all: "All",
+      frontend: "Frontend",
+      tooling: "Tooling",
+      infra: "Infra",
+    },
+    categoryLabel: {
+      frontend: "Frontend",
+      tooling: "Tools/Collab",
+      infra: "Infrastructure",
+    },
   },
   reliability: {
     title: "Reliability",

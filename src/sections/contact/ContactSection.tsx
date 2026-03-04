@@ -1,17 +1,26 @@
+import { type ReactNode, useState } from "react"
 import Section from "@/components/ui/Section"
 import Card from "@/components/ui/Card"
 import Button from "@/components/ui/Button"
+import MailIcon from "@/components/icons/MailIcon"
+import GithubIcon from "@/components/icons/GithubIcon"
+import InstagramIcon from "@/components/icons/InstagramIcon"
+import DownloadIcon from "@/components/icons/DownloadIcon"
 import { useI18n } from "@/hooks/useI18n.ts"
 
 const EMAIL = "bellelaide1005@gmail.com"
+type WorkItem = { title: string; desc: string }
 
 export default function ContactSection() {
-  const { t } = useI18n()
+  const { t, tm } = useI18n()
+  const [copied, setCopied] = useState(false)
+  const workScope = tm<WorkItem[]>("contact.workScope")
 
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL)
-      alert(t("contact.copied"))
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1400)
     } catch {
       // ignore
     }
@@ -21,28 +30,125 @@ export default function ContactSection() {
     <Section
       id="contact"
       title={t("contact.title")}
-      subtitle={t("contact.desc")}
     >
-      <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm text-gray-500 dark:text-neutral-400">
-            {t("contact.emailLabel")}
-          </p>
-          <p className="mt-1 font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
-            {EMAIL}
-          </p>
+      <div className="border-y border-black/8 py-4 dark:border-white/12">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-neutral-400">
+          {t("contact.workTitle")}
+        </p>
+        <div className="mt-3 grid gap-4 md:grid-cols-3 md:gap-0">
+          {workScope.map((item, index) => (
+            <article
+              key={item.title}
+              className="md:px-4 md:first:pl-0 md:last:pr-0 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:border-black/8 md:[&:not(:first-child)]:dark:border-white/12"
+            >
+              <div className="flex items-start gap-3">
+                <span className="inline-flex h-5 min-w-[28px] shrink-0 items-center justify-center rounded-full bg-primary/12 px-2 text-[10px] font-semibold text-primary-strong dark:bg-primary/25 dark:text-primary">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-gray-600 dark:text-neutral-300">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
+      </div>
 
-        <div className="flex gap-2">
-          <Button onClick={copyEmail}>{t("contact.emailCopy")}</Button>
-          <Button
-            variant="ghost"
-            onClick={() => window.open("https://github.com/yyyys2", "_blank")}
-          >
-            GitHub
-          </Button>
+      <div className="mt-6 grid gap-6 lg:items-start lg:grid-cols-[1.25fr_0.75fr]">
+        <Card className="relative overflow-hidden p-6 md:p-7 lg:self-start">
+          <div className="pointer-events-none absolute right-0 top-0 h-32 w-32 rounded-full bg-primary/15 blur-3xl dark:bg-primary/20" />
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-strong dark:text-primary">
+            {t("contact.badge")}
+          </p>
+          <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 md:text-3xl">
+            {t("contact.headline")}
+          </h3>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+            {t("contact.message")}
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            <Button onClick={() => window.open(`mailto:${EMAIL}`)} className={'!bg-primary-strong'}>
+              {t("contact.sendEmail")}
+            </Button>
+            <Button variant="ghost" onClick={copyEmail}>
+              {copied ? t("contact.copied") : t("contact.emailCopy")}
+            </Button>
+          </div>
+
+          <p className="mt-4 text-xs text-gray-500 dark:text-neutral-400">
+            {t("contact.response")}
+          </p>
+        </Card>
+
+        <div className="grid gap-4">
+          <Card className="p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-neutral-400">
+              {t("contact.channelsTitle")}
+            </p>
+            <div className="mt-3 space-y-2">
+              <ContactLink href={`mailto:${EMAIL}`} label={t("contact.channelEmail")}>
+                <MailIcon />
+              </ContactLink>
+              <ContactLink
+                href="https://github.com/yyyys2"
+                label={t("contact.channelGithub")}
+                external
+              >
+                <GithubIcon />
+              </ContactLink>
+              <ContactLink
+                href="https://www.instagram.com/"
+                label={t("contact.channelInstagram")}
+                external
+              >
+                <InstagramIcon />
+              </ContactLink>
+              <ContactLink
+                href={`${import.meta.env.BASE_URL}assets/resume/yunyeong_kim_resume.pdf`}
+                label={t("contact.channelResume")}
+                download
+              >
+                <DownloadIcon />
+              </ContactLink>
+            </div>
+          </Card>
         </div>
-      </Card>
+      </div>
     </Section>
+  )
+}
+
+function ContactLink({
+  href,
+  label,
+  children,
+  external = false,
+  download = false,
+}: {
+  href: string
+  label: string
+  children: ReactNode
+  external?: boolean
+  download?: boolean
+}) {
+  return (
+    <a
+      href={href}
+      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+      {...(download ? { download: true } : {})}
+      className="inline-flex w-full items-center justify-between rounded-xl border border-black/5 bg-white/70 px-3 py-2.5 text-sm text-gray-700 transition hover:bg-black/[0.02] dark:border-white/10 dark:bg-neutral-800/70 dark:text-neutral-200 dark:hover:bg-neutral-700/70"
+    >
+      <span className="inline-flex items-center gap-2">
+        <span className="text-gray-500 dark:text-neutral-400">{children}</span>
+        {label}
+      </span>
+      <span className="text-xs text-gray-400 dark:text-neutral-500">↗</span>
+    </a>
   )
 }

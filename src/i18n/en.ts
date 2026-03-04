@@ -237,7 +237,33 @@ export const en = {
   },
   contact: {
     title: "Contact",
-    desc: "Say hi anytime. Email is the fastest channel.",
+    desc: "Open to project proposals, collaboration, and hiring inquiries.",
+    badge: "Let's Work Together",
+    headline: "If you have a product to build, let's talk.",
+    message:
+      "I prefer turning requirements into clear, executable scopes and shipping stable increments. Feel free to reach out, even for a short inquiry.",
+    sendEmail: "Send Email",
+    response: "I usually reply within 24 hours on weekdays.",
+    channelsTitle: "Channels",
+    channelEmail: "Email",
+    channelGithub: "GitHub",
+    channelInstagram: "Instagram",
+    channelResume: "Resume PDF",
+    workTitle: "What I Can Help With",
+    workScope: [
+      {
+        title: "Product UI Development",
+        desc: "Frontend implementation for new products and service renewals",
+      },
+      {
+        title: "Admin Experience",
+        desc: "Usability and flow improvements for operation-focused admin tools",
+      },
+      {
+        title: "Reliability & Performance",
+        desc: "State architecture, API integration, and rendering quality optimization",
+      },
+    ],
     emailLabel: "Email",
     emailCopy: "Copy email",
     copied: "Copied!",

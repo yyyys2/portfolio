@@ -229,7 +229,33 @@ export const ko = {
   },
   contact: {
     title: "Contact",
-    desc: "가볍게 인사해도 좋아요. 가장 빠른 채널은 이메일입니다.",
+    desc: "프로젝트 제안, 협업, 채용 문의를 환영합니다.",
+    badge: "Let's Work Together",
+    headline: "함께 만들고 싶은 제품이 있다면 연락 주세요.",
+    message:
+      "요구사항을 빠르게 정리하고, 실행 가능한 범위로 나눠 안정적으로 구현하는 방식을 선호합니다. 짧은 문의도 편하게 보내주세요.",
+    sendEmail: "이메일 보내기",
+    response: "평일 기준 24시간 이내 회신합니다.",
+    channelsTitle: "연락 채널",
+    channelEmail: "Email",
+    channelGithub: "GitHub",
+    channelInstagram: "Instagram",
+    channelResume: "Resume PDF",
+    workTitle: "협업 가능 영역",
+    workScope: [
+      {
+        title: "제품 UI 개발",
+        desc: "신규 서비스와 기존 서비스 리뉴얼 프론트엔드 구현",
+      },
+      {
+        title: "관리자 화면 개선",
+        desc: "운영형 대시보드/관리도구의 사용성과 흐름 개선",
+      },
+      {
+        title: "안정성/성능 최적화",
+        desc: "상태관리 구조, API 연동, 렌더링 성능 품질 개선",
+      },
+    ],
     emailLabel: "Email",
     emailCopy: "이메일 복사",
     copied: "복사되었습니다!",

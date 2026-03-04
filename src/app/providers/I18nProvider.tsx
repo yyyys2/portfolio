@@ -4,7 +4,7 @@ import { ko } from "@/i18n/ko"
 import { en } from "@/i18n/en"
 import { I18nContext, type Lang } from "../../context/i18n.context.ts"
 
-type Messages = typeof ko
+type Messages = typeof ko | typeof en
 
 interface I18nProviderProps {
   children: ReactNode

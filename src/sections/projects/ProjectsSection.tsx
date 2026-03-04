@@ -57,8 +57,8 @@ export default function ProjectsSection() {
               onClick={() => modal.openProject(p)}
               className="text-left"
             >
-              <Card className="group relative h-full overflow-hidden transition-transform hover:-translate-y-1">
-                {/* Hover image layer */}
+              <Card className="group relative flex h-full flex-col overflow-hidden transition-transform hover:-translate-y-1">
+                {/* hover image layer */}
                 {p.image && (
                   <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                     <img
@@ -67,20 +67,18 @@ export default function ProjectsSection() {
                       className="h-full w-full object-cover"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-white/35 backdrop-blur-[1px]" />
-                    {/* note badge */}
+                    <div className="absolute inset-0 bg-black/35" />
                     {p.image.note && (
-                      <div className="absolute left-4 top-4">
-                        <span className="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-xs text-gray-700 ring-1 ring-black/5 backdrop-blur">
-                          {p.image.note}
-                        </span>
-                      </div>
+                      <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/85 px-3 py-1 text-xs text-gray-800 ring-1 ring-black/10 backdrop-blur">
+                        {p.image.note}
+                      </span>
                     )}
                   </div>
                 )}
 
-                {/* Content layer */}
-                <div className="relative">
+                {/* content */}
+                <div className="relative flex-1 transition-opacity duration-200 group-hover:opacity-0">
+                  {/* 기존 내용 */}
                   <div className="flex flex-wrap gap-2">
                     {p.tags.slice(0, 3).map((x) => (
                       <Tag key={x}>{x}</Tag>
@@ -98,24 +96,21 @@ export default function ProjectsSection() {
                   <p className="mt-4 text-xs text-gray-500">
                     {lang === "ko" ? p.role.ko : p.role.en}
                   </p>
+                </div>
 
-                  <div className="mt-6 flex flex-wrap items-center gap-2">
-                    <div className="inline-flex items-center rounded-full bg-black/[0.04] px-4 py-2 text-sm text-gray-700 ring-1 ring-black/5">
-                      {t("projects.view")}
-                    </div>
-
-                    {p.links?.live && (
-                      <a
-                        href={p.links.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800"
-                      >
-                        Visit site
-                      </a>
-                    )}
-                  </div>
+                <div className="relative mt-6 flex flex-wrap gap-2">
+                  {/* Visit site */}
+                  {p.links?.live && (
+                    <a
+                      href={p.links.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800"
+                    >
+                      Visit site
+                    </a>
+                  )}
                 </div>
               </Card>
             </button>

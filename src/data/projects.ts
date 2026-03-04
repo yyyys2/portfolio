@@ -89,10 +89,10 @@ export const projects: Project[] = [
       ],
     },
     image: {
-      src: "public/assets/images/projects/test.png",
+      src: "public/assets/images/projects/test.jpg",
       note: "실제 UI 일부 비공개",
     },
-    links: { live: "https://..." },
+    links: { live: "https://betaprogram.lge.com/" },
   },
   {
     id: "ai-agent",

@@ -36,7 +36,7 @@ export default function ProfileRegistrationSection() {
       <div className="grid gap-6">
         <FadeIn>
           <Card className="relative overflow-hidden p-0">
-            <div className="relative overflow-hidden border-b-2 border-primary/35 bg-white px-4 py-6 text-gray-900 dark:border-primary/45 dark:bg-neutral-800 dark:text-neutral-100 sm:px-6 sm:py-8">
+            <div className="relative overflow-hidden border-b-2 border-primary/35 bg-white px-4 py-6 text-gray-900 sm:px-6 sm:py-8 dark:border-primary/45 dark:bg-neutral-800 dark:text-neutral-100">
               <div
                 className="pointer-events-none absolute inset-0 opacity-100 dark:hidden"
                 style={{
@@ -56,9 +56,9 @@ export default function ProfileRegistrationSection() {
                   {t("profile.roleLabel")}
                 </p>
                 <div className="mt-4 flex flex-wrap items-end gap-3 sm:gap-4">
-                  <div className="inline-flex h-20 w-20 items-center justify-center overflow-hidden rounded-[1.4rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card dark:bg-neutral-700 sm:h-24 sm:w-24 sm:rounded-[2rem]">
+                  <div className="inline-flex h-20 w-20 items-center justify-center overflow-hidden rounded-[1.4rem] bg-white/90 font-display text-4xl font-semibold text-gray-900 shadow-card sm:h-24 sm:w-24 sm:rounded-[2rem] dark:bg-neutral-700">
                     <img
-                      src={"public/assets/images/profile/profile.jpeg"}
+                      src={`${import.meta.env.BASE_URL}assets/images/profile/profile.jpeg`}
                       alt=""
                     />
                   </div>
@@ -66,7 +66,7 @@ export default function ProfileRegistrationSection() {
                     <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                       {t("profile.name")}
                     </h3>
-                    <p className="mt-2 max-w-2xl text-xs leading-relaxed text-gray-700 dark:text-neutral-300 sm:text-sm">
+                    <p className="mt-2 max-w-2xl text-xs leading-relaxed text-gray-700 sm:text-sm dark:text-neutral-300">
                       {t("profile.intro")}
                     </p>
                   </div>
@@ -74,7 +74,7 @@ export default function ProfileRegistrationSection() {
               </div>
             </div>
 
-            <div className="grid gap-6 bg-white p-4 dark:bg-neutral-900 sm:p-6">
+            <div className="grid gap-6 bg-white p-4 sm:p-6 dark:bg-neutral-900">
               <div className="grid gap-3 sm:grid-cols-3">
                 {profileSummary.stats.map((item, index) => (
                   <div
@@ -120,11 +120,11 @@ export default function ProfileRegistrationSection() {
                       >
                         {item.icon}
                       </div>
-                      <h3 className="font-display text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-xl">
+                      <h3 className="font-display text-lg font-semibold tracking-tight text-gray-900 sm:text-xl dark:text-neutral-100">
                         {item.title}
                       </h3>
                     </div>
-                    <p className="mt-3 text-xs leading-relaxed text-gray-600 dark:text-neutral-300 sm:mt-4 sm:text-sm">
+                    <p className="mt-3 text-xs leading-relaxed text-gray-600 sm:mt-4 sm:text-sm dark:text-neutral-300">
                       {item.body}
                     </p>
                   </div>

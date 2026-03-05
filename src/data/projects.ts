@@ -85,7 +85,7 @@ export const projects: Project[] = [
       ],
     },
     image: {
-      src: "public/assets/images/projects/live/webos-multi.png",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/live/webos-multi.png`,
       note: "실제 UI 일부 비공개",
     },
     links: { live: "https://betaprogram.lge.com/" },
@@ -132,7 +132,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved operational efficiency"],
     },
     image: {
-      src: "public/assets/images/projects/online_education_platform_admin.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/online_education_platform_admin.jpeg`,
     },
   },
   {
@@ -177,7 +177,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved payment flow stability"],
     },
     image: {
-      src: "public/assets/images/projects/blockchain_payment_b2c.png",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/blockchain_payment_b2c.png`,
     },
   },
   {
@@ -226,7 +226,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Enabled external promotion channel"],
     },
     image: {
-      src: "public/assets/images/projects/smart_mobility_promo_website.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/smart_mobility_promo_website.jpeg`,
     },
     links: { live: "http://www.soft-v2x.com/" },
   },
@@ -272,7 +272,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved release stability"],
     },
     image: {
-      src: "public/assets/images/projects/v2x_sdk_platform.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/v2x_sdk_platform.jpeg`,
     },
     links: { live: "http://sdk.soft-v2x.com" },
   },
@@ -322,7 +322,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved operational efficiency"],
     },
     image: {
-      src: "public/assets/images/projects/mobility_rewards_service_admin.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/mobility_rewards_service_admin.jpeg`,
     },
   },
   {
@@ -371,7 +371,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Secured operational stability"],
     },
     image: {
-      src: "public/assets/images/projects/v2x_control_community_system.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/v2x_control_community_system.jpeg`,
     },
   },
   {
@@ -429,7 +429,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved issuance stability"],
     },
     image: {
-      src: "public/assets/images/projects/daegu_senior_transit_card_system.png",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/daegu_senior_transit_card_system.png`,
     },
   },
   {
@@ -483,7 +483,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved finance UX stability"],
     },
     image: {
-      src: "public/assets/images/projects/live/imupay.png",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/live/imupay.png`,
     },
     links: { live: "https://www.imupay.co.kr" },
   },
@@ -542,7 +542,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved admin productivity"],
     },
     image: {
-      src: "public/assets/images/projects/cloud_hospitality_signage_solution.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/cloud_hospitality_signage_solution.jpeg`,
     },
     links: { live: "https://lgbusinesscloud.com/solutions/procentric/" },
   },
@@ -588,7 +588,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Ongoing maintenance"],
     },
     image: {
-      src: "public/assets/images/projects/live/shoptime.png",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/live/shoptime.png`,
     },
     links: { live: "https://m.shoptime.lgappstv.com/home.jsp?cntryCd=US" },
   },
@@ -647,7 +647,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved operations quality"],
     },
     image: {
-      src: "public/assets/images/projects/digital_signage_management_solution.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/digital_signage_management_solution.jpeg`,
     },
     links: { live: "https://lgbusinesscloud.com/solutions/supersign/" },
   },
@@ -702,7 +702,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Secured publishing quality"],
     },
     image: {
-      src: "public/assets/images/projects/energy_b2b_partner_portal.png",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/energy_b2b_partner_portal.png`,
     },
   },
   {
@@ -747,7 +747,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved UX quality on TV environment"],
     },
     image: {
-      src: "public/assets/images/projects/tv_overlay_shopping_food_app.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/tv_overlay_shopping_food_app.jpeg`,
     },
   },
   {
@@ -805,7 +805,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved ops efficiency and UI trust"],
     },
     image: {
-      src: "public/assets/images/projects/enterprise_ai_agent_platform.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/enterprise_ai_agent_platform.jpeg`,
     },
   },
   {
@@ -854,7 +854,7 @@ export const projects: Project[] = [
       en: ["Delivered project", "Improved AI integration stability"],
     },
     image: {
-      src: "public/assets/images/projects/webos_ai_styling_recommendation.jpeg",
+      src: `${import.meta.env.BASE_URL}assets/images/projects/webos_ai_styling_recommendation.jpeg`,
     },
   },
 ]

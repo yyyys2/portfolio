@@ -13,7 +13,7 @@ export default function HeroSection() {
             <div className="mx-auto mb-6 flex w-full max-w-sm items-end justify-center gap-3 md:hidden">
               <div className="photo-float aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10">
                 <img
-                  src="public/assets/images/projects/test2.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/images/projects/test2.jpg`}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -22,7 +22,7 @@ export default function HeroSection() {
 
               <div className="photo-float2 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10">
                 <img
-                  src="public/assets/images/projects/test.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.jpg`}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -31,7 +31,7 @@ export default function HeroSection() {
 
               <div className="photo-float3 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10">
                 <img
-                  src="public/assets/images/projects/test.png"
+                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.png`}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -40,20 +40,20 @@ export default function HeroSection() {
             </div>
 
             <FadeIn>
-              <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs text-gray-700 ring-1 ring-black/5 dark:bg-neutral-800/80 dark:text-neutral-200 dark:ring-white/10 md:mx-0">
+              <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs text-gray-700 ring-1 ring-black/5 md:mx-0 dark:bg-neutral-800/80 dark:text-neutral-200 dark:ring-white/10">
                 <span className="h-2 w-2 rounded-full bg-primary"></span>
                 <span className={"font-display"}>{t("hero.keyword")}</span>
               </div>
             </FadeIn>
 
             <FadeIn delay={0.05}>
-              <h1 className="mx-auto mt-5 max-w-4xl font-display text-3xl font-semibold leading-tight tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-5 max-w-4xl font-display text-3xl font-semibold leading-tight tracking-tight text-gray-900 sm:text-4xl md:mx-0 md:text-5xl dark:text-neutral-100">
                 {t("hero.title")}
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <p className="mx-auto mt-6 max-w-2xl whitespace-pre-line font-sans text-base leading-relaxed text-gray-600 dark:text-neutral-300 md:mx-0">
+              <p className="mx-auto mt-6 max-w-2xl whitespace-pre-line font-sans text-base leading-relaxed text-gray-600 md:mx-0 dark:text-neutral-300">
                 {t("hero.desc")}
               </p>
             </FadeIn>
@@ -80,7 +80,7 @@ export default function HeroSection() {
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white/40 ring-1 ring-black/5 backdrop-blur dark:bg-neutral-800/60 dark:ring-white/10">
                 {/* main photo */}
                 <img
-                  src="public/assets/images/projects/test.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/images/projects/test2.jpg`}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
@@ -90,18 +90,18 @@ export default function HeroSection() {
               </div>
 
               {/* stacked cards */}
-              <div className="photo-float absolute -right-4 -top-4 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10 sm:-right-5 sm:-top-5 sm:w-32 md:-right-6 md:-top-6 md:w-40">
+              <div className="photo-float absolute -right-4 -top-4 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 sm:-right-5 sm:-top-5 sm:w-32 md:-right-6 md:-top-6 md:w-40 dark:ring-white/10">
                 <img
-                  src="public/assets/images/projects/test2.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.png`}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
               </div>
 
-              <div className="photo-float2 absolute -bottom-4 -left-4 aspect-[4/5] w-28 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10 sm:-bottom-5 sm:-left-5 sm:w-36 md:-bottom-6 md:-left-6 md:w-44">
+              <div className="photo-float2 absolute -bottom-4 -left-4 aspect-[4/5] w-28 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 sm:-bottom-5 sm:-left-5 sm:w-36 md:-bottom-6 md:-left-6 md:w-44 dark:ring-white/10">
                 <img
-                  src="public/assets/images/projects/test.png"
+                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.jpg`}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"

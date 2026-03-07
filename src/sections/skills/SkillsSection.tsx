@@ -17,26 +17,27 @@ const companyPreferenceOrder: Record<string, number> = {
   html: 4,
   css_scss: 5,
   tailwind: 6,
-  git: 7,
-  figma: 8,
-  vue: 9,
-  docker: 10,
-  nginx: 11,
-  svelte: 12,
-  chatgpt: 13,
-  excel: 14,
-  powerpoint: 15,
-  canva: 16,
+  nextjs: 7,
+  tanstack_query: 8,
+  zustand: 9,
+  accessibility: 10,
+  performance_optimization: 11,
+  git: 12,
+  figma: 13,
+  vue: 14,
+  docker: 15,
+  nginx: 16,
+  svelte: 17,
+  chatgpt: 18,
+  excel: 19,
+  powerpoint: 20,
+  canva: 21,
 }
 
-function getScore(rating: string) {
-  return rating.split("★").length - 1
-}
-
-function getLevelKey(score: number) {
-  if (score >= 5) return "expert"
-  if (score >= 4) return "advanced"
-  if (score >= 3) return "intermediate"
+function getLevelKey(proficiency: number) {
+  if (proficiency >= 85) return "expert"
+  if (proficiency >= 70) return "advanced"
+  if (proficiency >= 55) return "intermediate"
   return "basic"
 }
 
@@ -53,7 +54,7 @@ export default function SkillsSection() {
       const rankB = companyPreferenceOrder[b.id] ?? 999
       if (rankA !== rankB) return rankA - rankB
 
-      const diff = getScore(b.rating) - getScore(a.rating)
+      const diff = b.proficiency - a.proficiency
       if (diff !== 0) return diff
       return a.name.localeCompare(b.name)
     })
@@ -82,8 +83,7 @@ export default function SkillsSection() {
 
       <div className="mt-4 grid gap-3 sm:mt-5 sm:grid-cols-2 xl:grid-cols-3">
         {sortedSkills.map((skill, index) => {
-          const score = getScore(skill.rating)
-          const levelKey = getLevelKey(score)
+          const levelKey = getLevelKey(skill.proficiency)
           const iconSrc = skill.icon
             ? `${import.meta.env.BASE_URL}${skill.icon}`
             : undefined
@@ -128,14 +128,14 @@ export default function SkillsSection() {
                         {t(`skills.level.${levelKey}`)}
                       </p>
                       <p className="text-xs font-medium text-primary-strong">
-                        {score * 20}%
+                        {skill.proficiency}%
                       </p>
                     </div>
 
                     <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-700">
                       <div
                         className="h-full rounded-full bg-primary-strong"
-                        style={{ width: `${score * 20}%` }}
+                        style={{ width: `${skill.proficiency}%` }}
                       />
                     </div>
                   </div>

@@ -283,6 +283,8 @@ export const en = {
     closeAria: "Close modal",
     caseStudy: "Case Study",
     close: "Close",
+    role: "My Role",
+    details: "Project Details",
     problem: "What Was the Problem",
     approach: "How I Solved It",
     reliabilityOps: "Reliability / Ops",

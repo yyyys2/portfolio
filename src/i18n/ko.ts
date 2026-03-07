@@ -268,6 +268,8 @@ export const ko = {
     closeAria: "모달 닫기",
     caseStudy: "Case Study",
     close: "닫기",
+    role: "내 역할",
+    details: "프로젝트 상세",
     problem: "어떤 문제가 있었나",
     approach: "어떻게 풀었나",
     reliabilityOps: "신뢰성/운영",

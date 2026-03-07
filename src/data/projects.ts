@@ -5,6 +5,7 @@ export type Project = {
   category: ProjectCategory
   title: { ko: string; en: string }
   oneLiner: { ko: string; en: string }
+  details?: { ko: string; en: string }
   tags: string[]
   role: { ko: string; en: string }
   stack: string[]
@@ -45,6 +46,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "WebOS 환경에서 상태 흐름과 운영 안정성을 강화한 멀티 플랫폼 서비스",
       en: "A multi-platform service focused on stable state flow and operations in WebOS",
+    },
+    details: {
+      ko: "리모컨 입력 기반 UX에서는 작은 포커스 오류도 치명적이라, 화면 전환 규칙과 상태 경계를 먼저 재설계했습니다. 기능 개발보다 운영 중 재현 가능한 구조를 우선해 장애를 빠르게 추적할 수 있게 했고, 배포 단위를 잘게 나눠 리스크를 통제했습니다. 결과적으로 신규 기능 추가와 유지보수가 동시에 가능한 서비스 형태로 자리 잡았습니다.",
+      en: "In remote-control UX, even minor focus issues are critical, so I redesigned navigation rules and state boundaries first. I prioritized operability over feature speed, making incidents reproducible and easier to trace. With small release slices, risk stayed controlled and the service became maintainable while still evolving.",
     },
     tags: ["WebOS", "React", "운영"],
     role: {
@@ -101,6 +106,10 @@ export const projects: Project[] = [
       ko: "학습자/관리자 흐름을 분리해 운영 가능한 교육 플랫폼 구축",
       en: "Built an operable education platform with separated learner/admin flows",
     },
+    details: {
+      ko: "학습 흐름과 관리자 업무 흐름이 서로 다른 속도로 변하다 보니, 한 코드 경로에 묶여 있던 구조가 병목이었습니다. 화면 책임을 역할별로 분리하고 공통 UI는 재사용 가능한 단위로 정리해 변경 충돌을 줄였습니다. 운영 관점에서는 데이터 누락, 권한 실수, 검색 예외처럼 실제 문의로 이어지는 케이스를 우선 막는 데 집중했습니다.",
+      en: "Learner and admin flows evolved at different speeds, and a shared code path became a bottleneck. I split ownership by role and rebuilt common UI as reusable units to reduce change collisions. Operationally, I focused on preventing real support-triggering cases such as missing data, permission mistakes, and search edge cases.",
+    },
     tags: ["React", "Admin", "교육"],
     role: {
       ko: "기여도 FE 100%",
@@ -146,6 +155,10 @@ export const projects: Project[] = [
       ko: "결제 신뢰성이 중요한 상용 B2C 플랫폼의 결제 UX 개선",
       en: "Improved payment UX for a trust-critical commercial B2C platform",
     },
+    details: {
+      ko: "이 프로젝트에서는 결제 자체보다 '결제 중 불안'을 줄이는 UI가 핵심이었습니다. 처리 중, 실패, 재시도 상태를 서로 다른 톤으로 분리하고, 사용자가 현재 상태를 오해하지 않도록 안내 문구를 정교화했습니다. 특히 중복 결제 위험 구간은 흐름을 강제 분기해 실사용에서의 사고 가능성을 낮췄습니다.",
+      en: "The key here was reducing payment anxiety, not just processing transactions. I separated pending, failed, and retry states with distinct UX tone and tightened guidance copy to prevent misinterpretation. High-risk duplicate-payment paths were explicitly gated, lowering real-world failure risk.",
+    },
     tags: ["Vue", "결제", "B2C"],
     role: {
       ko: "기여도 FE 70%",
@@ -190,6 +203,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "기업 기술 메시지를 전달하는 반응형 홍보 사이트 구축",
       en: "Built a responsive promo site for enterprise mobility technology",
+    },
+    details: {
+      ko: "홍보 사이트 특성상 기능보다 메시지 리듬이 중요해서, 정보의 순서와 시선 이동을 기준으로 레이아웃을 재구성했습니다. 핵심 섹션은 재사용 블록으로 만들어 콘텐츠 교체에도 구조가 흔들리지 않도록 했고, 반응형에서 텍스트 가독성과 비주얼 임팩트를 균형 있게 맞췄습니다. 공개 채널 품질을 위해 브라우저별 표현 차이도 세밀하게 조정했습니다.",
+      en: "For a promo site, message rhythm mattered more than feature density, so I rebuilt layouts around reading flow and visual attention. Core sections were turned into reusable blocks so content swaps would not break structure. On responsive screens, I balanced readability and visual impact, then tuned browser-level rendering differences for public quality.",
     },
     tags: ["React", "홍보사이트", "반응형"],
     role: {
@@ -241,6 +258,10 @@ export const projects: Project[] = [
       ko: "SDK 배포/문서/권한 관리가 가능한 관리자 플랫폼",
       en: "Admin platform for SDK distribution, docs, and permissions",
     },
+    details: {
+      ko: "SDK 플랫폼은 '배포 실수 1회'의 영향이 큰 도메인이라, 관리자 액션을 단계형 흐름으로 재정의했습니다. 권한 수준에 따라 노출 UI를 분리해 불필요한 액션 진입을 차단했고, 검증 실패 시에는 원인을 즉시 이해할 수 있도록 피드백 구조를 강화했습니다. 문서/버전/배포가 같은 맥락으로 이어지도록 동선을 정리해 운영 정확도를 높였습니다.",
+      en: "In an SDK platform, one release mistake can have broad impact, so I redesigned admin actions as staged flows. UI exposure was segmented by permission level to block unnecessary entry points, and validation failures were made immediately understandable. I aligned docs, versioning, and release paths into one coherent operational route.",
+    },
     tags: ["B2B", "SDK", "관리자"],
     role: {
       ko: "기여도 FE 70%",
@@ -286,6 +307,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "리워드 적립/운영 흐름을 관리 가능한 서비스 구조로 구현",
       en: "Implemented manageable reward accumulation and operation flows",
+    },
+    details: {
+      ko: "리워드 서비스는 정책 변경이 잦아 '운영자가 빠르게 이해하는 화면'이 중요했습니다. 자주 쓰는 액션을 전면에 배치하고, 이벤트/적립/정산 흐름을 끊김 없이 이어지게 재배치했습니다. 특히 누락이나 중복이 발생하기 쉬운 경계 구간에 동기화 기준을 명시해 실운영 오류를 줄였습니다.",
+      en: "Reward products change policy frequently, so admin readability was critical. I surfaced high-frequency actions and reconnected event, accrual, and settlement flows into one continuous experience. Synchronization rules were made explicit at risk boundaries where omissions and duplicates typically occur.",
     },
     tags: ["React", "Admin", "리워드"],
     role: {
@@ -336,6 +361,10 @@ export const projects: Project[] = [
       ko: "관제와 커뮤니티 운영 기능을 통합한 관리 시스템 구현",
       en: "Implemented an integrated control and community admin system",
     },
+    details: {
+      ko: "관제와 커뮤니티는 사용 맥락이 전혀 달라 한 화면에서 섞이면 피로도가 커졌습니다. 그래서 실시간 모니터링 영역과 운영 처리 영역을 명확히 분리하고, 관리자 우선 액션을 짧은 경로로 재배치했습니다. 운영 중 즉시 대응이 필요한 기능은 릴리즈 단위를 더 작게 가져가 안정적으로 반영했습니다.",
+      en: "Control and community workflows had very different contexts, and mixing them created cognitive load. I separated real-time monitoring from operations handling, then shortened paths to admin-priority actions. Features requiring immediate operational response were released in smaller units for safer adoption.",
+    },
     tags: ["React", "관제", "B2B"],
     role: {
       ko: "기여도 FE 100%",
@@ -384,6 +413,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "공공 업무 특성에 맞춰 검증/발급 안정성을 강화한 시스템",
       en: "A public-service system focused on strong validation and issuance stability",
+    },
+    details: {
+      ko: "공공 시스템은 처리 속도보다 절차 정확성이 우선이라, 입력 검증과 단계 표기를 가장 엄격하게 설계했습니다. 담당자가 현재 발급 단계와 다음 액션을 즉시 판단할 수 있도록 상태 전이를 명료하게 표현했고, 반려/재처리 흐름도 초기에 함께 설계했습니다. 현장 업무 기준으로 체크포인트를 정리해 장기 운영 안정성을 확보했습니다.",
+      en: "In public systems, procedural accuracy matters more than speed, so validation and stage signaling were designed strictly. State transitions were made explicit so operators could identify current stage and next action immediately, including reject/reprocess paths from the start. Operations checkpoints were aligned with field workflows for long-term stability.",
     },
     tags: ["공공", "Vue", "검증"],
     role: {
@@ -443,6 +476,10 @@ export const projects: Project[] = [
       ko: "금융 도메인 UX 신뢰성과 관리자 운영성을 강화한 리뉴얼",
       en: "Renewal focused on trustful UX and operational admin in finance",
     },
+    details: {
+      ko: "리뉴얼의 목표는 단순한 시각 개선이 아니라 '신뢰감 있는 금융 경험' 재구성이었습니다. 사용자 화면에서는 오류와 안내 문구를 같은 규칙으로 통일해 해석 부담을 낮췄고, 관리자 화면에서는 업무 순서와 동일한 동선으로 액션 배치를 다시 설계했습니다. 운영 로그 포인트를 정리해 장애 대응까지 포함한 실무 완성도를 높였습니다.",
+      en: "The renewal goal was not cosmetic refresh but rebuilding a trust-oriented finance experience. On user screens, error and guidance messaging was standardized to reduce interpretation burden. On admin screens, actions were reorganized to match real operational order, and logging points were refined for faster incident response.",
+    },
     tags: ["React", "TypeScript", "금융"],
     role: {
       ko: "기여도 FE 100%",
@@ -497,6 +534,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "대규모 관리 화면의 데이터 정확성과 운영 효율을 높인 고도화",
       en: "Enhancement focused on data accuracy and operational efficiency at scale",
+    },
+    details: {
+      ko: "이 고도화는 기능 추가보다 '복잡한 데이터 화면을 관리 가능한 상태로 만드는 것'에 초점이 있었습니다. 쿼리와 테이블 책임을 분리해 변경 범위를 예측 가능하게 만들고, 타입 검증을 강화해 운영 중 데이터 불일치를 조기 차단했습니다. 필터/정렬/페이지 이동이 섞이는 실제 사용 패턴 기준으로 화면 반응성을 다듬었습니다.",
+      en: "This enhancement focused less on new features and more on making complex data screens manageable. I separated query and table responsibilities to make change impact predictable, and stronger type validation prevented runtime mismatches early. Responsiveness was tuned for real usage patterns where filtering, sorting, and pagination are combined.",
     },
     tags: ["React", "TanStack", "Zustand"],
     role: {
@@ -557,6 +598,10 @@ export const projects: Project[] = [
       ko: "모바일 쇼핑 경험을 WebOS 서비스와 연계한 크로스 채널 구현",
       en: "Cross-channel implementation connecting mobile shopping with WebOS services",
     },
+    details: {
+      ko: "모바일 구매 흐름을 TV 경험과 연결하는 과정에서 맥락 단절이 자주 발생해, 채널 간 상태 전달 규칙을 먼저 정리했습니다. 사용자가 어느 디바이스에서 시작했는지와 무관하게 동일한 단계감을 느끼도록 전환 구간을 단순화했습니다. 유지보수에서는 반복 오류를 우선 제거해 운영 부담을 낮추는 데 집중했습니다.",
+      en: "Cross-channel transitions between mobile purchase flow and TV experience often broke context, so I first formalized state handoff rules. Transition steps were simplified so users could feel a consistent journey regardless of where they started. During maintenance, I prioritized recurring issues to reduce operational overhead.",
+    },
     tags: ["JSP", "Spring Boot", "WebOS"],
     role: {
       ko: "기여도 FE 20% · 완료 후 유지보수 진행",
@@ -602,6 +647,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "사이니지 운영 관리의 데이터 정확성과 유지보수성을 높인 개선",
       en: "Improvement focused on data accuracy and maintainability in signage operations",
+    },
+    details: {
+      ko: "운영자가 하루에 여러 번 사용하는 화면이라, 체감 성능과 정확도를 동시에 잡는 것이 핵심이었습니다. 대시보드/리스트의 상태 경계를 재정의해 동기화 오류를 줄이고, 조회와 수정 흐름을 분리해 의도치 않은 영향 전파를 막았습니다. 이후 기능 추가를 고려해 모듈 경계를 강화해두어 유지보수 난이도를 낮췄습니다.",
+      en: "Because operators use these screens repeatedly each day, perceived speed and accuracy were equally important. I redefined dashboard/list state boundaries to reduce sync issues and separated read/update paths to prevent unintended side effects. Module boundaries were strengthened for easier future extension and maintenance.",
     },
     tags: ["React", "TypeScript", "Admin"],
     role: {
@@ -662,6 +711,10 @@ export const projects: Project[] = [
       ko: "기업용 파트너 포털의 반응형 퍼블리싱과 화면 품질 확보",
       en: "Responsive publishing and UI quality for an enterprise partner portal",
     },
+    details: {
+      ko: "퍼블리싱 100% 담당 프로젝트라 산출물 일관성이 가장 중요한 과제였습니다. 반복되는 레이아웃 패턴을 컴포넌트화해 템플릿 확장 시에도 품질 편차가 생기지 않게 했고, 반응형에서 텍스트 밀도와 여백 리듬을 세밀하게 조정했습니다. QA 피드백 라운드를 짧게 돌려 실무 배포 일정에 맞춰 안정적으로 마감했습니다.",
+      en: "As a publishing-only project, consistency across deliverables was the primary challenge. Repeated layout patterns were componentized to avoid quality drift as templates expanded, and responsive typography/spacing rhythm was tuned carefully. Fast QA loops helped close the project reliably within delivery timelines.",
+    },
     tags: ["Next.js", "Tailwind", "Publishing"],
     role: {
       ko: "기여도 퍼블리싱 100%",
@@ -716,6 +769,10 @@ export const projects: Project[] = [
       ko: "TV 시청 중 오버레이 기반 상호작용 UX를 구현한 서비스",
       en: "An overlay-based interactive UX for TV viewing scenarios",
     },
+    details: {
+      ko: "TV 오버레이 UX는 노출 시간이 짧고 입력 방식이 제한적이라, 한 번의 포커스 이동이 전체 경험을 좌우했습니다. 오버레이 진입/이탈 타이밍과 포커스 회복 규칙을 먼저 고정한 뒤 추천 데이터를 연결해 인터랙션 안정성을 확보했습니다. 네트워크 지연 상황에서도 사용자가 길을 잃지 않도록 상태 피드백을 간결하게 설계했습니다.",
+      en: "TV overlay UX has short exposure windows and limited input, so a single focus move can shape the whole experience. I fixed entry/exit timing and focus-recovery rules before wiring recommendation data, securing interaction stability. Even under network delay, state feedback stayed concise so users did not lose orientation.",
+    },
     tags: ["Svelte", "WebOS", "Overlay"],
     role: {
       ko: "기여도 FE 20%",
@@ -760,6 +817,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "복잡한 권한/상태 흐름을 예측 가능하게 구조화한 AI 운영 플랫폼",
       en: "AI operations platform with predictable permission/state architecture",
+    },
+    details: {
+      ko: "AI Agent 플랫폼은 기능 자체보다 권한과 상태 조합이 복잡해, '어떤 사용자에게 어떤 화면이 언제 보이는지'를 명확히 정의하는 작업이 핵심이었습니다. 예외 상황에서는 원인보다 다음 행동을 먼저 제시하도록 UX를 조정해 운영 문의를 줄였습니다. 운영 팀이 바로 재현할 수 있도록 액션 로그 단위를 설계해 대응 속도를 높였습니다.",
+      en: "In this AI Agent platform, complexity came from permission-state combinations more than from raw features, so I focused on defining exactly who sees what and when. In failure cases, UX was tuned to guide the next action first, reducing operational inquiries. Action-level logs were designed for immediate reproducibility by operations teams.",
     },
     tags: ["AI", "React", "B2B"],
     role: {
@@ -818,6 +879,10 @@ export const projects: Project[] = [
     oneLiner: {
       ko: "AI 추천 결과를 디바이스 UI와 안정적으로 연결한 연동 개발",
       en: "Integrated AI recommendations into device UI with stable behavior",
+    },
+    details: {
+      ko: "추천 결과가 시시각각 변하는 환경이라, 데이터 자체보다 반영 타이밍 제어가 중요했습니다. AI 응답을 그대로 노출하지 않고 디바이스 UI 규칙에 맞게 매핑해 시각적 일관성을 유지했고, 결과 없음/실패/지연 케이스를 별도로 설계해 체감 품질을 지켰습니다. 연동 오류가 발생해도 서비스가 멈추지 않도록 fallback 경로를 명확히 두었습니다.",
+      en: "Because recommendation outputs changed frequently, update timing mattered as much as data quality. Instead of rendering raw AI responses, I mapped them into device UI rules to keep visual consistency. Empty, failed, and delayed states were designed separately, with explicit fallback paths to keep the service running under integration errors.",
     },
     tags: ["WebOS", "AI", "연동"],
     role: {

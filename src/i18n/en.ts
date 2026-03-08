@@ -248,13 +248,13 @@ export const en = {
   },
   contact: {
     title: "Contact",
-    desc: "Open to career opportunities and frontend role inquiries.",
-    badge: "Open to Opportunities",
-    headline: "If you're hiring for a frontend role, I'd love to connect.",
+    desc: "Open to frontend role proposals and project collaboration.",
+    badge: "Contact",
+    headline: "Open to frontend role and project inquiries.",
     message:
-      "I want to contribute to product teams with strong ownership and practical execution.",
+      "I have hands-on experience across end-user interfaces, admin features, and service stabilization. Share your team context and expected role, and I will review and respond quickly.",
     sendEmail: "Send Email",
-    response: "I usually reply within a day on weekdays.",
+    response: "I usually reply within 24 hours on weekdays.",
     channelsTitle: "Where to Reach Me",
     channelEmail: "Email",
     channelGithub: "GitHub",
@@ -264,15 +264,15 @@ export const en = {
     workScope: [
       {
         title: "Frontend Engineer",
-        desc: "Product development with React and TypeScript",
+        desc: "Product development with both user and operator perspectives",
       },
       {
-        title: "Operations-focused Role",
-        desc: "Roles that include real service operations and maintenance",
+        title: "Product Frontend",
+        desc: "Cross-functional role with PM, design, and backend collaboration",
       },
       {
-        title: "Product Improvement Team",
-        desc: "Teams focused on performance, reliability, and UX quality",
+        title: "Operations & Enhancement",
+        desc: "Roles focused on service stability plus performance and UX improvements",
       },
     ],
     emailLabel: "Email",

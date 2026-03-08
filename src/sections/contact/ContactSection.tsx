@@ -65,7 +65,7 @@ export default function ContactSection() {
           <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-2xl md:text-3xl">
             {t("contact.headline")}
           </h3>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+          <p className="mt-3 max-w-2xl whitespace-pre-line text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
             {t("contact.message")}
           </p>
 

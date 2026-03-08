@@ -233,13 +233,13 @@ export const ko = {
   },
   contact: {
     title: "Contact",
-    desc: "이직/구직 관련 제안과 포지션 문의를 기다리고 있습니다.",
-    badge: "Open to Opportunities",
-    headline: "프론트엔드 포지션 제안, 편하게 연락 주세요.",
+    desc: "프론트엔드 포지션 제안이나 협업 문의를 받고 있습니다.",
+    badge: "Contact",
+    headline: "프론트엔드 포지션과 프로젝트 문의를 환영합니다.",
     message:
-      "실무 운영 경험을 바탕으로 안정적인 제품 개발에 기여하고 싶습니다.",
+      "서비스 화면 구현, 관리자 기능 개발, 운영 안정화까지 경험했습니다.\n팀 상황과 기대 역할을 알려주시면 빠르게 검토해 답변드리겠습니다.",
     sendEmail: "이메일 보내기",
-    response: "평일 기준 하루 이내 답장드립니다.",
+    response: "평일 기준 24시간 이내 답장드립니다.",
     channelsTitle: "연락 방법",
     channelEmail: "Email",
     channelGithub: "GitHub",
@@ -249,15 +249,15 @@ export const ko = {
     workScope: [
       {
         title: "Frontend Engineer",
-        desc: "React·TypeScript 기반 제품 개발",
+        desc: "사용자와 운영자 관점을 함께 고려한 제품 개발",
       },
       {
-        title: "서비스 운영형 역할",
-        desc: "운영/유지보수까지 포함한 실무 포지션",
+        title: "Product Frontend",
+        desc: "기획·디자인·백엔드와 협업해 제품 완성도를 높이는 역할",
       },
       {
-        title: "제품 개선 중심 팀",
-        desc: "성능·안정성·사용성 개선에 집중하는 팀",
+        title: "운영/고도화 중심 역할",
+        desc: "기존 서비스 안정화와 성능·사용성 개선을 담당하는 역할",
       },
     ],
     emailLabel: "Email",

@@ -10,8 +10,9 @@ import ContactSection from "@/sections/contact/ContactSection"
 import FeaturedProjectSection from "@/sections/home/FeaturedProjectSection"
 import InterestsSection from "@/sections/home/InterestsSection"
 import SkillsSection from "@/sections/skills/SkillsSection"
+import type { Theme, View } from "@/app/types"
 
-function getViewFromHash() {
+function getViewFromHash(): View {
   const hash = window.location.hash || "#/"
   if (hash.startsWith("#/profile")) return "profile"
   if (hash.startsWith("#/skills")) return "skills"
@@ -20,8 +21,6 @@ function getViewFromHash() {
   if (hash.startsWith("#/contact")) return "contact"
   return "home"
 }
-
-type Theme = "light" | "dark"
 
 function getInitialTheme(): Theme {
   const stored = localStorage.getItem("theme")

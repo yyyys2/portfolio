@@ -1,26 +1,7 @@
-export type ProjectCategory = "platform" | "enterprise" | "finance_public"
+import type { Project, ProjectCategoryMeta } from "./types"
+export type { Project, ProjectCategory } from "./types"
 
-export type Project = {
-  id: string
-  category: ProjectCategory
-  title: { ko: string; en: string }
-  oneLiner: { ko: string; en: string }
-  details?: { ko: string; en: string }
-  tags: string[]
-  role: { ko: string; en: string }
-  stack: string[]
-  problem: { ko: string; en: string }
-  approach: { ko: string[]; en: string[] }
-  reliability: { ko: string[]; en: string[] }
-  result: { ko: string[]; en: string[] }
-  image?: { src: string; note?: string }
-  links?: { live?: string; github?: string }
-}
-
-export const PROJECT_CATEGORIES: {
-  id: ProjectCategory
-  label: { ko: string; en: string }
-}[] = [
+export const PROJECT_CATEGORIES: ProjectCategoryMeta[] = [
   {
     id: "platform",
     label: { ko: "Platform & Device", en: "Platform & Device" },

@@ -2,11 +2,7 @@ import FadeIn from "@/components/animation/FadeIn"
 import Card from "@/components/ui/Card"
 import Section from "@/components/ui/Section"
 import { useI18n } from "@/hooks/useI18n.ts"
-
-type InterestKeyword = {
-  label: string
-  href?: string
-}
+import type { InterestKeyword } from "./types"
 
 export default function InterestsSection() {
   const { t, tm } = useI18n()

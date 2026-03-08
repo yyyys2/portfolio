@@ -2,32 +2,12 @@ import FadeIn from "@/components/animation/FadeIn"
 import Card from "@/components/ui/Card"
 import Section from "@/components/ui/Section"
 import { useI18n } from "@/hooks/useI18n.ts"
-
-type ProfileStat = {
-  label: string
-  value: string
-  desc: string
-}
-
-type ProfileCard = {
-  title: string
-  icon: string
-  body: string
-}
-
-type ExperienceItem = {
-  period: string
-  company: string
-  role: string
-  details: string[]
-}
+import type { ExperienceItem, ProfileSummary } from "./types"
 
 export default function ProfileRegistrationSection() {
   const { t, tm } = useI18n()
 
-  const profileSummary = tm<{ stats: ProfileStat[]; cards: ProfileCard[] }>(
-    "profile.summary"
-  )
+  const profileSummary = tm<ProfileSummary>("profile.summary")
   const profileHighlights = tm<string[]>("profile.highlights")
   const experience = tm<ExperienceItem[]>("profile.experience")
 

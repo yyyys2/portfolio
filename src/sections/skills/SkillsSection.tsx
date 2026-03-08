@@ -3,10 +3,9 @@ import clsx from "clsx"
 import Section from "@/components/ui/Section"
 import Card from "@/components/ui/Card"
 import FadeIn from "@/components/animation/FadeIn"
-import { skills, type Skill } from "@/data/skills"
+import { skills } from "@/data/skills"
 import { useI18n } from "@/hooks/useI18n.ts"
-
-type SkillTab = "all" | Skill["category"]
+import type { SkillTab } from "./types"
 
 const tabs: SkillTab[] = ["all", "frontend", "tooling", "infra"]
 

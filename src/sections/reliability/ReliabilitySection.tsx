@@ -2,17 +2,13 @@ import Section from "@/components/ui/Section"
 import Card from "@/components/ui/Card"
 import FadeIn from "@/components/animation/FadeIn"
 import { useI18n } from "@/hooks/useI18n.ts"
-
-type ReliabilityItem = {
-  title: string
-  desc: string
-}
-
-type ReliabilitySummary = {
-  label: string
-  value: string
-  desc: string
-}
+import type {
+  ChecklistItemProps,
+  PrincipleCardProps,
+  ReliabilityItem,
+  ReliabilitySummary,
+  SummaryCardProps,
+} from "./types"
 
 const summaryTone = [
   "from-primary/12 to-primary/5 dark:from-primary/20 dark:to-primary/10",
@@ -90,12 +86,7 @@ function SummaryCard({
   value,
   desc,
   tone,
-}: {
-  label: string
-  value: string
-  desc: string
-  tone: string
-}) {
+}: SummaryCardProps) {
   return (
     <Card className={`bg-gradient-to-br p-5 ${tone}`}>
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-neutral-400">
@@ -113,11 +104,7 @@ function PrincipleCard({
   index,
   title,
   desc,
-}: {
-  index: number
-  title: string
-  desc: string
-}) {
+}: PrincipleCardProps) {
   return (
     <article className="h-full rounded-xl border border-black/5 bg-black/[0.02] p-4 dark:border-white/10 dark:bg-white/[0.02]">
       <div className="flex items-start gap-3">
@@ -137,7 +124,7 @@ function PrincipleCard({
   )
 }
 
-function ChecklistItem({ index, text }: { index: number; text: string }) {
+function ChecklistItem({ index, text }: ChecklistItemProps) {
   return (
     <article className="rounded-xl border border-black/5 bg-black/[0.02] p-3 dark:border-white/10 dark:bg-white/[0.02]">
       <div className="flex items-start gap-2.5">

@@ -1,11 +1,5 @@
-export type Skill = {
-  id: string
-  name: string
-  proficiency: number
-  category: "frontend" | "tooling" | "infra"
-  competency: { ko: string; en: string }
-  icon?: string
-}
+import type { Skill } from "./types"
+export type { Skill } from "./types"
 
 export const skills: Skill[] = [
   {

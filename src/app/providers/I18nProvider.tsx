@@ -2,9 +2,8 @@ import type { ReactNode } from "react"
 import { useState } from "react"
 import { ko } from "@/i18n/ko"
 import { en } from "@/i18n/en"
-import { I18nContext, type Lang } from "../../context/i18n.context.ts"
-
-type Messages = typeof ko | typeof en
+import type { Lang, Messages } from "@/i18n/types"
+import { I18nContext } from "../../context/i18n.context.ts"
 
 interface I18nProviderProps {
   children: ReactNode

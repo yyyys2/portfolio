@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from "react"
+import { useState } from "react"
 import Section from "@/components/ui/Section"
 import Card from "@/components/ui/Card"
 import Button from "@/components/ui/Button"
@@ -7,9 +7,9 @@ import GithubIcon from "@/components/icons/GithubIcon"
 import InstagramIcon from "@/components/icons/InstagramIcon"
 import DownloadIcon from "@/components/icons/DownloadIcon"
 import { useI18n } from "@/hooks/useI18n.ts"
+import type { ContactLinkProps, WorkItem } from "./types"
 
 const EMAIL = "bellelaide1005@gmail.com"
-type WorkItem = { title: string; desc: string }
 
 export default function ContactSection() {
   const { t, tm } = useI18n()
@@ -137,13 +137,7 @@ function ContactLink({
   children,
   external = false,
   download = false,
-}: {
-  href: string
-  label: string
-  children: ReactNode
-  external?: boolean
-  download?: boolean
-}) {
+}: ContactLinkProps) {
   return (
     <a
       href={href}

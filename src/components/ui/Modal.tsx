@@ -63,9 +63,6 @@ export default function Modal({
               >
                 {title}
               </h2>
-              <p className="mt-1 text-xs text-gray-500 dark:text-neutral-400 sm:text-sm">
-                {t("modal.caseStudy")}
-              </p>
             </div>
             <button
               onClick={onClose}

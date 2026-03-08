@@ -10,5 +10,5 @@ export type ContactLinkProps = {
   label: string
   children: ReactNode
   external?: boolean
-  download?: boolean
+  download?: boolean | string
 }

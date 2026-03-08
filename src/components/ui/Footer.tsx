@@ -35,7 +35,7 @@ export default function Footer() {
           <FooterIconLink
             href={`${import.meta.env.BASE_URL}assets/resume/kim_yun_young_resume.pdf`}
             label="Resume PDF"
-            download
+            download="kim_yun_young_resume.pdf"
           >
             <DownloadIcon />
           </FooterIconLink>
@@ -50,13 +50,13 @@ function FooterIconLink({
   label,
   children,
   external = false,
-  download = false,
+  download,
 }: {
   href: string
   label: string
   children: ReactNode
   external?: boolean
-  download?: boolean
+  download?: boolean | string
 }) {
   return (
     <a
@@ -64,7 +64,7 @@ function FooterIconLink({
       aria-label={label}
       title={label}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      {...(download ? { download: true } : {})}
+      {...(download ? { download } : {})}
       className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-600 ring-1 ring-black/10 transition hover:bg-primary-soft hover:text-primary-strong dark:bg-neutral-800 dark:text-neutral-300 dark:ring-white/10 dark:hover:bg-neutral-700"
     >
       {children}

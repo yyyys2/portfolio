@@ -119,7 +119,7 @@ export default function ContactSection() {
               <ContactLink
                 href={`${import.meta.env.BASE_URL}assets/resume/kim_yun_young_resume.pdf`}
                 label={t("contact.channelResume")}
-                download
+                download="kim_yun_young_resume.pdf"
               >
                 <DownloadIcon />
               </ContactLink>
@@ -136,13 +136,13 @@ function ContactLink({
   label,
   children,
   external = false,
-  download = false,
+  download,
 }: ContactLinkProps) {
   return (
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      {...(download ? { download: true } : {})}
+      {...(download ? { download } : {})}
       className="inline-flex w-full items-center justify-between rounded-xl border border-black/5 bg-white/70 px-3 py-2.5 text-sm text-gray-700 transition hover:bg-black/[0.02] dark:border-white/10 dark:bg-neutral-800/70 dark:text-neutral-200 dark:hover:bg-neutral-700/70"
     >
       <span className="inline-flex items-center gap-2">

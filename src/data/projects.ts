@@ -25,12 +25,12 @@ export const projects: Project[] = [
       en: "Smart Display (WebOS) Multi-platform Service",
     },
     oneLiner: {
-      ko: "WebOS 환경에서 여러 화면이 안정적으로 동작하도록 만든 서비스",
-      en: "A multi-platform service focused on stable state flow and operations in WebOS",
+      ko: "사용자/관리자 웹과 WebOS 앱을 함께 개발·운영한 디바이스 연동 서비스",
+      en: "A device-linked service where user/admin web and WebOS apps were built and operated together",
     },
     details: {
-      ko: "리모컨으로 조작하는 환경이라 포커스가 조금만 틀어져도 사용이 어려웠습니다. 화면 전환 규칙과 상태 흐름을 단순하게 다시 정리해 사용 중 끊김을 줄였습니다. 배포도 작은 단위로 나눠 운영 중 문제를 빠르게 확인하고 수정했습니다.",
-      en: "In remote-control UX, even minor focus issues are critical, so I redesigned navigation rules and state boundaries first. I prioritized operability over feature speed, making incidents reproducible and easier to trace. With small release slices, risk stayed controlled and the service became maintainable while still evolving.",
+      ko: "사용자 웹, 관리자 CMS, WebOS TV 앱이 함께 동작하는 멀티 플랫폼 구조를 개발·운영한 프로젝트입니다. TV 환경의 리모컨 인터랙션과 디바이스 성능 제약을 고려한 UI 설계가 핵심이었고, 운영을 위해 사용자 TV 디바이스 정보 수집과 관리 시스템 연동 구조도 함께 구축했습니다.",
+      en: "This project delivered and operated a multi-platform structure across user web, admin CMS, and WebOS TV app. The core challenge was designing UI for remote-control interaction under device constraints, while also building TV-device data collection and management-system integration for operations.",
     },
     tags: ["WebOS", "React", "운영"],
     role: {
@@ -39,32 +39,46 @@ export const projects: Project[] = [
     },
     stack: ["React", "SCSS", "Webpack", "Redux", "ESLint", "Prettier", "Git"],
     problem: {
-      ko: "WebOS 환경 제약 때문에 화면 전환과 상태 흐름이 자주 꼬이는 문제가 있었음",
-      en: "Device constraints and ops issues required consistent navigation and state handling",
+      ko: "TV 디바이스, 사용자 웹, 관리자 웹이 함께 동작하는 멀티 플랫폼 구조에서 WebOS 리모컨 인터랙션과 디바이스 성능 제약을 동시에 고려한 UI 설계가 필요했고, 운영을 위한 TV 정보 수집/연동 구조도 요구되었습니다.",
+      en: "In a multi-platform setup spanning TV device, user web, and admin web, UI had to account for both WebOS remote interaction and device constraints, while also requiring TV-data collection and operational integration.",
     },
     approach: {
-      ko: ["상태 흐름 정리", "운영 이슈 재현/수정", "릴리즈 단위 안정화"],
+      ko: [
+        "사용자 웹·관리자 시스템·WebOS TV 앱 연동 멀티 플랫폼 구조 통합",
+        "WebOS 환경에 맞는 렌더링 구조와 리모컨 인터랙션 설계",
+        "관리자 Role 기반 운영 시스템으로 베타테스터/디바이스 관리 프로세스 구축",
+        "TV 디바이스 정보 수집 및 관리 시스템 연동 구조 구현",
+      ],
       en: [
-        "Refined state flow",
-        "Reproduced/fixed ops issues",
-        "Stabilized release units",
+        "Integrated a linked multi-platform flow across user web, admin system, and WebOS TV app",
+        "Designed rendering and remote-control interaction optimized for WebOS constraints",
+        "Built a role-based admin operation model for beta tester and device management",
+        "Implemented TV-device data collection and management-system integration",
       ],
     },
     reliability: {
       ko: [
-        "예외 케이스 점검",
-        "오류 대응 루틴 표준화",
-        "유지보수 대응 프로세스화",
+        "리모컨 포커스 유실 시 마지막 유효 포커스 복구 규칙 적용",
+        "Luna API 지연/실패 시 디바이스 정보 조회 fallback 분기 운영",
+        "펌웨어/해상도 차이별 QA 체크리스트로 배포 안정성 관리",
       ],
       en: [
-        "Reviewed edge cases",
-        "Standardized error handling",
-        "Systemized maintenance response",
+        "Applied last-valid-focus recovery rules for remote-navigation failures",
+        "Operated fallback branches for delayed/failed Luna API device lookups",
+        "Managed release stability with firmware/resolution-specific QA checklists",
       ],
     },
     result: {
-      ko: ["유지보수 체계 운영", "서비스 안정성 개선", "운영 이슈 대응 시간 단축"],
-      en: ["Established maintenance workflow", "Improved service stability", "Reduced issue response time in operations"],
+      ko: [
+        "멀티 플랫폼 운영 환경 통합으로 서비스 운영 안정성 향상",
+        "TV 환경 사용성 및 화면 전환 안정성 개선",
+        "Role 기반 운영 관리 체계와 디바이스 데이터 관리 기반 확보",
+      ],
+      en: [
+        "Improved operational stability by unifying the multi-platform environment",
+        "Improved TV usability and transition stability",
+        "Established role-based ops governance and a device data management foundation",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/live/webos-multi.png`,
@@ -106,11 +120,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["입력/조회 예외 처리", "운영 시나리오 기반 테스트", "배포 안정화"],
+      ko: [
+        "학습자/관리자 권한 경계에서 라우트 접근 가드 적용",
+        "과제/등록 폼 중복 제출 방지와 입력 유지 처리",
+        "조회 조건 조합별 테스트 케이스로 운영 오류 재현성 확보",
+      ],
       en: [
-        "Handled input/query edge cases",
-        "Ops scenario tests",
-        "Stabilized deployment",
+        "Applied route-access guards across learner/admin permission boundaries",
+        "Prevented duplicate submissions and preserved form state in long flows",
+        "Secured reproducibility with query-combination test scenarios",
       ],
     },
     result: {
@@ -155,11 +173,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["결제 상태 추적 강화", "중복 결제 방지", "장애 대응 분기 처리"],
+      ko: [
+        "거래 단계별 상태 추적과 타임아웃 재조회 정책 분리",
+        "결제 요청 단건 토큰 처리로 중복 결제 경로 차단",
+        "실패/지연/취소 케이스별 고객 문의 대응 로그 키 운영",
+      ],
       en: [
-        "Enhanced payment state tracking",
-        "Prevented duplicate payments",
-        "Handled failure branches",
+        "Separated per-stage transaction tracking and timeout recheck policies",
+        "Blocked duplicate-payment paths with single-use payment tokens",
+        "Operated support-ready log keys for failed/delayed/canceled cases",
       ],
     },
     result: {
@@ -208,11 +230,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["브라우저 호환성 점검", "배포 전 QA 점검", "운영 이슈 대응"],
+      ko: [
+        "브라우저별 레이아웃 깨짐 기준선을 정의해 사전 점검",
+        "SEO 메타/오픈그래프 누락 검증으로 공개 품질 관리",
+        "콘텐츠 교체 시 섹션별 회귀 체크로 운영 변경 안정화",
+      ],
       en: [
-        "Checked browser compatibility",
-        "Pre-release QA",
-        "Handled ops issues",
+        "Pre-checked browser-specific layout breakpoints against a baseline",
+        "Managed publication quality with SEO meta/Open Graph validation",
+        "Stabilized content updates via section-level regression checks",
       ],
     },
     result: {
@@ -258,11 +284,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["검증 규칙 추가", "오류 분기 처리", "운영 체크리스트 반영"],
+      ko: [
+        "SDK 버전 업로드 시 메타데이터/파일 정합성 검증 강화",
+        "권한 승인/배포 이력 감사 로그로 운영 추적성 확보",
+        "버전 롤백 시나리오를 포함한 단계 배포 체크리스트 운영",
+      ],
       en: [
-        "Added validation rules",
-        "Handled error branches",
-        "Applied ops checklists",
+        "Strengthened metadata/artifact consistency checks on SDK uploads",
+        "Secured operational traceability with permission/release audit logs",
+        "Operated staged release checklists including rollback scenarios",
       ],
     },
     result: {
@@ -312,11 +342,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["누락/중복 처리 방지", "운영 로그 포인트 정리", "배포 후 모니터링"],
+      ko: [
+        "적립/차감/정산 이벤트 상호 정합성 검증 규칙 적용",
+        "이벤트 기간/대상 조건 충돌 방지 가드 로직 운영",
+        "수동 보정 이력과 사유 기록으로 운영 책임 추적 강화",
+      ],
       en: [
-        "Prevented missing/duplicate handling",
-        "Defined ops logs",
-        "Post-release monitoring",
+        "Applied reconciliation rules across accrual, deduction, and settlement events",
+        "Operated guard logic against event-period and eligibility conflicts",
+        "Strengthened accountability with manual-adjustment reason logs",
       ],
     },
     result: {
@@ -365,11 +399,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["예외 흐름 분기", "운영 시나리오 점검", "변경 영향 최소화 배포"],
+      ko: [
+        "실시간 관제 연결 끊김 시 자동 재연결 및 축소 모드 제공",
+        "알람 확인/조치 이력 타임라인으로 운영 이슈 추적",
+        "커뮤니티 관리 액션(차단/복구) 감사 로그 분리 저장",
+      ],
       en: [
-        "Handled exception branches",
-        "Reviewed ops scenarios",
-        "Minimized release impact",
+        "Provided auto-reconnect and degraded mode for control-channel drops",
+        "Tracked incidents through acknowledge/action alarm timelines",
+        "Stored separate audit trails for moderation actions (block/restore)",
       ],
     },
     result: {
@@ -388,12 +426,12 @@ export const projects: Project[] = [
       en: "Daegu Senior Transit Card Issuance/Management System",
     },
     oneLiner: {
-      ko: "공공 발급 업무에서 오류를 줄이도록 만든 관리자 시스템",
-      en: "A public-service system focused on strong validation and issuance stability",
+      ko: "무임 교통카드 발급 시스템과 관리자 프론트엔드를 함께 개발한 공공 프로젝트",
+      en: "A public project delivering both transit-card issuance flows and admin frontend",
     },
     details: {
-      ko: "공공 업무 특성상 빠른 처리보다 정확한 발급 절차가 중요했습니다. 상태 단계를 분명하게 표시해 담당자가 현재 진행 상황을 쉽게 확인할 수 있게 했습니다. 재처리/반려 같은 실제 업무 상황도 초기에 함께 설계했습니다.",
-      en: "In public systems, procedural accuracy matters more than speed, so validation and stage signaling were designed strictly. State transitions were made explicit so operators could identify current stage and next action immediately, including reject/reprocess paths from the start. Operations checkpoints were aligned with field workflows for long-term stability.",
+      ko: "행정복지센터 발급 업무와 지자체/시 관리자 운영을 동시에 지원하는 카드 발급/관리 시스템입니다. 민감 개인정보 처리와 행정안전부 API 연동이 필요한 환경에서 발급 UI, 본인 확인, 서명/출력, 권한 기반 운영 대시보드까지 연결해 행정 업무를 디지털 프로세스로 전환했습니다.",
+      en: "This card issuance/management system supports both welfare-center issuance work and municipality-level admin operations. In a sensitive-data environment requiring MOIS API integration, the project connected issuance UI, identity flow, signature/print process, and role-based dashboards into a digital administrative workflow.",
     },
     tags: ["공공", "Vue", "검증"],
     role: {
@@ -411,32 +449,46 @@ export const projects: Project[] = [
       "Yarn",
     ],
     problem: {
-      ko: "입력 오류나 중복 처리가 발생하면 발급 업무에 큰 영향이 생겼음",
-      en: "Public issuance process had high risk of input errors and duplicates",
+      ko: "행정복지센터에서 카드 발급을 처리하고 지자체/시 관리자가 발급 현황과 운영 데이터를 관리할 수 있는 통합 시스템이 필요했습니다. 주민등록번호 등 민감정보 처리와 행정안전부 시스템 연동을 고려한 안정적인 데이터 처리 구조도 필수였습니다.",
+      en: "A unified system was required for welfare-center issuance and municipality/city-level operational management, with stable data handling for sensitive personal information and MOIS-system integration.",
     },
     approach: {
-      ko: ["입력 검증 강화", "상태 전이 명확화", "관리자 업무 흐름 최적화"],
+      ko: [
+        "행정복지센터 카드 발급 웹 UI와 발급 프로세스 화면 구현",
+        "이름/주민등록번호 입력 시 행정안전부 API 기반 대상자 조회 UI 연동",
+        "서명 패드 연동, 동의서/영수증 출력, 본인인증 로그인 및 계정 관리 구현",
+        "관리자 Level 권한 기반 메뉴 제어와 대시보드, 발급·재고·정산 조회 UI 개발",
+      ],
       en: [
-        "Strengthened input validation",
-        "Clarified state transitions",
-        "Optimized admin workflows",
+        "Built issuance web UI and end-to-end issuance process screens for welfare centers",
+        "Integrated MOIS API-based eligibility lookup from identity inputs",
+        "Implemented signature-pad flow, consent/receipt printing, and phone-auth account flows",
+        "Developed level-based admin controls and dashboards for issuance/inventory/settlement views",
       ],
     },
     reliability: {
       ko: [
-        "오류 메시지 체계화",
-        "재처리 시나리오 정리",
-        "운영 체크 포인트 정의",
+        "주민번호 등 민감정보 마스킹/입력 검증 정책 적용",
+        "행안부 API 실패 시 재조회·수동확인 분기 운영",
+        "발급 동의/서명/출력 증적을 단계별로 누락 없이 기록",
       ],
       en: [
-        "Systemized error messages",
-        "Defined reprocess scenarios",
-        "Set operations checkpoints",
+        "Applied masking and validation policies for sensitive identity data",
+        "Operated requery/manual-verification branches on MOIS API failures",
+        "Recorded consent/signature/print evidence per issuance stage",
       ],
     },
     result: {
-      ko: ["발급 업무 안정성 향상", "재처리 업무 부담 감소"],
-      en: ["Improved issuance stability", "Reduced workload in reprocessing tasks"],
+      ko: [
+        "오프라인 카드 발급 업무의 전산화 및 행정 처리 효율 개선",
+        "대상자 조회 자동화와 디지털 서명/출력 연동으로 발급 절차 디지털 전환",
+        "권한 기반 운영 구조와 발급·재고·정산 UI로 관리자 업무 편의성 향상",
+      ],
+      en: [
+        "Digitized offline issuance work and improved administrative efficiency",
+        "Automated eligibility checks and digitized issuance with signature/print integration",
+        "Improved operator convenience via role-based operations and issuance/inventory/settlement UI",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/daegu_senior_transit_card_system.png`,
@@ -450,12 +502,12 @@ export const projects: Project[] = [
       en: "IMUPAY Finance Homepage Renewal and Admin Development",
     },
     oneLiner: {
-      ko: "금융 서비스에서 신뢰감을 높이기 위해 UX를 개선한 프로젝트",
-      en: "Renewal focused on trustful UX and operational admin in finance",
+      ko: "IM유페이 홈페이지 고도화와 관리자 신규 개발을 함께 수행한 금융 프로젝트",
+      en: "A finance project covering IMUPAY homepage renewal and new admin development",
     },
     details: {
-      ko: "금융 화면은 작은 오류도 사용자 신뢰에 영향을 주기 때문에 상태/오류 안내를 먼저 정리했습니다. 사용자 화면과 관리자 화면 모두 실제 사용 순서에 맞게 흐름을 재구성했습니다. 운영 로그 기준도 정리해 장애 대응 속도를 높였습니다.",
-      en: "The renewal goal was not cosmetic refresh but rebuilding a trust-oriented finance experience. On user screens, error and guidance messaging was standardized to reduce interpretation burden. On admin screens, actions were reorganized to match real operational order, and logging points were refined for faster incident response.",
+      ko: "레거시 금융 웹사이트를 React + TypeScript 기반으로 재구축하고, IM유페이 관리자 CMS를 신규 개발한 프로젝트입니다. 메뉴 구조와 UI/UX를 전면 개편하고 공통 컴포넌트 아키텍처를 구축했으며, NICE 본인인증·휴대폰 인증·nProtect 보안을 적용해 금융 서비스 요구사항을 충족했습니다.",
+      en: "This project rebuilt a legacy finance website on React + TypeScript and introduced a new IMUPAY admin CMS. It overhauled menu structure and UI/UX with a shared component architecture, while integrating NICE verification, phone authentication, and nProtect security to meet finance-grade requirements.",
     },
     tags: ["React", "TypeScript", "금융"],
     role: {
@@ -473,28 +525,50 @@ export const projects: Project[] = [
       "Git",
     ],
     problem: {
-      ko: "입력/조회 오류가 발생할 때 사용자 신뢰가 크게 떨어지는 문제가 있었음",
-      en: "Input/query errors in finance could significantly hurt user trust",
+      ko: "기존 금융 웹사이트가 레거시 구조로 일부 기능이 불안정했고, UI 구조가 체계화되지 않아 유지보수/확장이 어려웠습니다. 또한 사용자 인증·보안 기능이 충분하지 않았고, 별도 관리자 시스템이 없는 상태였습니다.",
+      en: "The existing finance website was legacy and unstable in parts, with unstructured UI that made maintenance and expansion difficult. User authentication/security was insufficient, and there was no dedicated admin system.",
     },
     approach: {
-      ko: ["검증 규칙 체계화", "상태/에러 UI 정리", "관리자 화면 동선 개선"],
+      ko: [
+        "레거시 금융 사이트를 React + TypeScript 기반으로 전면 재구축",
+        "서비스 메뉴 구조와 UI/UX 개편, 공통 UI 컴포넌트 아키텍처 구축",
+        "NICE/휴대폰 본인인증 연동 및 nProtect 키보드/키패드 보안 적용",
+        "유페이 카드 등록 프로세스 UI와 PC·모바일 반응형 인터페이스 구현",
+        "메인/게시판 운영을 위한 관리자(Admin) CMS 신규 구축",
+      ],
       en: [
-        "Systemized validation rules",
-        "Refined state/error UI",
-        "Improved admin flow",
+        "Rebuilt the legacy finance site end-to-end on React + TypeScript",
+        "Overhauled IA/UIUX and established a shared UI component architecture",
+        "Integrated NICE/phone verification and nProtect keyboard/keypad security",
+        "Implemented card-registration UI flow with responsive PC/mobile interfaces",
+        "Built a new admin CMS for main/board content operations",
       ],
     },
     reliability: {
-      ko: ["오류 분기 세분화", "중복 요청 방지", "운영 로그 포인트 정리"],
+      ko: [
+        "본인인증/보안모듈 연동 실패 코드별 대응 화면 표준화",
+        "카드 등록/인증 요청에 단건 처리 토큰으로 중복 실행 방지",
+        "Admin 콘텐츠 변경 이력 버전 관리로 운영 롤백 가능성 확보",
+      ],
       en: [
-        "Detailed error branches",
-        "Prevented duplicate requests",
-        "Organized operations logs",
+        "Standardized UI handling by verification/security-module failure codes",
+        "Prevented duplicate auth/card-registration execution via single-run tokens",
+        "Ensured rollback readiness with versioned admin content change history",
       ],
     },
     result: {
-      ko: ["금융 UX 안정성 향상", "오류 상황에서 사용자 이탈 감소"],
-      en: ["Improved finance UX stability", "Reduced user drop-off in error scenarios"],
+      ko: [
+        "컴포넌트 단위 재설계로 유지보수성과 기능 확장성 개선",
+        "공통 UI 기반으로 화면 개발 생산성과 신규 기능 대응 속도 향상",
+        "인증·보안 체계 및 신규 Admin CMS 구축으로 운영 관리 기반 확보",
+        "반응형 UI 구현과 협업 프로세스 정비로 사용자 경험/개발 안정성 개선",
+      ],
+      en: [
+        "Improved maintainability and extensibility through component-level redesign",
+        "Increased delivery speed with shared UI foundations",
+        "Established operational foundations via security/auth setup and a new admin CMS",
+        "Improved UX and development stability through responsive UI and collaboration process refinement",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/live/imupay.png`,
@@ -548,11 +622,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["데이터 유효성 검증", "필터/정렬 안정화", "운영 이슈 추적성 강화"],
+      ko: [
+        "API 응답 스키마 검증으로 런타임 데이터 불일치 차단",
+        "필터/정렬/페이지네이션 동시 동작 시 상태 경쟁 조건 제어",
+        "장시간 조회 화면의 요청 취소/재요청 정책으로 과부하 완화",
+      ],
       en: [
-        "Validated data integrity",
-        "Stabilized filter/sort",
-        "Improved issue traceability",
+        "Blocked runtime data mismatch with strict response-schema validation",
+        "Controlled race conditions in combined filter/sort/pagination flows",
+        "Reduced load via request-cancel/retry policies on long-lived screens",
       ],
     },
     result: {
@@ -598,11 +676,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["연동 시나리오 점검", "유지보수 대응", "운영 오류 최소화"],
+      ko: [
+        "모바일→TV 전환 시 세션/상태 전달 실패 재동기화 로직 적용",
+        "딥링크 유실 시 홈 fallback과 재진입 가이드 제공",
+        "채널 간 버전 불일치 대응을 위한 유지보수 호환 규칙 운영",
+      ],
       en: [
-        "Reviewed integration scenarios",
-        "Maintained service",
-        "Minimized operational errors",
+        "Applied resync logic for failed mobile-to-TV session/state handoff",
+        "Provided home fallback and re-entry guidance on deeplink failures",
+        "Operated maintenance compatibility rules for cross-channel version drift",
       ],
     },
     result: {
@@ -661,11 +743,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["조회/수정 흐름 분리", "검증 로직 강화", "운영 대응 시간 단축"],
+      ko: [
+        "대시보드/리스트 간 데이터 소스 분리로 동기화 충돌 최소화",
+        "수정 실패 시 낙관적 업데이트 롤백 규칙 명확화",
+        "운영 이슈 재현을 위한 요청/응답 상관 ID 추적 적용",
+      ],
       en: [
-        "Separated read/update flows",
-        "Strengthened validation",
-        "Reduced response time",
+        "Minimized sync collisions by separating dashboard/list data sources",
+        "Clarified optimistic-update rollback rules on update failures",
+        "Applied request/response correlation IDs for incident reproduction",
       ],
     },
     result: {
@@ -720,11 +806,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["크로스브라우저 점검", "접근성 기본 준수", "QA 피드백 반영"],
+      ko: [
+        "템플릿 공통 토큰 사용으로 스타일 편차 누적 방지",
+        "시맨틱 마크업/키보드 탐색 기준선으로 접근성 품질 유지",
+        "화면 단위 시각 회귀 점검으로 퍼블리싱 납품 안정화",
+      ],
       en: [
-        "Cross-browser checks",
-        "Basic accessibility compliance",
-        "Integrated QA feedback",
+        "Prevented style drift by enforcing shared template design tokens",
+        "Maintained accessibility quality with semantic and keyboard baselines",
+        "Stabilized deliveries through page-level visual regression checks",
       ],
     },
     result: {
@@ -769,11 +859,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["포커스 유실 방지", "네트워크 실패 대비", "전환 안정성 확보"],
+      ko: [
+        "오버레이 진입/종료 시 포커스 고정 및 복귀 기준선 정의",
+        "추천 API 지연 시 skeleton/대체 카드로 빈 화면 방지",
+        "자동 닫힘/복귀 타이밍 충돌 방지 가드로 전환 안정화",
+      ],
       en: [
-        "Prevented focus loss",
-        "Handled network failure",
-        "Secured transition stability",
+        "Defined focus lock/restore baselines for overlay entry and exit",
+        "Avoided blank states with skeleton/fallback cards on API delays",
+        "Stabilized transitions with guards against auto-close timing conflicts",
       ],
     },
     result: {
@@ -831,11 +925,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["액션 로그 포인트 설계", "재시도/복구 UX 정리", "배포 검증 강화"],
+      ko: [
+        "권한 매트릭스 기준으로 화면/액션 노출 회귀 테스트 운영",
+        "LLM 응답 실패·지연·빈 결과별 복구 UX와 재시도 정책 분리",
+        "프롬프트 실행 로그와 사용자 액션 로그를 분리 수집해 분석성 강화",
+      ],
       en: [
-        "Designed action log points",
-        "Refined retry/recovery UX",
-        "Strengthened release validation",
+        "Ran regression checks for screen/action exposure by permission matrix",
+        "Separated retry/recovery policies for failed, delayed, and empty LLM outputs",
+        "Strengthened analysis by separating prompt-execution and user-action logs",
       ],
     },
     result: {
@@ -884,11 +982,15 @@ export const projects: Project[] = [
       ],
     },
     reliability: {
-      ko: ["데이터 유효성 검증", "로딩/빈 상태 분리", "연동 에러 대응 분기"],
+      ko: [
+        "AI 응답 스키마 검증과 신뢰도 임계치로 비정상 결과 차단",
+        "추천 결과 없음/지연/실패를 독립 상태로 분리해 오작동 방지",
+        "연동 장애 시 규칙 기반 기본 추천 세트로 서비스 연속성 유지",
+      ],
       en: [
-        "Validated data integrity",
-        "Separated loading/empty states",
-        "Handled integration errors",
+        "Blocked abnormal outputs using response-schema validation and confidence thresholds",
+        "Separated empty, delayed, and failed recommendation states to avoid misbehavior",
+        "Maintained continuity with rule-based fallback recommendations during integration failures",
       ],
     },
     result: {

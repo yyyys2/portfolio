@@ -1,9 +1,20 @@
 import FadeIn from "@/components/animation/FadeIn"
 import Button from "@/components/ui/Button"
 import { useI18n } from "@/hooks/useI18n.ts"
+import { useState } from "react"
 
 export default function HeroSection() {
   const { t } = useI18n()
+  const heroPhotos = [
+    `${import.meta.env.BASE_URL}assets/images/hero/home-hero-photo-01.jpeg`,
+    `${import.meta.env.BASE_URL}assets/images/hero/home-hero-photo-02.jpeg`,
+    `${import.meta.env.BASE_URL}assets/images/hero/home-hero-photo-03.jpeg`,
+  ]
+  const [mainPhotoIndex] = useState(() =>
+    Math.floor(Math.random() * heroPhotos.length)
+  )
+  const mainPhoto = heroPhotos[mainPhotoIndex]
+  const sidePhotos = heroPhotos.filter((_, index) => index !== mainPhotoIndex)
 
   return (
     <section id="top" className="bg-drift-wrapper relative">
@@ -13,7 +24,7 @@ export default function HeroSection() {
             <div className="mx-auto mb-6 flex w-full max-w-sm items-end justify-center gap-3 md:hidden">
               <div className="photo-float aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/projects/test2.jpg`}
+                  src={mainPhoto}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -22,7 +33,7 @@ export default function HeroSection() {
 
               <div className="photo-float2 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.jpg`}
+                  src={sidePhotos[0] ?? heroPhotos[0]}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -31,7 +42,7 @@ export default function HeroSection() {
 
               <div className="photo-float3 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.png`}
+                  src={sidePhotos[1] ?? heroPhotos[1]}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -47,7 +58,7 @@ export default function HeroSection() {
             </FadeIn>
 
             <FadeIn delay={0.05}>
-              <h1 className="mx-auto mt-5 max-w-4xl font-display text-3xl font-semibold leading-tight tracking-tight text-gray-900 sm:text-4xl md:mx-0 md:text-5xl dark:text-neutral-100">
+              <h1 className="mx-auto mt-5 max-w-full whitespace-nowrap font-display text-[1.7rem] font-semibold leading-[1.2] tracking-tight text-gray-900 sm:text-[2rem] md:mx-0 md:text-[2.3rem] lg:text-[2.7rem] dark:text-neutral-100">
                 {t("hero.title")}
               </h1>
             </FadeIn>
@@ -80,7 +91,7 @@ export default function HeroSection() {
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white/40 ring-1 ring-black/5 backdrop-blur dark:bg-neutral-800/60 dark:ring-white/10">
                 {/* main photo */}
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/projects/test2.jpg`}
+                  src={mainPhoto}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
@@ -92,7 +103,7 @@ export default function HeroSection() {
               {/* stacked cards */}
               <div className="photo-float absolute -right-4 -top-4 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 sm:-right-5 sm:-top-5 sm:w-32 md:-right-6 md:-top-6 md:w-40 dark:ring-white/10">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.png`}
+                  src={sidePhotos[0] ?? heroPhotos[0]}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -101,7 +112,7 @@ export default function HeroSection() {
 
               <div className="photo-float2 absolute -bottom-4 -left-4 aspect-[4/5] w-28 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 sm:-bottom-5 sm:-left-5 sm:w-36 md:-bottom-6 md:-left-6 md:w-44 dark:ring-white/10">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/projects/test.jpg`}
+                  src={sidePhotos[1] ?? heroPhotos[1]}
                   alt=""
                   className="h-full w-full object-cover"
                   loading="lazy"

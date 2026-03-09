@@ -26,7 +26,7 @@ export default function Footer() {
             <GithubIcon />
           </FooterIconLink>
           <FooterIconLink
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/yyyys2"
             label="Instagram"
             external
           >

@@ -110,7 +110,7 @@ export default function ContactSection() {
                 <GithubIcon />
               </ContactLink>
               <ContactLink
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/yyyys2"
                 label={t("contact.channelInstagram")}
                 external
               >

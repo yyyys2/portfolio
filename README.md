@@ -12,6 +12,7 @@ React + TypeScript 기반으로 구현되었으며,
 https://yyyys2.github.io/portfolio
 
 ---
+
 ## Tech Stack
 
 - React 19
@@ -56,7 +57,6 @@ https://yyyys2.github.io/portfolio
 - 이미지 `loading="lazy"` 적용
 - 계산 비용이 있는 목록 처리에 `useMemo` 사용
 - 폰트 `font-display: swap` 설정으로 렌더링 지연 완화
-
 
 ## 프로젝트 구조
 

@@ -1,12 +1,22 @@
-module.exports = {
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-  ],
-  rules: {
-    "prettier/prettier": "error",
+import js from "@eslint/js"
+import prettierConfig from "eslint-config-prettier"
+import globals from "globals"
+import tseslint from "typescript-eslint"
+
+export default [
+  {
+    ignores: ["dist/**", "node_modules/**"],
   },
-}
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+  },
+  prettierConfig,
+]

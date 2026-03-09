@@ -23,10 +23,7 @@ export default function ReliabilitySection() {
   const checklist = tm<string[]>("reliability.checklist")
 
   return (
-    <Section
-      id="reliability"
-      title={t("reliability.title")}
-    >
+    <Section id="reliability" title={t("reliability.title")}>
       <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
         {summary.map((stat, i) => (
           <FadeIn key={`${stat.label}-${i}`} delay={i * 0.04}>
@@ -51,7 +48,11 @@ export default function ReliabilitySection() {
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {items.map((x, i) => (
                   <li key={`${x.title}-${i}`}>
-                    <PrincipleCard index={i + 1} title={x.title} desc={x.desc} />
+                    <PrincipleCard
+                      index={i + 1}
+                      title={x.title}
+                      desc={x.desc}
+                    />
                   </li>
                 ))}
               </ul>
@@ -81,12 +82,7 @@ export default function ReliabilitySection() {
   )
 }
 
-function SummaryCard({
-  label,
-  value,
-  desc,
-  tone,
-}: SummaryCardProps) {
+function SummaryCard({ label, value, desc, tone }: SummaryCardProps) {
   return (
     <Card className={`bg-gradient-to-br p-5 ${tone}`}>
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-neutral-400">
@@ -100,11 +96,7 @@ function SummaryCard({
   )
 }
 
-function PrincipleCard({
-  index,
-  title,
-  desc,
-}: PrincipleCardProps) {
+function PrincipleCard({ index, title, desc }: PrincipleCardProps) {
   return (
     <article className="h-full rounded-xl border border-black/5 bg-black/[0.02] p-4 dark:border-white/10 dark:bg-white/[0.02]">
       <div className="flex items-start gap-3">

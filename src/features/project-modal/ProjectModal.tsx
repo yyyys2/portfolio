@@ -51,7 +51,7 @@ export default function ProjectModal({
   return (
     <Modal open={open} title={title} onClose={onClose}>
       <div className="space-y-5 sm:space-y-6">
-        <section className="rounded-2xl bg-gradient-to-br from-primary/12 via-accent/20 to-primary/5 p-4 ring-1 ring-black/5 dark:from-primary/20 dark:via-accent/25 dark:to-transparent dark:ring-white/10 sm:p-5">
+        <section className="from-primary/12 rounded-2xl bg-gradient-to-br via-accent/20 to-primary/5 p-4 ring-1 ring-black/5 dark:from-primary/20 dark:via-accent/25 dark:to-transparent dark:ring-white/10 sm:p-5">
           <p className="text-sm leading-relaxed text-gray-700 dark:text-neutral-200">
             {oneLiner}
           </p>
@@ -164,7 +164,10 @@ function InsightCard({ title, items }: { title: string; items: string[] }) {
       </p>
       <ul className="mt-2 space-y-1.5">
         {items.map((item) => (
-          <li key={item} className="flex gap-2 text-sm text-gray-700 dark:text-neutral-200">
+          <li
+            key={item}
+            className="flex gap-2 text-sm text-gray-700 dark:text-neutral-200"
+          >
             <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70 dark:bg-primary/80" />
             <span className="leading-relaxed">{item}</span>
           </li>
@@ -267,7 +270,8 @@ function getProjectStatus({
   }
 
   const role = roleText.toLowerCase()
-  const isMaintenance = role.includes("유지보수") || role.includes("maintenance")
+  const isMaintenance =
+    role.includes("유지보수") || role.includes("maintenance")
 
   if (isMaintenance) {
     return lang === "ko" ? "운영/유지보수 중" : "In operation / maintenance"

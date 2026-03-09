@@ -186,7 +186,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["결제 흐름 안정성 향상", "중복 결제 관련 문의 감소"],
-      en: ["Improved payment flow stability", "Reduced support cases related to duplicate payments"],
+      en: [
+        "Improved payment flow stability",
+        "Reduced support cases related to duplicate payments",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/blockchain_payment_b2c.png`,
@@ -243,7 +246,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["대외 홍보 채널 운영", "반응형 화면 완성도 향상"],
-      en: ["Enabled external promotion channel", "Improved responsive UI quality"],
+      en: [
+        "Enabled external promotion channel",
+        "Improved responsive UI quality",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/smart_mobility_promo_website.jpeg`,
@@ -355,7 +361,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["운영 처리 효율 개선", "이벤트/적립 처리 누락 감소"],
-      en: ["Improved operational efficiency", "Reduced missing cases in event/reward processing"],
+      en: [
+        "Improved operational efficiency",
+        "Reduced missing cases in event/reward processing",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/mobility_rewards_service_admin.jpeg`,
@@ -412,7 +421,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["운영 안정성 확보", "관리자 핵심 액션 접근성 향상"],
-      en: ["Secured operational stability", "Improved accessibility to key admin actions"],
+      en: [
+        "Secured operational stability",
+        "Improved accessibility to key admin actions",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/v2x_control_community_system.jpeg`,
@@ -635,7 +647,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["관리자 생산성 향상", "대용량 조회 화면 응답성 개선"],
-      en: ["Improved admin productivity", "Improved responsiveness in large-data views"],
+      en: [
+        "Improved admin productivity",
+        "Improved responsiveness in large-data views",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/cloud_hospitality_signage_solution.jpeg`,
@@ -756,7 +771,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["운영 관리 품질 향상", "조회/수정 오류 재발 감소"],
-      en: ["Improved operations quality", "Reduced recurrence of read/update errors"],
+      en: [
+        "Improved operations quality",
+        "Reduced recurrence of read/update errors",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/digital_signage_management_solution.jpeg`,
@@ -819,7 +837,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["퍼블리싱 품질 확보", "템플릿 확장 시 화면 일관성 유지"],
-      en: ["Secured publishing quality", "Maintained UI consistency during template expansion"],
+      en: [
+        "Secured publishing quality",
+        "Maintained UI consistency during template expansion",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/energy_b2b_partner_portal.png`,
@@ -872,7 +893,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["TV 환경 UX 완성도 개선", "포커스 이동 오류 감소"],
-      en: ["Improved UX quality on TV environment", "Reduced focus-navigation errors"],
+      en: [
+        "Improved UX quality on TV environment",
+        "Reduced focus-navigation errors",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/tv_overlay_shopping_food_app.jpeg`,
@@ -938,7 +962,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["운영 대응 효율 및 UI 신뢰도 향상", "권한 분기 관련 화면 혼선 감소"],
-      en: ["Improved ops efficiency and UI trust", "Reduced UI confusion in permission branches"],
+      en: [
+        "Improved ops efficiency and UI trust",
+        "Reduced UI confusion in permission branches",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/enterprise_ai_agent_platform.jpeg`,
@@ -995,7 +1022,10 @@ export const projects: Project[] = [
     },
     result: {
       ko: ["AI 추천 연동 안정성 향상", "추천 결과 변동 시 화면 흔들림 감소"],
-      en: ["Improved AI integration stability", "Reduced UI instability during recommendation changes"],
+      en: [
+        "Improved AI integration stability",
+        "Reduced UI instability during recommendation changes",
+      ],
     },
     image: {
       src: `${import.meta.env.BASE_URL}assets/images/projects/webos_ai_styling_recommendation.jpeg`,

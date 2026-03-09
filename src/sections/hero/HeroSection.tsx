@@ -51,20 +51,20 @@ export default function HeroSection() {
             </div>
 
             <FadeIn>
-              <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs text-gray-700 ring-1 ring-black/5 md:mx-0 dark:bg-neutral-800/80 dark:text-neutral-200 dark:ring-white/10">
+              <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs text-gray-700 ring-1 ring-black/5 dark:bg-neutral-800/80 dark:text-neutral-200 dark:ring-white/10 md:mx-0">
                 <span className="h-2 w-2 rounded-full bg-primary"></span>
                 <span className={"font-display"}>{t("hero.keyword")}</span>
               </div>
             </FadeIn>
 
             <FadeIn delay={0.05}>
-              <h1 className="mx-auto mt-5 max-w-full whitespace-nowrap font-display text-[1.7rem] font-semibold leading-[1.2] tracking-tight text-gray-900 sm:text-[2rem] md:mx-0 md:text-[2.3rem] lg:text-[2.7rem] dark:text-neutral-100">
+              <h1 className="mx-auto mt-5 max-w-full whitespace-nowrap font-display text-[1.7rem] font-semibold leading-[1.2] tracking-tight text-gray-900 dark:text-neutral-100 sm:text-[2rem] md:mx-0 md:text-[2.3rem] lg:text-[2.7rem]">
                 {t("hero.title")}
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <p className="mx-auto mt-6 max-w-2xl whitespace-pre-line font-sans text-base leading-relaxed text-gray-600 md:mx-0 dark:text-neutral-300">
+              <p className="mx-auto mt-6 max-w-2xl whitespace-pre-line font-sans text-base leading-relaxed text-gray-600 dark:text-neutral-300 md:mx-0">
                 {t("hero.desc")}
               </p>
             </FadeIn>
@@ -101,7 +101,7 @@ export default function HeroSection() {
               </div>
 
               {/* stacked cards */}
-              <div className="photo-float absolute -right-4 -top-4 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 sm:-right-5 sm:-top-5 sm:w-32 md:-right-6 md:-top-6 md:w-40 dark:ring-white/10">
+              <div className="photo-float absolute -right-4 -top-4 aspect-[4/5] w-24 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10 sm:-right-5 sm:-top-5 sm:w-32 md:-right-6 md:-top-6 md:w-40">
                 <img
                   src={sidePhotos[0] ?? heroPhotos[0]}
                   alt=""
@@ -110,7 +110,7 @@ export default function HeroSection() {
                 />
               </div>
 
-              <div className="photo-float2 absolute -bottom-4 -left-4 aspect-[4/5] w-28 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 sm:-bottom-5 sm:-left-5 sm:w-36 md:-bottom-6 md:-left-6 md:w-44 dark:ring-white/10">
+              <div className="photo-float2 absolute -bottom-4 -left-4 aspect-[4/5] w-28 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 dark:ring-white/10 sm:-bottom-5 sm:-left-5 sm:w-36 md:-bottom-6 md:-left-6 md:w-44">
                 <img
                   src={sidePhotos[1] ?? heroPhotos[1]}
                   alt=""

@@ -34,9 +34,9 @@ export default function FeaturedProjectSection() {
           const oneLiner =
             lang === "ko" ? featured.oneLiner.ko : featured.oneLiner.en
           const impactText =
-            featuredImpactCopy[featured.id as keyof typeof featuredImpactCopy]?.[
-              lang
-            ] ??
+            featuredImpactCopy[
+              featured.id as keyof typeof featuredImpactCopy
+            ]?.[lang] ??
             (lang === "ko"
               ? `성과: ${featured.result.ko[0]}`
               : `Impact: ${featured.result.en[0]}`)

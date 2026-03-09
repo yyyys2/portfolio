@@ -161,10 +161,19 @@ export const en = {
       personalTag: "Photography",
       personalTitle: "Personal Interest",
       personalKeywords: [
-        { label: "Photography Archive" },
+        {
+          label: "Photography Archive",
+          href: "https://www.instagram.com/_mysweetvalentine/",
+        },
         { label: "Curated Travel" },
-        { label: "Literary Reading" },
-        { label: "Cinema Appreciation" },
+        {
+          label: "Literary Reading",
+          href: "https://pedia.watcha.com/ko-KR/users/nkPvrzO8Jvgar/contents/books",
+        },
+        {
+          label: "Cinema Appreciation",
+          href: "https://pedia.watcha.com/ko-KR/users/nkPvrzO8Jvgar/contents/movies",
+        },
         { label: "Food Spot Hunting" },
         { label: "Cafe Discovery" },
         { label: "Solo Travel" },

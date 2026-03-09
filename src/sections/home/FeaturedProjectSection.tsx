@@ -5,6 +5,17 @@ import Tag from "@/components/ui/Tag"
 import { projects } from "@/data/projects"
 import { useI18n } from "@/hooks/useI18n.ts"
 
+const featuredImpactCopy = {
+  "webos-multi": {
+    ko: "성과: 사용자 웹·관리자 CMS·WebOS 앱 3개 플랫폼 통합 운영, 펌웨어/해상도 기준선 QA로 전환 안정성 개선",
+    en: "Impact: Unified operations across 3 surfaces (user web, admin CMS, WebOS app) with firmware/resolution QA baselines for more stable transitions",
+  },
+  "ai-agent": {
+    ko: "성과: LLM 실패·지연·빈 결과 3가지 복구 흐름 분리와 권한 매트릭스 검증으로 운영 대응 속도 개선",
+    en: "Impact: Improved ops response speed by separating 3 recovery flows (failed, delayed, empty LLM output) and validating permission-matrix scenarios",
+  },
+} as const
+
 export default function FeaturedProjectSection() {
   const { t, lang } = useI18n()
   const featuredIds = ["webos-multi", "ai-agent"]
@@ -22,6 +33,13 @@ export default function FeaturedProjectSection() {
           const title = lang === "ko" ? featured.title.ko : featured.title.en
           const oneLiner =
             lang === "ko" ? featured.oneLiner.ko : featured.oneLiner.en
+          const impactText =
+            featuredImpactCopy[featured.id as keyof typeof featuredImpactCopy]?.[
+              lang
+            ] ??
+            (lang === "ko"
+              ? `성과: ${featured.result.ko[0]}`
+              : `Impact: ${featured.result.en[0]}`)
 
           return (
             <FadeIn key={featured.id} delay={index * 0.06}>
@@ -57,6 +75,9 @@ export default function FeaturedProjectSection() {
                     </h3>
                     <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-gray-600 dark:text-neutral-300 sm:text-sm">
                       {oneLiner}
+                    </p>
+                    <p className="mt-2 line-clamp-2 text-[11px] leading-relaxed text-gray-500 dark:text-neutral-400 sm:text-xs">
+                      {impactText}
                     </p>
                   </div>
                 </div>

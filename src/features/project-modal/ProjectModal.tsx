@@ -36,11 +36,13 @@ export default function ProjectModal({
           finance_public: "Finance / Public",
         }[project.category]
 
-  const fallbackNarrative =
+  const approachSummary = summarizeItems(approach, 2)
+  const resultSummary = summarizeItems(result, 2)
+  const fallbackDetails =
     lang === "ko"
-      ? `${oneLiner} 이 프로젝트에서는 ${problem} 핵심 구현은 ${approach.join(", ")} 중심으로 진행했고, 운영 안정성을 위해 ${reliability.join(", ")}에 집중했습니다. 그 결과 ${result.join(", ")}로 이어졌습니다.`
-      : `${oneLiner} In this project, ${problem} Implementation focused on ${approach.join(", ")}. For operational reliability, I prioritized ${reliability.join(", ")}. As a result, it led to ${result.join(", ")}.`
-  const detailNarrative = details ?? fallbackNarrative
+      ? "핵심 흐름을 기준으로 문제를 분해하고, 운영에서 재현 가능한 방식으로 개선했습니다."
+      : "I broke down the problem by core flow and improved it in an operationally reproducible way."
+  const detailNarrative = details ?? fallbackDetails
 
   return (
     <Modal open={open} title={title} onClose={onClose}>
@@ -80,7 +82,10 @@ export default function ProjectModal({
         </section>
 
         <Block title={t("modal.details")}>
-          <p className="text-sm leading-7 text-gray-700 dark:text-neutral-200">
+          <SummaryLine label={t("modal.problem")} text={problem} />
+          <SummaryLine label={t("modal.approach")} text={approachSummary} />
+          <SummaryLine label={t("modal.result")} text={resultSummary} />
+          <p className="mt-4 text-sm leading-7 text-gray-700 dark:text-neutral-200">
             {detailNarrative}
           </p>
         </Block>
@@ -170,4 +175,20 @@ function Ul({ items }: { items: string[] }) {
       ))}
     </ul>
   )
+}
+
+function SummaryLine({ label, text }: { label: string; text: string }) {
+  return (
+    <p className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-neutral-200">
+      <span className="font-semibold text-gray-800 dark:text-neutral-100">
+        {label}
+      </span>
+      <span className="mx-1 text-gray-400 dark:text-neutral-500">:</span>
+      <span>{text}</span>
+    </p>
+  )
+}
+
+function summarizeItems(items: string[], limit: number) {
+  return items.slice(0, limit).join(" · ")
 }

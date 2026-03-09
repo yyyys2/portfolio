@@ -18,6 +18,7 @@ export default function ProjectModal({
   const pick = <T,>(v: { ko: T; en: T }) => (lang === "ko" ? v.ko : v.en)
   const title = pick(project.title)
   const oneLiner = pick(project.oneLiner)
+  const role = pick(project.role)
   const problem = pick(project.problem)
   const approach = pick(project.approach)
   const reliability = pick(project.reliability)
@@ -39,6 +40,13 @@ export default function ProjectModal({
   const approachHighlights = approach.slice(0, 3)
   const resultHighlights = result.slice(0, 3)
   const reliabilityHighlights = reliability.slice(0, 3)
+  const projectStatus = getProjectStatus({
+    projectId: project.id,
+    hasLive: Boolean(project.links?.live),
+    roleText: role,
+    lang,
+  })
+  const stackGroups = groupStackByDomain(project.stack, lang)
 
   return (
     <Modal open={open} title={title} onClose={onClose}>
@@ -60,39 +68,48 @@ export default function ProjectModal({
             value={categoryLabel}
           />
           <MetaCard
-            label={lang === "ko" ? "기술 스택 수" : "Stack Count"}
-            value={`${project.stack.length}`}
+            label={lang === "ko" ? "핵심 포인트 수" : "Key Points"}
+            value={`${
+              problemHighlights.length +
+              approachHighlights.length +
+              resultHighlights.length +
+              reliabilityHighlights.length
+            }`}
           />
           <MetaCard
-            label={lang === "ko" ? "외부 링크" : "External Link"}
-            value={
-              project.links?.live
-                ? lang === "ko"
-                  ? "사이트 있음"
-                  : "Live available"
-                : lang === "ko"
-                  ? "비공개 또는 없음"
-                  : "Private or unavailable"
-            }
+            label={lang === "ko" ? "프로젝트 상태" : "Project Status"}
+            value={projectStatus}
           />
         </section>
 
         <section className="grid gap-3 md:grid-cols-2">
           <InsightCard title={t("modal.problem")} items={problemHighlights} />
           <InsightCard title={t("modal.approach")} items={approachHighlights} />
-          <InsightCard title={t("modal.result")} items={resultHighlights} />
           <InsightCard
             title={t("modal.reliabilityOps")}
             items={reliabilityHighlights}
           />
+          <InsightCard title={t("modal.result")} items={resultHighlights} />
         </section>
 
         <Block title={t("modal.stack")}>
-          <div className="flex flex-wrap gap-1.5">
-            {project.stack.map((s) => (
-              <Tag key={s} tone="soft">
-                {s}
-              </Tag>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {stackGroups.map((group) => (
+              <section
+                key={group.title}
+                className="rounded-xl bg-black/[0.02] p-3 ring-1 ring-black/5 dark:bg-white/[0.02] dark:ring-white/10"
+              >
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 dark:text-neutral-300">
+                  {group.title}
+                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {group.items.map((item) => (
+                    <Tag key={`${group.title}-${item}`} tone="soft">
+                      {item}
+                    </Tag>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
         </Block>
@@ -232,4 +249,96 @@ function inferSecondaryChallenge(project: Project, lang: "ko" | "en") {
   return lang === "ko"
     ? "기능이 늘어나는 동안에도 수정하기 쉽고 운영하기 편한 구조가 필요했습니다"
     : "As the product grew, the structure had to stay easy to maintain and operate"
+}
+
+function getProjectStatus({
+  projectId,
+  hasLive,
+  roleText,
+  lang,
+}: {
+  projectId: string
+  hasLive: boolean
+  roleText: string
+  lang: "ko" | "en"
+}) {
+  if (projectId === "daegu-transport-system") {
+    return lang === "ko" ? "운영(비공개)" : "Operational (private)"
+  }
+
+  const role = roleText.toLowerCase()
+  const isMaintenance = role.includes("유지보수") || role.includes("maintenance")
+
+  if (isMaintenance) {
+    return lang === "ko" ? "운영/유지보수 중" : "In operation / maintenance"
+  }
+  if (hasLive) {
+    return lang === "ko" ? "운영 중 (공개)" : "Live (public)"
+  }
+  return lang === "ko" ? "완료 (비공개)" : "Completed (private)"
+}
+
+function groupStackByDomain(stack: string[], lang: "ko" | "en") {
+  const groups = {
+    frontend: [] as string[],
+    state: [] as string[],
+    infra: [] as string[],
+    tooling: [] as string[],
+  }
+
+  stack.forEach((item) => {
+    const value = item.toLowerCase()
+    if (
+      value.includes("react") ||
+      value.includes("vue") ||
+      value.includes("jsp") ||
+      value.includes("html") ||
+      value.includes("css") ||
+      value.includes("scss") ||
+      value.includes("styled") ||
+      value.includes("vuetify")
+    ) {
+      groups.frontend.push(item)
+      return
+    }
+    if (
+      value.includes("redux") ||
+      value.includes("zustand") ||
+      value.includes("query") ||
+      value.includes("router") ||
+      value.includes("vuex")
+    ) {
+      groups.state.push(item)
+      return
+    }
+    if (
+      value.includes("webpack") ||
+      value.includes("vite") ||
+      value.includes("spring") ||
+      value.includes("cicd")
+    ) {
+      groups.infra.push(item)
+      return
+    }
+    groups.tooling.push(item)
+  })
+
+  const labels =
+    lang === "ko"
+      ? {
+          frontend: "Frontend",
+          state: "State/Data",
+          infra: "Build/Infra",
+          tooling: "Tooling",
+        }
+      : {
+          frontend: "Frontend",
+          state: "State/Data",
+          infra: "Build/Infra",
+          tooling: "Tooling",
+        }
+
+  return (Object.keys(groups) as Array<keyof typeof groups>)
+    .map((key) => ({ title: labels[key], items: groups[key] }))
+    .filter((group) => group.items.length > 0)
 }

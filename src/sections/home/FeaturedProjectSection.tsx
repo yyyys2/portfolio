@@ -43,8 +43,8 @@ export default function FeaturedProjectSection() {
 
           return (
             <FadeIn key={featured.id} delay={index * 0.06}>
-              <Card className="p-4">
-                <div className="flex flex-col gap-4 sm:flex-row">
+              <Card className="h-full p-4">
+                <div className="flex h-full flex-col gap-4 sm:flex-row">
                   <div className="h-40 w-full shrink-0 overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10 sm:h-24 sm:w-28">
                     {featured.image ? (
                       <img

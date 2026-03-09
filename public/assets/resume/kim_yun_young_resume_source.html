@@ -7,28 +7,20 @@
     <style>
       @page {
         size: A4;
-        margin: 11mm;
+        margin: 12mm;
       }
       * {
         box-sizing: border-box;
       }
-      :root {
-        --text: #111827;
-        --muted: #4b5563;
-        --soft: #6b7280;
-        --line: #e5e7eb;
-        --card: #f8fafc;
-        --accent: #0f172a;
-      }
       body {
         margin: 0;
-        color: var(--text);
-        font-family:
-          "Pretendard", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo",
-          sans-serif;
-        line-height: 1.5;
-        font-size: 10.5px;
         background: #fff;
+        color: #111827;
+        font-family:
+          "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic",
+          sans-serif;
+        font-size: 11px;
+        line-height: 1.5;
       }
       h1,
       h2,
@@ -37,191 +29,140 @@
         margin: 0;
       }
       ul {
-        margin: 5px 0 0 15px;
+        margin: 5px 0 0 16px;
         padding: 0;
       }
       li {
-        margin: 1px 0;
+        margin: 2px 0;
       }
       .resume {
         display: grid;
-        gap: 9px;
+        gap: 10px;
+        padding: 12px;
       }
       .hero {
-        border: 1px solid var(--line);
+        border: 1px solid #e5e7eb;
         border-radius: 12px;
         padding: 12px;
-        background: linear-gradient(120deg, #fcfdff 0%, #f3f6fb 100%);
+        background: linear-gradient(120deg, #fbfdff 0%, #f4f7fb 100%);
       }
-      .headline {
+      .hero-head {
         display: flex;
-        align-items: flex-start;
         justify-content: space-between;
-        gap: 8px;
-      }
-      .doc-label {
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        color: #64748b;
-        text-transform: uppercase;
+        align-items: flex-start;
+        gap: 12px;
       }
       .name {
-        margin-top: 2px;
-        font-size: 23px;
+        font-size: 24px;
         font-weight: 800;
         letter-spacing: -0.02em;
-        color: var(--accent);
       }
       .role {
         font-size: 12px;
+        color: #374151;
         font-weight: 700;
-        color: #334155;
       }
       .summary {
-        margin-top: 7px;
+        margin-top: 8px;
         color: #1f2937;
       }
-      .metrics {
+      .contact {
         margin-top: 8px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 6px;
       }
-      .metric {
-        border: 1px solid #dbe4ef;
-        border-radius: 10px;
-        padding: 6px 7px;
-        background: #fff;
-      }
-      .metric b {
-        display: block;
-        margin-bottom: 1px;
-        font-size: 13px;
-      }
-      .contact {
-        margin-top: 8px;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 6px;
-      }
       .contact-item {
-        border: 1px solid var(--line);
+        border: 1px solid #e5e7eb;
         border-radius: 8px;
+        padding: 6px 8px;
         background: #fff;
-        padding: 5px 7px;
       }
       .label {
-        color: var(--soft);
-        font-size: 9.4px;
+        font-size: 9px;
+        color: #6b7280;
       }
       .value {
         margin-top: 1px;
-        font-size: 9.9px;
+        font-size: 10px;
         font-weight: 600;
       }
       .section {
-        border: 1px solid var(--line);
+        border: 1px solid #e5e7eb;
         border-radius: 12px;
-        padding: 10px 11px;
+        padding: 10px 12px;
         background: #fff;
       }
       .section-title {
-        font-size: 11.8px;
+        font-size: 12px;
         font-weight: 800;
-        margin-bottom: 7px;
+        border-bottom: 1px solid #e5e7eb;
         padding-bottom: 5px;
-        border-bottom: 1px solid var(--line);
+        margin-bottom: 8px;
       }
-      .stacked {
+      .grid-2 {
         display: grid;
-        gap: 7px;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
       }
-      .experience {
-        padding: 7px 8px;
+      .card {
         border: 1px solid #edf1f7;
-        background: var(--card);
-        border-radius: 9px;
+        border-radius: 10px;
+        padding: 8px;
+        background: #f8fafc;
       }
-      .experience-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 8px;
+      .card h3 {
+        font-size: 11px;
+        margin-bottom: 3px;
       }
-      .company {
-        font-weight: 700;
+      .muted {
+        color: #4b5563;
       }
-      .period {
-        color: var(--muted);
-        white-space: nowrap;
-      }
-      .position {
-        margin-top: 1px;
-        color: #334155;
-        font-size: 9.8px;
-      }
-      .two-col {
-        display: grid;
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: 8px;
-      }
-      .edu-item {
-        margin-bottom: 6px;
-      }
-      .edu-item:last-child {
-        margin-bottom: 0;
-      }
-      .edu-title {
-        font-weight: 700;
-      }
-      .edu-sub {
-        margin-top: 1px;
-        color: var(--muted);
-        font-size: 9.8px;
-      }
-      .chip-list {
+      .stack {
         display: flex;
         flex-wrap: wrap;
-        gap: 5px;
+        gap: 4px;
       }
       .chip {
-        border: 1px solid #d6dde7;
-        background: #f8fafc;
+        border: 1px solid #d7deea;
         border-radius: 999px;
-        padding: 2px 7px;
-        font-size: 9.4px;
-      }
-      .projects {
-        display: grid;
-        gap: 6px;
+        padding: 2px 8px;
+        font-size: 9px;
+        background: #fff;
       }
       .project {
         border-left: 2px solid #dbe4ef;
-        padding-left: 7px;
+        padding-left: 8px;
+      }
+      .project + .project {
+        margin-top: 8px;
       }
       .project-title {
+        font-size: 11px;
         font-weight: 700;
       }
-      .project-desc {
-        margin-top: 1px;
-        color: #374151;
+      .project-meta {
+        margin-top: 2px;
+        font-size: 9.8px;
+        color: #4b5563;
       }
-      .note {
-        margin-top: 6px;
-        color: var(--soft);
-        font-size: 9.1px;
+      .pia {
+        margin-top: 5px;
+      }
+      .pia p {
+        margin-top: 2px;
+      }
+      .pia b {
+        display: inline-block;
+        min-width: 44px;
       }
       @media print {
         .section,
-        .experience,
+        .card,
         .project,
-        .contact-item,
-        .metric {
+        .contact-item {
           break-inside: avoid;
           page-break-inside: avoid;
-        }
-        .contact {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
     </style>
@@ -229,226 +170,220 @@
   <body>
     <main class="resume">
       <section class="hero">
-        <div class="headline">
+        <div class="hero-head">
           <div>
-            <p class="doc-label">Resume / Career Summary</p>
             <h1 class="name">김윤영</h1>
+            <p class="role">Senior Frontend Developer</p>
           </div>
-          <p class="role">Frontend Developer</p>
         </div>
         <p class="summary">
-          사용자의 흐름과 데이터의 흐름을 함께 생각하는 프론트엔드 개발자입니다.
-          React·TypeScript 기반의 실서비스/관리자 시스템을 구축하며 운영
-          안정성과 예외 대응력을 중심으로 제품을 개선해왔습니다.
+          7년 이상의 프론트엔드 개발 경험을 바탕으로 플랫폼 서비스, 공공 행정
+          시스템, 금융 서비스, WebOS 기반 디바이스 서비스 등 다양한 도메인의 웹
+          서비스를 개발해왔습니다. React + TypeScript 기반 사용자 서비스 및
+          관리자(Admin) 시스템 개발을 중심으로 상태 관리 구조와 UI 아키텍처를
+          설계하고, 실제 운영 환경을 고려한 프론트엔드 구조를 구축해왔습니다.
         </p>
-
-        <div class="metrics">
-          <div class="metric"><b>7+ Years</b>프론트엔드 경력</div>
-          <div class="metric"><b>14+ Cases</b>실무 프로젝트</div>
-          <div class="metric">
-            <b>Platform / Enterprise / Public</b>도메인 경험
-          </div>
-        </div>
-
         <div class="contact">
           <div class="contact-item">
-            <p class="label">Phone</p>
-            <p class="value">+82-10-4724-1005</p>
+            <p class="label">Portfolio</p>
+            <p class="value">https://yyyys2.github.io/portfolio/</p>
           </div>
           <div class="contact-item">
             <p class="label">Email</p>
             <p class="value">bellelaide1005@gmail.com</p>
           </div>
           <div class="contact-item">
-            <p class="label">Birth</p>
-            <p class="value">1993.10.05</p>
-          </div>
-          <div class="contact-item">
-            <p class="label">GitHub</p>
-            <p class="value">github.com/yyyys2</p>
-          </div>
-          <div class="contact-item">
-            <p class="label">GitLab</p>
-            <p class="value">gitlab.com/bellelaide1005</p>
-          </div>
-          <div class="contact-item">
-            <p class="label">Certificate</p>
-            <p class="value">정보처리산업기사</p>
+            <p class="label">Phone</p>
+            <p class="value">010-4724-1005</p>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2 class="section-title">경력 사항</h2>
-        <div class="stacked">
-          <article class="experience">
-            <div class="experience-head">
-              <p class="company">주식회사 오큐브</p>
-              <p class="period">2021.03 - 현재</p>
-            </div>
-            <p class="position">선임연구원</p>
+        <h2 class="section-title">핵심 역량</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Frontend Development</h3>
             <ul>
-              <li>React·TypeScript 기반 웹 서비스 및 관리자 시스템 개발</li>
-              <li>UI 구현, Zustand/Query 상태관리, API 연동, 성능 개선</li>
-              <li>WebOS TV 앱, 공공 행정 시스템, 기업 홈페이지 개발/운영</li>
+              <li>React / TypeScript 기반 웹 서비스 및 관리자 시스템 개발</li>
+              <li>플랫폼 서비스 및 운영 관리 UI 인터페이스 구현</li>
             </ul>
-          </article>
-
-          <article class="experience">
-            <div class="experience-head">
-              <p class="company">엘컴퓨터학원</p>
-              <p class="period">2020.08 - 2021.02</p>
-            </div>
-            <p class="position">팀장</p>
-            <ul>
-              <li>학원 자체 프로그램 개발 및 소프트웨어 강의</li>
-            </ul>
-          </article>
-
-          <article class="experience">
-            <div class="experience-head">
-              <p class="company">운김</p>
-              <p class="period">2020.04 - 2020.08</p>
-            </div>
-            <p class="position">대표</p>
-            <ul>
-              <li>UI/UX 기획 및 웹 디자인, 프론트엔드 개발</li>
-            </ul>
-          </article>
-
-          <article class="experience">
-            <div class="experience-head">
-              <p class="company">주식회사 위컴(WECOM)</p>
-              <p class="period">2018.12 - 2020.03</p>
-            </div>
-            <p class="position">주임연구원</p>
-            <ul>
-              <li>자체 솔루션 앱/홈페이지 프론트엔드 개발</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="two-col">
-          <div>
-            <h2 class="section-title">학력 및 자격</h2>
-            <div class="edu-item">
-              <p class="edu-title">영남이공대학교 모바일인터넷과 졸업</p>
-              <p class="edu-sub">2012.03 - 2015.02 | 학점 3.77 / 4.5</p>
-            </div>
-            <div class="edu-item">
-              <p class="edu-title">계성고등학교 졸업</p>
-              <p class="edu-sub">2009.03 - 2012.02</p>
-            </div>
           </div>
-          <div>
-            <h2 class="section-title">기술 스택</h2>
-            <div class="chip-list">
-              <span class="chip">React</span><span class="chip">TypeScript</span
-              ><span class="chip">JavaScript</span
-              ><span class="chip">Vue2/Vue3</span
-              ><span class="chip">Svelte</span><span class="chip">Next.js</span
-              ><span class="chip">WebOS</span><span class="chip">Tailwind</span
-              ><span class="chip">SCSS/Sass</span
-              ><span class="chip">Styled Components</span
-              ><span class="chip">CSS Modules</span
-              ><span class="chip">Redux</span><span class="chip">Vuex</span
-              ><span class="chip">Zustand</span
-              ><span class="chip">TanStack Query</span
-              ><span class="chip">TanStack Table</span
-              ><span class="chip">Zod</span><span class="chip">Vite</span
-              ><span class="chip">Webpack</span
-              ><span class="chip">Yarn/NPM/PNPM</span
-              ><span class="chip">Git/SVN</span
-              ><span class="chip">Figma/Zeplin</span>
-            </div>
+          <div class="card">
+            <h3>State Management & Architecture</h3>
+            <ul>
+              <li>Zustand, Redux, TanStack Query 기반 상태 관리 구조 설계</li>
+              <li>서비스 규모에 맞는 데이터 흐름 구조 및 UI 아키텍처 구성</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Platform Experience</h3>
+            <ul>
+              <li>WebOS 기반 스마트 디바이스 서비스 UI 개발</li>
+              <li>공공 행정 시스템 및 금융 서비스 프론트엔드 개발</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Collaboration</h3>
+            <ul>
+              <li>프론트엔드 파트 PL 경험</li>
+              <li>Git 브랜치 전략, 코드 리뷰, 개발 가이드 정립</li>
+            </ul>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2 class="section-title">
-          주요 프로젝트 (이전 PDF + 포트폴리오 통합)
-        </h2>
-        <div class="projects">
-          <article class="project">
-            <p class="project-title">
-              2024.07 - 2025.07 디지털 사이니지 통합 관리 솔루션 고도화
-            </p>
-            <p class="project-desc">
-              기존 솔루션 고도화, 관리자 화면 품질/운영성 개선
-            </p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              2024.02 - 2024.07 금융권 홈페이지 고도화
-            </p>
-            <p class="project-desc">
-              홈페이지 고도화 및 관리자 신규 개발 (IM유페이)
-            </p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              2023.11 - 2024.01 디지털 사이니지 통합 관리 솔루션 추가 개발
-            </p>
-            <p class="project-desc">에디터 및 프론트엔드 추가 기능 개발</p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              2023.08 - 2023.11 클라우드 호스피탈리티 관리 솔루션
-            </p>
-            <p class="project-desc">
-              대규모 관리자 화면 고도화, 데이터 정확성/생산성 향상
-            </p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              2023.01 - 2023.08 대구 어르신 통합 무임 교통카드 발급 시스템
-            </p>
-            <p class="project-desc">발급 시스템 + 관리자 프론트엔드 개발</p>
-          </article>
-          <article class="project">
-            <p class="project-title">2022.06 - 2022.08 온라인 교육 플랫폼</p>
-            <p class="project-desc">
-              사용자/관리자 사이트 프론트엔드 및 반응형 개발
-            </p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              2022.03 - 2022.12 블록체인 기반 쇼핑몰 (Vue)
-            </p>
-            <p class="project-desc">
-              사용자/관리자 프론트엔드 담당, 결제 흐름 안정화
-            </p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              2021.09 - 2023.01 React 기반 웹사이트 및 WebOS 앱
-            </p>
-            <p class="project-desc">사용자/관리자 웹 및 WebOS 앱 개발/운영</p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              2021.03 - 2021.10 교통안전 솔루션 웹사이트 개발
-            </p>
-            <p class="project-desc">
-              관제/SDK/리워드/홍보 사이트 개발 및 반응형 적용
-            </p>
-          </article>
-          <article class="project">
-            <p class="project-title">
-              포트폴리오 추가 반영: AI Agent 플랫폼, V2X SDK, WebOS 멀티 플랫폼
-            </p>
-            <p class="project-desc">
-              권한/상태 경계 설계, 운영 로그/예외 대응, 배포 안정화 중심
-            </p>
-          </article>
+        <h2 class="section-title">경력</h2>
+        <div class="card">
+          <h3>주식회사 오큐브 (2021 ~ 재직중)</h3>
+          <p class="muted">Senior Frontend Developer</p>
+          <ul>
+            <li>
+              React + TypeScript 기반 웹 서비스 및 관리자 시스템 프론트엔드 개발
+            </li>
+            <li>Zustand / TanStack Query 기반 상태 관리 아키텍처 설계</li>
+            <li>WebOS 기반 디바이스 서비스 및 관리자 시스템 프론트엔드 개발</li>
+            <li>
+              프론트엔드 파트 PL 역할 수행 (일정 관리, 코드 리뷰, 가이드 정립)
+            </li>
+          </ul>
         </div>
-        <p class="note">
-          기준 데이터: agent/resume.pdf 추출 내용 + 포트폴리오 사이트
-          Profile/Skills/Projects (반영일: 2026-03-06)
-        </p>
+        <div class="card" style="margin-top: 6px">
+          <h3>운김 (2020)</h3>
+          <p class="muted">Founder / Frontend Developer</p>
+          <ul>
+            <li>웹 서비스 기획 및 프론트엔드 개발</li>
+            <li>서비스 UI/UX 설계 및 사용자 흐름 기반 인터페이스 구현</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top: 6px">
+          <h3>위컴 WECOM (2018 ~ 2020)</h3>
+          <p class="muted">Frontend Developer</p>
+          <ul>
+            <li>기업 웹사이트 및 웹 솔루션 프론트엔드 개발</li>
+            <li>사용자 서비스 / 관리자(Admin) 인터페이스 구현</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top: 6px">
+          <h3>엘컴퓨터학원 (2020 ~ 2021)</h3>
+          <p class="muted">Team Lead / Instructor</p>
+          <ul>
+            <li>프론트엔드 및 웹 개발 과정 교육 운영</li>
+            <li>실습 프로젝트 지도 및 코드 리뷰 진행</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">기술 스택</h2>
+        <div class="stack">
+          <span class="chip">React</span><span class="chip">Next.js</span
+          ><span class="chip">Vue2/3</span><span class="chip">Svelte</span
+          ><span class="chip">TypeScript</span
+          ><span class="chip">JavaScript</span><span class="chip">Zustand</span
+          ><span class="chip">Redux</span
+          ><span class="chip">TanStack Query</span><span class="chip">Vuex</span
+          ><span class="chip">SCSS</span><span class="chip">Tailwind CSS</span
+          ><span class="chip">Styled Components</span
+          ><span class="chip">CSS Modules</span><span class="chip">Vuetify</span
+          ><span class="chip">Vite</span><span class="chip">Webpack</span
+          ><span class="chip">Git</span><span class="chip">Git CI/CD</span
+          ><span class="chip">ESLint</span><span class="chip">Prettier</span
+          ><span class="chip">WebOS</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">대표 프로젝트 (Problem / Action / Impact)</h2>
+        <article class="project">
+          <p class="project-title">
+            WebOS 기반 멀티 플랫폼 서비스 개발 (사용자 웹 / 관리자 CMS / TV 앱)
+          </p>
+          <p class="project-meta">
+            2021.09 ~ | Stack: React, JavaScript, SCSS, Redux, Webpack
+          </p>
+          <div class="pia">
+            <p>
+              <b>Problem</b>TV/웹/관리자 웹이 함께 동작하는 구조에서 입력 방식과
+              성능 제약을 동시에 고려해야 했고, 운영 데이터 연동도 필요했습니다.
+            </p>
+            <p>
+              <b>Action</b>멀티 플랫폼 구조 통합, WebOS 리모컨 인터랙션 설계,
+              관리자 Role 기반 운영 기능과 TV 정보 연동 구조를 구현했습니다.
+            </p>
+            <p>
+              <b>Impact</b>운영 안정성과 TV 사용성, 화면 전환 안정성이 개선됐고
+              디바이스 데이터 관리 기반을 확보했습니다.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="project-title">
+            금융 서비스 홈페이지 리뉴얼 및 관리자 개발 - IM 유페이
+          </p>
+          <p class="project-meta">
+            2024.01 ~ 2024.08 | Stack: React, TypeScript, Styled Components,
+            Zustand, Vite
+          </p>
+          <div class="pia">
+            <p>
+              <b>Problem</b>레거시 구조로 일부 기능 안정성이 떨어지고
+              유지보수/확장이 어려웠으며 인증·보안·관리자 시스템이 부족했습니다.
+            </p>
+            <p>
+              <b>Action</b>React+TypeScript로 전면 재구축, 공통 UI 컴포넌트
+              아키텍처 정비, 본인인증/보안 모듈 연동, 신규 Admin CMS를
+              구축했습니다.
+            </p>
+            <p>
+              <b>Impact</b>컴포넌트 단위 구조로 유지보수성과 확장성이 개선됐고
+              운영 관리 체계와 반응형 사용자 경험을 강화했습니다.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="project-title">
+            어르신 통합 무임 교통카드 발급/관리 시스템 - 대구광역시
+          </p>
+          <p class="project-meta">
+            2024.01 ~ 2024.08 | Stack: Vue, JavaScript, Vuetify, Vuex, SCSS,
+            Vite
+          </p>
+          <div class="pia">
+            <p>
+              <b>Problem</b>행정복지센터 발급 업무 전산화와 민감정보 처리,
+              행안부 API 연동이 동시에 필요한 공공 업무 시스템 요구가
+              있었습니다.
+            </p>
+            <p>
+              <b>Action</b>카드 발급 UI, 대상자 조회 API 연동, 서명패드/동의서
+              출력, 권한 기반 관리자 대시보드와 운영 조회 화면을 구현했습니다.
+            </p>
+            <p>
+              <b>Impact</b>발급 절차 자동화와 운영 데이터 가시성을 높여 행정
+              처리 효율과 관리 편의성을 개선했습니다.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">학력 / 자격증</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>학력</h3>
+            <p>영남이공대학교 컴퓨터정보학부 모바일인터넷전공</p>
+            <p class="muted">2012.03 ~ 2015.02</p>
+          </div>
+          <div class="card">
+            <h3>자격증</h3>
+            <p>정보처리산업기사</p>
+            <p class="muted">2016</p>
+          </div>
+        </div>
       </section>
     </main>
   </body>

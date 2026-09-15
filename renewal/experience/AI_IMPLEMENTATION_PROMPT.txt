@@ -1,0 +1,27 @@
+첨부된 `EXPERIENCE_IMPLEMENTATION_GUIDE.md`, `reference-images/experience-default.png`, `reference-images/experience-detail-expanded.png`를 기준으로 기존 포트폴리오의 Experience 페이지를 구현해줘.
+
+먼저 기존 코드베이스의 프레임워크, 라우팅, 스타일 방식, 공통 Header/Footer, 디자인 토큰, Home/About/Projects에서 사용한 온점 연결선과 floating 구현, 애니메이션 라이브러리, 경력·프로젝트 데이터 구조를 확인해. 기존 방식을 우선 사용하고 요청 범위는 Experience 페이지로 제한해. 사용자의 기존 변경사항이나 다른 페이지는 임의로 수정하지 마. 참고 PNG 전체를 이미지로 삽입하지 말고 React + TypeScript 컴포넌트, CSS, SVG로 재현해.
+
+Header는 `KIM YOON YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 EXPERIENCE를 활성 표시해. Hero 고정 문구는 `EXPERIENCE · CAREER`, `Experience.`, `2018 — NOW`, `웹 서비스 구축부터 운영·유지보수까지의 경험을 정리했습니다.`야. 한글은 기존 Pretendard 계열 산세리프를 사용하고 명조체나 필기체를 추가하지 마.
+
+기본 화면은 Hero 좌측과 `CAREER PREVIEW / ● INTERACTIVE` 패널 우측이 일부 겹치는 비대칭 레이아웃이야. 이 패널은 장식 이미지가 아니라 실제로 조작 가능한 UI이며, 회사를 빠르게 선택하고 요약을 보는 Preview야. 전체 경력 상세를 패널 안에 담지 마. 안내 문구는 `회사를 선택하면 요약이 바뀝니다.`로 표시해. 회사 행을 hover하거나 keyboard focus하면 Preview 대상만 바뀌고, 클릭·Enter·Space로 선택하면 해당 회사의 요약을 고정해. 자동 carousel은 사용하지 마.
+
+Preview 안에서 `+ / −` 아이콘을 사용하지 마. 선택된 회사에는 coral dot과 `선택됨`, 선택되지 않은 회사에는 hollow navy circle과 `보기 →`를 표시해. 패널 하단에는 실제 button `선택한 경력 상세 보기 ↓`를 전체 폭으로 배치해. 이 button을 누르면 현재 선택한 회사의 하단 경력 행로 이동하면서 그 회사의 inline accordion 상세를 열어. 이미 열려 있다면 해당 상세 시작 위치로만 이동해. 패널 회사 행 자체를 클릭했을 때는 Preview만 변경하며 자동으로 페이지를 이동하거나 상세를 열지 마.
+
+`Experience.`의 실제 마지막 온점 하나를 connector 시작 anchor로 사용해. 별도 시작 dot을 추가하지 말고 온점의 오른쪽 중앙에서 SVG path가 시작해 현재 Preview의 왼쪽 node까지 이어지게 해. Hero, 온점, Preview를 ResizeObserver로 측정하고 폰트 로딩, viewport resize, Preview 대상·크기 변경이 끝난 시점에 좌표를 갱신해. animation frame이나 scroll마다 DOM 위치를 측정하지 마. Preview가 floating transform으로 움직이면 connector endpoint도 동일한 motion 값을 사용해 따라가게 해.
+
+하단 경력 목록은 카드 묶음이 아니라 얇은 구분선 기반 가로 행이야. 각 행에는 순번, 기간, 회사, 직무, `상세 보기 →` button을 표시해. 상세 버튼은 실제 button이며 `aria-expanded`, `aria-controls`를 제공해. 한 번에 하나만 열 수 있고 같은 버튼을 다시 누르면 닫혀야 해.
+
+중요: `상세 보기`를 누르면 상단 Preview 안의 내용만 바뀌는 것이 아니라 선택한 경력 행 바로 아래에 큰 상세 본문이 inline accordion으로 펼쳐져야 해. 열린 본문은 나머지 회사 행을 아래로 밀어내며 자연스럽게 문서 높이를 늘려야 해. 선택 행은 옅은 코랄 배경과 좌측 코랄 선으로 표시하고 action을 `접기 ↑`로 바꿔. 상세가 열리면 해당 회사 제목으로 focus를 옮기지 말고 사용자가 누른 toggle button의 focus를 유지해. 사용자가 별도의 `본문으로 이동` 링크를 선택했을 때만 상세 제목으로 focus를 이동시켜.
+
+오큐브 상세는 `ROLE / 웹 서비스 구축부터 운영까지`, 한 줄 설명, `주요 업무`, `주요 프로젝트`, `사용 기술` 순서로 구성해. 작은 3열 카드로 압축하지 말고 세로 흐름과 충분한 본문 크기를 유지해. 고정 콘텐츠와 회사별 데이터는 가이드에 정의된 값을 그대로 사용하고 근거 없는 성과·수치·업무를 추가하지 마.
+
+주요 프로젝트는 프로젝트명, 기간, 한 줄 역할, `프로젝트 보기 →`를 가진 구분선 기반 행이야. Projects 페이지에 대응하는 공개 상세가 있는 항목만 링크하고, 없는 항목은 button/link처럼 꾸미지 마. 라우트나 slug가 기존 코드와 다르면 실제 프로젝트 데이터의 식별자를 재사용해.
+
+상단 Preview와 하단 상세의 역할을 중복시키지 마. Preview는 회사·기간·직무와 핵심 업무 최대 2~3개만 보여주고, 하단 상세에서 역할 설명·전체 업무·관련 프로젝트·기술을 보여줘. 모바일에서는 상단 floating Preview와 connector를 숨기고 경력 행과 inline accordion만 사용해. 따라서 모바일에는 `선택한 경력 상세 보기 ↓`도 별도로 만들지 않아도 돼.
+
+상세 open/close는 height를 직접 숫자로 하드코딩하지 말고 CSS grid rows, measured height 또는 기존 motion 라이브러리의 layout animation을 사용해. reduced-motion에서는 즉시 열고 닫으며 floating, connector draw, smooth scroll을 제거해. 모든 control은 명확한 focus-visible과 최소 44×44px 터치 영역을 갖게 해.
+
+Resume CTA는 `RESUME / 전체 경력과 기술 스택 / 이력서 다운로드 ↓`로 표시해. 실제 이력서 파일 경로가 있으면 download link로 연결하고, 없으면 임의의 빈 PDF를 만들지 말고 교체가 필요한 항목으로 보고해. Footer와 contact는 기존 공통 컴포넌트를 재사용해.
+
+구현 후 typecheck, lint, build를 실행하고 360/768/1024/1440px에서 확인해. 회사 Preview hover/focus, click 고정, `선택됨 / 보기 →` 표시, 패널 CTA의 선택 경력 이동·상세 open, 한 개 accordion만 열리는지, open row 바로 아래에 상세가 나타나는지, toggle focus 유지, keyboard-only 조작, project link, connector 좌표와 floating endpoint 동기화, 모바일 Preview 제거, reduced-motion, resume download를 검증해. 마지막 응답에는 변경 파일, 핵심 구현 내용, 검증 결과, 실제 이력서 URL·프로젝트 route 등 남은 교체 항목을 요약해.

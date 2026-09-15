@@ -1,0 +1,26 @@
+첨부된 `CONTACT_IMPLEMENTATION_GUIDE.md`와 `reference-images/contact-final.png`를 기준으로 기존 포트폴리오의 Contact 페이지를 구현해줘.
+
+먼저 기존 코드베이스의 프레임워크, 라우팅, 스타일 방식, 공통 Header/Footer, 디자인 토큰, Home/About/Projects/Experience에서 사용한 온점 connector와 floating 구현, reduced-motion 처리, 이력서 asset 경로를 확인해. 기존 방식을 우선 사용하고 요청 범위는 Contact 페이지로 제한해. 다른 페이지와 사용자의 기존 변경사항은 임의로 수정하지 마. 참고 PNG 전체를 이미지로 삽입하지 말고 React + TypeScript 컴포넌트, CSS, SVG로 재현해.
+
+Header는 `KIM YOON YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 CONTACT를 활성 표시해. Hero 고정 문구는 `CONTACT · GET IN TOUCH`, `Contact.`, `채용 및 프로젝트 관련 연락을 기다립니다.`야. 별도의 감성 문구, 연락 가능 상태, 전화번호, 주소, 프로필 사진을 추가하지 마.
+
+Desktop은 왼쪽 Hero와 오른쪽 `QUICK CONTACT / ● INTERACTIVE` 패널을 viewport 중앙에 넉넉하게 배치해. 화면 하단에는 별도 EMAIL/GITHUB/RESUME 목록, Contact CTA, 반복 이메일을 만들지 마. Footer에는 `© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.`만 남겨. 콘텐츠가 적다는 이유로 새 카드나 장식 섹션을 추가하지 마.
+
+`Contact.`의 실제 마지막 온점 하나를 connector 시작 anchor로 사용해. 별도 시작 dot을 추가하지 말고 온점 오른쪽 중앙에서 Preview panel의 왼쪽 node까지 SVG curve를 연결해. panel의 floating transform과 connector endpoint가 같은 motion 값을 사용하도록 구현해. font ready, ResizeObserver, viewport resize, panel 크기 변경 완료 시 좌표를 갱신하고 scroll이나 animation frame마다 DOM layout을 측정하지 마.
+
+`QUICK CONTACT`는 장식 이미지가 아니라 실제로 조작 가능한 tab interface야. 안내 문구는 `연락 방법을 선택하세요.`이며 `EMAIL / GITHUB / RESUME` 세 tab을 제공해. 초기 tab은 EMAIL이야. 가능하면 WAI-ARIA tab pattern을 사용해 `role=tablist`, `role=tab`, `aria-selected`, `aria-controls`, `role=tabpanel`을 연결하고 좌우 방향키, Home, End로 tab을 이동할 수 있게 해. 기존 프로젝트의 tab 컴포넌트가 있으면 재사용해.
+
+EMAIL panel에는 `EMAIL`, `bellelaide1005@gmail.com`, `이메일 작성 →`, `주소 복사`, `기본 메일 앱으로 연결됩니다.`를 표시해. 이메일 작성은 `mailto:bellelaide1005@gmail.com`으로 연결하고 새 창을 강제하지 마. 주소 복사는 Clipboard API를 사용하되 실패 가능성을 처리해. 성공하면 버튼 label을 2초 정도 `복사됨 ✓`로 바꾸고 `aria-live=polite`로 전달한 뒤 원래 label로 복구해. 사용자가 다시 눌렀을 때 timer를 정리하고, component unmount 시 남은 timer도 cleanup해.
+
+GITHUB panel에는 `GITHUB`, `github.com/yyyys2`, `GitHub 보기 →`, `새 탭에서 열립니다.`를 표시해. 실제 URL은 `https://github.com/yyyys2`이며 새 탭을 사용하면 `rel="noreferrer noopener"`를 함께 지정해.
+
+RESUME panel에는 `RESUME`, `김윤영 프론트엔드 이력서`, `이력서 다운로드 ↓`, `PDF 파일로 다운로드됩니다.`를 표시해. 기존 이력서 asset이 있으면 실제 경로와 filename을 사용해 download link로 구현해. asset이 없으면 빈 PDF나 가짜 URL을 만들지 말고 구현 결과에서 교체 필요 항목으로 보고해.
+
+panel은 5~7초 주기의 4~6px 정도로 아주 약하게 floating하고 hover 또는 focus-within이면 정지해. `prefers-reduced-motion: reduce`에서는 floating, connector draw, smooth transition을 제거해. tab 전환은 150~220ms의 짧은 opacity/translate 정도만 사용하고 layout shift가 크지 않도록 panel body의 최소 높이를 유지해.
+
+모바일에서는 connector와 floating을 제거하고 Hero 다음에 panel을 단일 열로 배치해. EMAIL/GITHUB/RESUME는 가로 tab이 좁으면 동일한 3열을 유지하되 글자가 잘리지 않게 하고, 극소 화면에서만 세로 또는 scrollable tablist로 전환해. 모든 control은 최소 44×44px 터치 영역과 명확한 focus-visible을 가져야 해. 긴 이메일은 overflow 없이 줄바꿈되도록 `overflow-wrap:anywhere`를 적용해.
+
+페이지는 가능하면 `min-height: 100svh` 안에서 Header, main, Footer가 완결되는 구조로 만들어. 작은 화면에서 콘텐츠가 넘치면 자연스럽게 스크롤하고 fixed height로 잘라내지 마. Footer는 desktop에서 하단에 위치하되 absolute positioning으로 콘텐츠와 겹치지 않게 해.
+
+구현 후 typecheck, lint, build를 실행하고 360/768/1024/1440px에서 확인해. keyboard-only tab 이동, EMAIL mailto, copy 성공·실패·label 복구, GitHub target/rel, Resume asset/download, hover와 focus-within floating 정지, connector 좌표 동기화, reduced-motion, 긴 이메일 줄바꿈, Footer 하단 배치, 제거된 하단 중복 목록이 다시 생기지 않았는지 검증해. 마지막 응답에는 변경 파일, 핵심 구현 내용, 검증 결과, 실제 Resume asset 중 남은 교체 항목을 요약해.
+

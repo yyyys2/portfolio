@@ -7,6 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        portfolio: {
+          bg: "var(--portfolio-bg)",
+          surface: "var(--portfolio-surface)",
+          strong: "var(--portfolio-surface-strong)",
+          text: "var(--portfolio-text)",
+          muted: "var(--portfolio-text-muted)",
+          subtle: "var(--portfolio-text-subtle)",
+          accent: "var(--portfolio-accent)",
+          "accent-hover": "var(--portfolio-accent-hover)",
+          "accent-soft": "var(--portfolio-accent-soft)",
+          border: "var(--portfolio-border)",
+        },
         primary: {
           DEFAULT: "#F4B6CF",
           soft: "#FFE4F0",
@@ -39,19 +51,22 @@ export default {
       },
 
       boxShadow: {
+        panel: "var(--portfolio-shadow)",
+        raised: "var(--portfolio-shadow-raised)",
         soft: "0 10px 30px rgba(255, 126, 182, 0.15)",
         card: "0 4px 20px rgba(0, 0, 0, 0.06)",
         glow: "0 0 40px rgba(255, 126, 182, 0.25)",
       },
 
       borderRadius: {
+        panel: "var(--radius-panel)",
         xl2: "1.25rem",
         xl3: "1.75rem",
       },
 
       fontFamily: {
-        sans: ["Pretendard", "system-ui", "sans-serif"],
-        display: ["Outfit", "Pretendard", "sans-serif"],
+        sans: ["var(--font-sans)"],
+        display: ["var(--font-display)"],
       },
 
       transitionTimingFunction: {

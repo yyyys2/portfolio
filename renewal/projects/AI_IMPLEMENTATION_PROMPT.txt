@@ -1,0 +1,24 @@
+첨부된 `PROJECTS_IMPLEMENTATION_GUIDE.md`, `reference-images/projects-list-final.png`, `reference-images/projects-expanded-final.png`를 기준으로 기존 포트폴리오의 Projects 페이지를 구현해줘.
+
+먼저 기존 코드베이스의 프레임워크, 라우팅, 스타일 방식, 공통 Header/Footer, 디자인 토큰, Home/About의 온점 연결선과 floating 구현, 애니메이션 라이브러리, 프로젝트 데이터 구조를 확인해. 기존 방식을 우선 사용하고 요청 범위는 Projects 페이지로 제한해. 다른 페이지와 사용자의 기존 변경사항은 수정하지 마. 참고 PNG 전체를 페이지에 삽입하지 말고 React + TypeScript 컴포넌트, CSS, SVG로 재현해.
+
+Header는 `KIM YOON YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 PROJECTS를 활성 표시해. Hero 고정 문구는 `PROJECTS · SELECTED WORK`, `Selected` / `Projects.`, `참여한 프로젝트의 담당 업무와 문제 해결 과정을 정리했습니다.`야. 한글은 Pretendard 계열 산세리프를 사용하고 명조체나 필기체를 사용하지 마.
+
+기본 화면은 Hero 좌측과 `● LIVE PREVIEW` 우측이 일부 겹치는 비대칭 레이아웃이야. 4개 프로젝트는 둥근 카드가 아닌 구분선 기반의 가로 행으로 보여줘. 프로젝트명, 설명, 기술 스택은 가이드의 고정 콘텐츠를 사용해. 현재 Preview 대상 행은 옅은 코랄 배경과 좌측 코랄 선으로 표시하고 action은 `상세 보기 ↓`로 표시해. hover와 keyboard focus에서 동일하게 Preview가 바뀌어야 하며 자동 carousel은 사용하지 마.
+
+`Projects.`의 실제 마지막 온점 하나를 connector 시작 anchor로 사용해. 별도 시작 dot을 추가하지 말고 온점의 오른쪽 중앙에서 SVG path를 간격 없이 시작해 현재 Preview의 왼쪽 경계 node까지 이어줘. Hero, 온점, Preview를 ResizeObserver로 측정하고 폰트 로딩, resize, Preview 크기와 상세 상태 변경 완료 시 갱신해. animation frame이나 scroll마다 DOM 위치를 측정하지 마. Preview가 움직이거나 위치를 바꾸면 connector endpoint도 같은 motion/transform 값을 사용해 따라가야 해.
+
+프로젝트 행 action은 실제 button이며 `aria-expanded`, `aria-controls`를 제공해. 한 번에 하나의 상세만 열어. AI Agent를 펼치면 작은 Preview가 아래 상세 위치의 큰 제품 visual로 이동·확장되는 흐름으로 보여줘. Framer Motion이 이미 있다면 shared `layoutId`를 사용하고, 없다면 fade-out/fade-in 전환으로 구현해. 같은 AI Agent visual을 Hero와 상세에 동시에 두 개 보여주면 안 돼. reduced-motion에서는 즉시 위치를 변경해.
+
+상세 제품 화면은 충분히 크게 표시하고 바로 아래에 `공개용 재구성 화면 · 실제 기능 흐름을 기준으로 제작`을 표시해. 회사명, 고객명, 로고, 내부 데이터와 개인정보는 넣지 말고 샘플 데이터만 사용해. 실제 담당 기능과 UX 흐름만 재구성하며 구현하지 않은 기능, 근거 없는 성과와 수치를 추가하지 마.
+
+상세 설명은 작은 3열 카드가 아니라 가이드의 `01 PROBLEM → 02 IMPLEMENTATION → 03 RESULT`를 세로 section으로 구현해. 각 section은 좌측 번호/label, 우측 큰 제목/본문 구조이고 본문 폭과 행간을 읽기 편하게 제한해. 다음에는 `FRONTEND DECISIONS`를 4행 definition list로 보여줘. 상세가 모두 끝난 다음에만 02 webOS TV, 03 SmartSolution API Portal, 04 Memomi 행을 표시해.
+
+Project Archive는 첫 화면에 table로 펼치지 말고 `OTHER PROJECTS / 다른 프로젝트 보기 +` disclosure로 둬. 실제 button, `aria-expanded`, `aria-controls`를 사용하고 열었을 때만 Archive를 보여줘.
+
+모바일에서는 Hero Preview, overlap, floating, connector를 제거하고 단일 열로 전환해. hover에 의존하지 말고 toggle button으로 상세를 열게 해. 복잡한 제품 UI를 지나치게 축소하지 말고 필요하면 핵심 영역 crop이나 단계별 이미지로 표시해. 모든 control은 최소 44×44px 터치 영역과 명확한 focus-visible을 가져야 해.
+
+`prefers-reduced-motion`에서는 floating, connector draw, shared layout animation, smooth scroll을 제거해. 새 라이브러리는 꼭 필요한 경우에만 추가하고 기존 공통 connector hook과 motion 체계를 일반화할 수 있으면 재사용해.
+
+구현 후 typecheck, lint, build를 실행하고 360/768/1024/1440px, hover/focus Preview 전환, keyboard-only 조작, 한 개 상세만 열리는지, Preview와 상세 visual 중복 여부, connector 좌표와 endpoint 동기화, 공개용 재구성 caption, Other Projects open/close, reduced-motion을 확인해. 마지막 응답에는 변경 파일, 핵심 구현 내용, 검증 결과, 실제 이미지·route·프로젝트 데이터 중 남은 교체 항목을 요약해.
+

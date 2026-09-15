@@ -2,18 +2,18 @@ import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
-import HeroSection from "@/sections/hero/HeroSection"
 import ProfileRegistrationSection from "@/sections/profile/ProfileRegistrationSection"
 import ProjectsSection from "@/sections/projects/ProjectsSection"
 import ReliabilitySection from "@/sections/reliability/ReliabilitySection"
 import ContactSection from "@/sections/contact/ContactSection"
-import FeaturedProjectSection from "@/sections/home/FeaturedProjectSection"
-import InterestsSection from "@/sections/home/InterestsSection"
 import SkillsSection from "@/sections/skills/SkillsSection"
+import HomePage from "@/pages/HomePage"
 import type { Theme, View } from "@/app/types"
 
 function getViewFromHash(): View {
   const hash = window.location.hash || "#/"
+  if (hash.startsWith("#/about")) return "profile"
+  if (hash.startsWith("#/experience")) return "reliability"
   if (hash.startsWith("#/profile")) return "profile"
   if (hash.startsWith("#/skills")) return "skills"
   if (hash.startsWith("#/projects")) return "projects"
@@ -60,7 +60,7 @@ export default function App() {
 
   return (
     <main className="relative flex min-h-screen flex-col overflow-x-clip bg-white text-gray-900 transition-colors dark:bg-neutral-900 dark:text-neutral-100">
-      <Header theme={theme} onToggleTheme={toggleTheme} />
+      {view !== "home" && <Header theme={theme} onToggleTheme={toggleTheme} />}
       <AnimatePresence>
         <motion.div
           key={themeTransitionKey}
@@ -78,20 +78,14 @@ export default function App() {
         />
       </AnimatePresence>
       <div className="flex-1">
-        {view === "home" && (
-          <>
-            <HeroSection />
-            <FeaturedProjectSection />
-            <InterestsSection />
-          </>
-        )}
+        {view === "home" && <HomePage />}
         {view === "profile" && <ProfileRegistrationSection />}
         {view === "skills" && <SkillsSection />}
         {view === "projects" && <ProjectsSection />}
         {view === "reliability" && <ReliabilitySection />}
         {view === "contact" && <ContactSection />}
       </div>
-      <Footer />
+      {view !== "home" && <Footer />}
     </main>
   )
 }

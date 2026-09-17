@@ -10,11 +10,15 @@ const navigation = [
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [currentHash, setCurrentHash] = useState(() => window.location.hash || "#/")
 
   useEffect(() => {
-    const closeMenu = () => setMenuOpen(false)
-    window.addEventListener("hashchange", closeMenu)
-    return () => window.removeEventListener("hashchange", closeMenu)
+    const handleHashChange = () => {
+      setMenuOpen(false)
+      setCurrentHash(window.location.hash || "#/")
+    }
+    window.addEventListener("hashchange", handleHashChange)
+    return () => window.removeEventListener("hashchange", handleHashChange)
   }, [])
 
   return (
@@ -26,7 +30,11 @@ export default function SiteHeader() {
 
         <nav className="renewal-header__nav" aria-label="주요 메뉴">
           {navigation.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a
+              key={item.href}
+              href={item.href}
+              aria-current={currentHash.startsWith(item.href) ? "page" : undefined}
+            >
               {item.label}
             </a>
           ))}
@@ -57,7 +65,11 @@ export default function SiteHeader() {
             transition={{ duration: 0.18 }}
           >
             {navigation.map((item) => (
-              <a key={item.href} href={item.href}>
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={currentHash.startsWith(item.href) ? "page" : undefined}
+              >
                 {item.label}
               </a>
             ))}

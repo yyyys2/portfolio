@@ -74,24 +74,32 @@
   --focus-ring: 0 0 0 3px rgb(201 130 114 / 38%);
 
   /* Home aliases: page components consume these without duplicating values. */
-  --home-bg: var(--portfolio-bg);
-  --home-surface: var(--portfolio-surface);
-  --home-surface-strong: var(--portfolio-surface-strong);
-  --home-text: var(--portfolio-text);
-  --home-text-muted: var(--portfolio-text-muted);
-  --home-text-subtle: var(--portfolio-text-subtle);
-  --home-accent: var(--portfolio-accent);
-  --home-accent-hover: var(--portfolio-accent-hover);
-  --home-accent-pressed: var(--portfolio-accent-pressed);
-  --home-accent-strong: var(--portfolio-accent-strong);
-  --home-accent-soft: var(--portfolio-accent-soft);
-  --home-border: var(--portfolio-border);
-  --home-border-strong: var(--portfolio-border-strong);
-  --home-panel-radius: var(--radius-panel);
-  --home-shadow: var(--portfolio-shadow);
-  --home-page-max: var(--portfolio-page-max);
-  --home-page-padding: var(--portfolio-page-padding);
-  --home-header-height: var(--portfolio-header-height);
+  --home-bg: #fbfaf8;
+  --home-surface: rgb(255 255 255 / 88%);
+  --home-surface-strong: #ffffff;
+  --home-text: #101f2f;
+  --home-text-soft: #213b59;
+  --home-text-muted: #506985;
+  --home-text-subtle: #9ca6b1;
+  --home-accent: #b9614c;
+  --home-accent-mid: #c97867;
+  --home-accent-light: #d59485;
+  --home-accent-soft: #f4dfda;
+  --home-accent-wash: rgb(207 140 125 / 14%);
+  --home-border: #d7d9da;
+  --home-border-soft: #e8e8e5;
+  --home-border-strong: #c8cdd1;
+  --home-grid: rgb(16 31 47 / 7%);
+  --home-panel-radius: 16px;
+  --home-shadow: 0 22px 54px rgb(16 31 47 / 10%), 0 3px 10px rgb(16 31 47 / 5%);
+  --home-page-max: 1366px;
+  --home-page-padding: 60px;
+  --home-header-height: 112px;
+  --home-z-decor: 0;
+  --home-z-panel: 20;
+  --home-z-connector: 25;
+  --home-z-copy: 30;
+  --home-z-controls: 40;
   --home-fast: var(--motion-fast);
   --home-base: var(--motion-base);
   --home-float-duration: var(--motion-float);
@@ -100,7 +108,8 @@
 
 @media (max-width: 767px) {
   :root {
-    --portfolio-header-height: 72px;
+    --home-page-padding: 20px;
+    --home-header-height: 80px;
   }
 }
 

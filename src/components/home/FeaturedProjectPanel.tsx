@@ -107,113 +107,115 @@ export default function FeaturedProjectPanel({
   }
 
   return (
-    <div className="featured-panel">
-      <div className="featured-panel__topbar">
-        <div className="featured-panel__window-dots" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-        <p>FEATURED PROJECT · {selectedProject.id === "ai-agent" ? "AI AGENT" : "SELECTED"}</p>
-      </div>
-
-      <span ref={anchorRef} className="featured-panel__anchor" aria-hidden="true" />
-
-      <section className="project-search" aria-labelledby="project-search-label">
-        <label id="project-search-label" htmlFor="project-search">
-          PROJECT SEARCH
-          <span className="sr-only">프로젝트 검색</span>
-        </label>
-        <div className="project-search__input-wrap">
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <circle cx="10.5" cy="10.5" r="6.5" />
-            <path d="m15.5 15.5 5 5" />
-          </svg>
-          <input
-            ref={inputRef}
-            id="project-search"
-            type="search"
-            role="combobox"
-            aria-expanded={isOpen}
-            aria-controls="project-search-results"
-            aria-activedescendant={
-              isOpen && results[activeResultIndex]
-                ? `project-result-${results[activeResultIndex].project.id}`
-                : undefined
-            }
-            autoComplete="off"
-            value={query}
-            placeholder="프로젝트명 또는 기술 검색"
-            onChange={(event) => {
-              setQuery(event.target.value)
-              setActiveResultIndex(0)
-              setIsOpen(Boolean(event.target.value.trim()))
-            }}
-            onFocus={() => query.trim() && setIsOpen(true)}
-            onBlur={() => {
-              blurTimerRef.current = window.setTimeout(() => setIsOpen(false), 120)
-            }}
-            onKeyDown={handleKeyDown}
-          />
-          <kbd>⌘ K</kbd>
-        </div>
-
-        <div className="project-search__suggestions" aria-label="추천 검색어">
-          <span>추천 검색어</span>
-          {suggestedSearches.map((keyword) => (
-            <button type="button" key={keyword} onClick={() => runSearch(keyword)}>
-              {keyword}
-            </button>
-          ))}
-        </div>
-
-        {isOpen && (
-          <ul id="project-search-results" className="project-search__results" role="listbox">
-            {results.length > 0 ? (
-              results.map(({ project, index }, resultIndex) => (
-                <li
-                  id={`project-result-${project.id}`}
-                  key={project.id}
-                  role="option"
-                  aria-selected={activeResultIndex === resultIndex}
-                >
-                  <button type="button" onMouseDown={() => selectResult(index)}>
-                    <strong>{project.title}</strong>
-                    <span>{project.stack.join(" · ")}</span>
-                  </button>
-                </li>
-              ))
-            ) : (
-              <li className="project-search__empty">검색 결과가 없습니다.</li>
-            )}
-          </ul>
-        )}
-      </section>
-
-      <article className="project-card" aria-live="polite">
-        <div className="project-card__heading">
-          <span className="project-card__icon" aria-hidden="true">✦</span>
-          <div>
-            <h2>{selectedProject.title}</h2>
-            <p>{selectedProject.description}</p>
+    <div className="featured-panel-shell">
+      <div className="featured-panel">
+        <div className="featured-panel__topbar">
+          <div className="featured-panel__window-dots" aria-hidden="true">
+            <span />
+            <span />
+            <span />
           </div>
+          <p>FEATURED PROJECT · {selectedProject.id === "ai-agent" ? "AI AGENT" : "SELECTED"}</p>
         </div>
 
-        <ul className="project-card__features" aria-label="주요 기능">
-          {selectedProject.previewItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <section className="project-search" aria-labelledby="project-search-label">
+          <label id="project-search-label" htmlFor="project-search">
+            PROJECT SEARCH
+            <span className="sr-only">프로젝트 검색</span>
+          </label>
+          <div className="project-search__input-wrap">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m15.5 15.5 5 5" />
+            </svg>
+            <input
+              ref={inputRef}
+              id="project-search"
+              type="search"
+              role="combobox"
+              aria-expanded={isOpen}
+              aria-controls="project-search-results"
+              aria-activedescendant={
+                isOpen && results[activeResultIndex]
+                  ? `project-result-${results[activeResultIndex].project.id}`
+                  : undefined
+              }
+              autoComplete="off"
+              value={query}
+              placeholder="프로젝트명 또는 기술 검색"
+              onChange={(event) => {
+                setQuery(event.target.value)
+                setActiveResultIndex(0)
+                setIsOpen(Boolean(event.target.value.trim()))
+              }}
+              onFocus={() => query.trim() && setIsOpen(true)}
+              onBlur={() => {
+                blurTimerRef.current = window.setTimeout(() => setIsOpen(false), 120)
+              }}
+              onKeyDown={handleKeyDown}
+            />
+            <kbd>⌘ K</kbd>
+          </div>
 
-        <div className="project-card__footer">
-          <ul aria-label="기술 스택">
-            {selectedProject.stack.map((item) => (
+          <div className="project-search__suggestions" aria-label="추천 검색어">
+            <span>추천 검색어</span>
+            {suggestedSearches.map((keyword) => (
+              <button type="button" key={keyword} onClick={() => runSearch(keyword)}>
+                {keyword}
+              </button>
+            ))}
+          </div>
+
+          {isOpen && (
+            <ul id="project-search-results" className="project-search__results" role="listbox">
+              {results.length > 0 ? (
+                results.map(({ project, index }, resultIndex) => (
+                  <li
+                    id={`project-result-${project.id}`}
+                    key={project.id}
+                    role="option"
+                    aria-selected={activeResultIndex === resultIndex}
+                  >
+                    <button type="button" onMouseDown={() => selectResult(index)}>
+                      <strong>{project.title}</strong>
+                      <span>{project.stack.join(" · ")}</span>
+                    </button>
+                  </li>
+                ))
+              ) : (
+                <li className="project-search__empty">검색 결과가 없습니다.</li>
+              )}
+            </ul>
+          )}
+        </section>
+
+        <article className="project-card" aria-live="polite">
+          <div className="project-card__heading">
+            <span className="project-card__icon" aria-hidden="true">✦</span>
+            <div>
+              <h2>{selectedProject.title}</h2>
+              <p>{selectedProject.description}</p>
+            </div>
+          </div>
+
+          <ul className="project-card__features" aria-label="주요 기능">
+            {selectedProject.previewItems.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <a href={selectedProject.href}>CASE STUDY ↗</a>
-        </div>
-      </article>
+
+          <div className="project-card__footer">
+            <ul aria-label="기술 스택">
+              {selectedProject.stack.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <a href={selectedProject.href}>CASE STUDY ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <span ref={anchorRef} className="featured-panel__anchor" aria-hidden="true" />
     </div>
   )
 }

@@ -47,6 +47,7 @@ export default function HomeHero() {
         const heroRect = hero.getBoundingClientRect()
         const periodRect = period.getBoundingClientRect()
         const anchorRect = panelAnchor.getBoundingClientRect()
+        const currentFloatY = floatY.get()
 
         setGeometry({
           start: {
@@ -55,7 +56,9 @@ export default function HomeHero() {
           },
           end: {
             x: anchorRect.left + anchorRect.width / 2 - heroRect.left,
-            y: anchorRect.top + anchorRect.height / 2 - heroRect.top,
+            // Measure the panel's resting position. The live float value is
+            // applied separately to the SVG path and endpoint below.
+            y: anchorRect.top + anchorRect.height / 2 - heroRect.top - currentFloatY,
           },
         })
       })
@@ -74,7 +77,7 @@ export default function HomeHero() {
       observer.disconnect()
       window.removeEventListener("resize", measure)
     }
-  }, [selectedIndex])
+  }, [floatY, selectedIndex])
 
   useEffect(() => {
     floatY.set(0)
@@ -114,8 +117,10 @@ export default function HomeHero() {
 
   return (
     <section ref={heroRef} className="home-hero" aria-labelledby="home-title">
-      <div className="home-hero__decoration home-hero__decoration--top" aria-hidden="true" />
-      <div className="home-hero__decoration home-hero__decoration--bottom" aria-hidden="true" />
+      <div className="home-hero__decoration home-hero__decoration--large" aria-hidden="true" />
+      <div className="home-hero__decoration home-hero__decoration--small" aria-hidden="true" />
+      <div className="home-hero__decoration home-hero__decoration--outline" aria-hidden="true" />
+      <div className="home-hero__decoration home-hero__decoration--line" aria-hidden="true" />
 
       <div className="home-hero__copy">
         <motion.p
@@ -152,7 +157,7 @@ export default function HomeHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.42, delay: 0.21 }}
         >
-          프로젝트 보기 <span aria-hidden="true">→</span>
+          프로젝트 보기 <span className="home-hero__cta-icon" aria-hidden="true">→</span>
         </motion.a>
       </div>
 
@@ -178,8 +183,9 @@ export default function HomeHero() {
       </motion.div>
 
       <svg className="home-hero__connector" aria-hidden="true">
-        <motion.path d={path} initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.4, delay: 0.72 }} />
-        <motion.circle cx={geometry.end.x} cy={endpointY} r="4.5" />
+        <motion.path className="home-hero__connector-path" d={path} initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.4, delay: 0.72 }} />
+        <motion.circle className="home-hero__connector-end-outer" cx={geometry.end.x} cy={endpointY} r="6" />
+        <motion.circle className="home-hero__connector-end-inner" cx={geometry.end.x} cy={endpointY} r="2.25" />
       </svg>
 
       <div className="home-hero__index">

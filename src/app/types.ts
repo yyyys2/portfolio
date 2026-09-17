@@ -1,9 +1,6 @@
-export type Theme = "light" | "dark"
-
 export type View =
   | "home"
-  | "profile"
-  | "skills"
+  | "about"
   | "projects"
-  | "reliability"
+  | "experience"
   | "contact"

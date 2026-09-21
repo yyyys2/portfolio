@@ -18,6 +18,7 @@ export default function ContactView() {
   const [paused, setPaused] = useState(false)
   const [geometry, setGeometry] = useState({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } })
   const mainRef = useRef<HTMLElement>(null), periodRef = useRef<HTMLSpanElement>(null), anchorRef = useRef<HTMLSpanElement>(null)
+  const copyRef = useRef<HTMLElement>(null), titleRef = useRef<HTMLHeadingElement>(null)
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
   const timerRef = useRef<number | null>(null)
   const controlsRef = useRef<AnimationPlaybackControls | null>(null)
@@ -33,9 +34,12 @@ export default function ContactView() {
     let frame = 0
     const measure = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => {
       const m = main.getBoundingClientRect(), p = period.getBoundingClientRect(), a = anchor.getBoundingClientRect(), fy = floatY.get()
-      setGeometry({ start: { x: p.right - m.left, y: p.top + p.height * .74 - m.top }, end: { x: a.left + a.width / 2 - m.left, y: a.top + a.height / 2 - m.top - fy } })
+      setGeometry({ start: { x: p.right - m.left - 1, y: p.top + p.height / 2 - m.top }, end: { x: a.left + a.width / 2 - m.left, y: a.top + a.height / 2 - m.top - fy } })
     }) }
     const observer = new ResizeObserver(measure); observer.observe(main); observer.observe(period); observer.observe(anchor)
+    // Copy wrapping and title spacing can move the dot without resizing the dot or main.
+    if (copyRef.current) observer.observe(copyRef.current)
+    if (titleRef.current) observer.observe(titleRef.current)
     window.addEventListener("resize", measure); document.fonts.ready.then(measure); measure()
     return () => { cancelAnimationFrame(frame); observer.disconnect(); window.removeEventListener("resize", measure) }
   }, [floatY])
@@ -43,12 +47,15 @@ export default function ContactView() {
   useEffect(() => {
     floatY.set(0)
     if (reducedMotion) return
-    const controls = animate(floatY, [0, -5, 0, 4, 0], { duration: 6, ease: "easeInOut", repeat: Infinity })
+    const controls = animate(floatY, [0, -8, 0, 6, 0], { duration: 5.2, ease: "easeInOut", repeat: Infinity })
     controlsRef.current = controls
-    return () => controls.stop()
+    return () => {
+      controls.stop()
+      controlsRef.current = null
+    }
   }, [floatY, reducedMotion])
 
-  useEffect(() => { if (!controlsRef.current) return; if (paused) controlsRef.current.pause(); else controlsRef.current.play() }, [paused])
+  useEffect(() => { if (!controlsRef.current) return; if (paused) controlsRef.current.pause(); else controlsRef.current.play() }, [paused, reducedMotion])
 
   const endY = useTransform(floatY, value => geometry.end.y + value)
   const path = useTransform(floatY, value => {
@@ -76,8 +83,8 @@ export default function ContactView() {
   return <>
     <main ref={mainRef} className="contact-main">
       <div className="contact-ornament contact-ornament--left" aria-hidden="true" /><div className="contact-ornament contact-ornament--upper" aria-hidden="true" /><div className="contact-ornament contact-ornament--right" aria-hidden="true" />
-      <section className="contact-hero" aria-labelledby="contact-page-title"><p>CONTACT · GET IN TOUCH</p><h1 id="contact-page-title">Contact<span ref={periodRef}>.</span></h1><div>채용 및 프로젝트 관련 연락을 기다립니다.</div></section>
-      <motion.section className="quick-contact-wrap" style={{ y: floatY }} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
+      <section ref={copyRef} className="contact-hero" aria-labelledby="contact-page-title"><p>CONTACT · GET IN TOUCH</p><h1 ref={titleRef} id="contact-page-title">Contact<span className="contact-hero__period"><span className="sr-only">.</span><span ref={periodRef} className="contact-hero__period-dot" aria-hidden="true" /></span></h1><div>복잡한 문제를 편한 화면으로.<br />다음 이야기는 함께 만들어요.</div></section>
+      <motion.section className="quick-contact-wrap" style={{ y: floatY, rotate: "var(--hero-preview-tilt)" }} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
         <div className="quick-contact">
           <header><i /><i /><i /><strong>QUICK CONTACT</strong><b>● INTERACTIVE</b><span>•••</span></header>
           <div className="quick-contact__body"><p>연락 방법을 선택하세요.</p>

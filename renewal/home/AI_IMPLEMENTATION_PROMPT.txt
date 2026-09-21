@@ -8,7 +8,7 @@ Hero 고정 문구는 `Frontend` / `Developer.`의 2줄 제목과 `화면은 사
 
 오른쪽 Featured Project 패널은 transform 기반으로 천천히 떠 있는 효과를 적용해. 이동 범위는 x 약 2px, y 약 6~8px, 한 주기는 약 5.2초로 제한해. 온점과 선 시작점은 고정하고, 선의 종료점은 패널과 동일한 motion value를 사용해서 정확히 따라가야 해. 선 중간 제어점은 이동량의 약 35~45%만 반영해서 약한 탄성만 표현하고 선 전체를 독립적으로 흔들지 마. 연결선을 먼저 그린 후 floating을 시작해.
 
-오른쪽 검색 영역은 장식이 아니라 실제 프로젝트 검색 기능이야. `PROJECT SEARCH` label, `프로젝트명 또는 기술 검색` placeholder, `React`, `접근성`, `AI Agent` 추천 검색어 버튼을 항상 노출해. 프로젝트명·설명·기능 키워드·기술 스택에서 부분 일치로 검색하고 결과는 최대 3개만 보여줘. 검색 결과나 추천어를 선택하면 Featured 카드와 `FEATURED nn / 04`를 함께 갱신해. `Cmd+K`/`Ctrl+K`, ArrowUp/ArrowDown, Enter, Escape를 지원하고 combobox/listbox의 접근 가능한 관계와 `aria-live` 안내를 구현해. 자동 타이핑이나 반복 pulse는 사용하지 말고, 최초 1회의 약한 focus cue만 허용해.
+오른쪽 검색 영역은 장식이 아니라 실제 프로젝트 검색 기능이야. `PROJECT SEARCH` label, `프로젝트명 또는 기술 검색` placeholder, `React`, `WebOS`, `AI Agent` 추천 검색어 버튼을 항상 노출해. 프로젝트명·설명·기능 키워드·기술 스택에서 부분 일치로 검색하고 결과는 최대 3개만 보여줘. 검색 결과나 추천어를 선택하면 Featured 카드와 `FEATURED nn / 04`를 함께 갱신해. `Cmd+K`/`Ctrl+K`, ArrowUp/ArrowDown, Enter, Escape를 지원하고 combobox/listbox의 접근 가능한 관계와 `aria-live` 안내를 구현해. 자동 타이핑이나 반복 pulse는 사용하지 말고, 최초 1회의 약한 focus cue만 허용해.
 
 CTA, Case Study, 검색 추천어, 결과 항목과 프로젝트 전환 버튼은 실제 button/a 요소로 구현하고 키보드 조작과 focus-visible을 지원해. hover/focus 중에는 floating을 부드럽게 멈춰 조작을 방해하지 않게 해. prefers-reduced-motion에서는 진입 모션, floating, 자동 전환을 정지하고 정적인 최종 상태를 보여줘. 모바일에서는 연결선과 floating, overlap을 제거하고 텍스트→CTA→패널 순서의 단일 열로 변경하며 `⌘ K` 힌트 대신 명시적인 `검색` affordance를 제공해.
 

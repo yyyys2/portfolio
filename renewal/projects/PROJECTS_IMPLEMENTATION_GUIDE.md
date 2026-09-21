@@ -42,18 +42,20 @@ Projects.
 대화·차트·테이블·메일 응답과 Canvas 패널을 구현했습니다.
 React · TypeScript · Zustand · TanStack Query
 
-02 webOS TV
-리모컨과 제한된 브라우저 환경을 고려해 TV UI를 구현했습니다.
+02 webOS 오버레이 앱
+TV 시청 흐름을 유지하는 오버레이와 리모컨 포커스 이동을 구현했습니다.
 Svelte · TypeScript · webOS
 
-03 SmartSolution API Portal
-반복되는 화면을 공통 컴포넌트와 UI 규칙으로 정리했습니다.
-React · Next.js · TypeScript
+03 디지털 사이니지
+대시보드·리스트의 데이터 동기화와 조회·수정 흐름을 개선했습니다.
+React · TypeScript · TanStack Query
 
 04 Memomi
 빠른 기록과 재진입에 집중한 Windows 메모 앱을 개발했습니다.
 Tauri · React · TypeScript
 ```
+
+선정 근거는 `PROJECT_SELECTION.md`, Home과 Projects의 공통 데이터는 `src/data/selectedProjects.ts`를 기준으로 한다.
 
 기본 action은 `상세 보기 ↓`, 펼친 프로젝트 action은 `접기 ↑`다.
 
@@ -135,7 +137,7 @@ Home과 About의 공통 Header, 색상, 간격, 폰트, focus 스타일을 그�
 추천 상태 구조:
 
 ```ts
-type ProjectId = 'ai-agent' | 'webos-tv' | 'smart-solution' | 'memomi';
+type ProjectId = 'ai-agent' | 'tv-overlay-shopping' | 'digital-signage-management' | 'memomi';
 
 type ProjectsUIState = {
   previewProjectId: ProjectId;
@@ -360,4 +362,3 @@ type ProjectStory = {
 - 근거 없는 성과 수치와 기능 생성
 - 강한 parallax, bounce, glow, blur, gradient
 - Archive를 기본 상태에서 모두 펼쳐 화면을 복잡하게 만들기
-

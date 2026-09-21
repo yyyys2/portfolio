@@ -16,38 +16,6 @@ html.dark {
   color-scheme: dark;
 }
 
-@font-face {
-  font-family: "Outfit";
-  src: url("@/assets/fonts/Outfit-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url("@/assets/fonts/Outfit-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url("@/assets/fonts/Outfit-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url("@/assets/fonts/Outfit-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
 html,
 body {
   height: 100%;
@@ -55,6 +23,14 @@ body {
 
 html {
   font-size: 15px;
+  /* Keep page width stable when navigation or expanded content adds a scrollbar. */
+  scrollbar-gutter: stable;
+}
+
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
 }
 
 @media (min-width: 640px) {
@@ -74,8 +50,21 @@ body {
   background: var(--portfolio-bg);
 }
 
+@media (max-width: 1023px) {
+  :root {
+    --hero-preview-tilt: 0deg;
+  }
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
 html.dark body {
-  background: #141624;
+  background: var(--color-legacy-neutral-900);
 }
 
 img,
@@ -95,31 +84,31 @@ canvas {
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    background: #fff;
+    background: var(--color-white);
   }
 
   html.dark .bg-drift-wrapper {
-    background: #141624;
+    background: var(--color-legacy-neutral-900);
   }
 
   html.dark .bg-drift-wrapper::before {
     background:
       radial-gradient(
         1200px 700px at 15% 10%,
-        rgba(94, 119, 255, 0.2),
+        color-mix(in srgb, var(--color-legacy-glow-blue) 20%, transparent),
         transparent 60%
       ),
       radial-gradient(
         1100px 600px at 85% 18%,
-        rgba(245, 113, 178, 0.14),
+        color-mix(in srgb, var(--color-legacy-glow-pink) 14%, transparent),
         transparent 58%
       ),
       radial-gradient(
         900px 500px at 60% 95%,
-        rgba(85, 220, 189, 0.12),
+        color-mix(in srgb, var(--color-legacy-glow-mint) 12%, transparent),
         transparent 55%
       ),
-      #141624;
+      var(--color-legacy-neutral-900);
   }
 
   .bg-drift-wrapper::before {
@@ -132,20 +121,20 @@ canvas {
     background:
       radial-gradient(
         1200px 700px at 15% 10%,
-        rgba(184, 192, 255, 0.26),
+        color-mix(in srgb, var(--color-legacy-secondary) 26%, transparent),
         transparent 60%
       ),
       radial-gradient(
         1100px 600px at 85% 18%,
-        rgba(250, 218, 221, 0.24),
+        color-mix(in srgb, var(--color-legacy-wash-pink) 24%, transparent),
         transparent 58%
       ),
       radial-gradient(
         900px 500px at 60% 95%,
-        rgba(197, 255, 235, 0.16),
+        color-mix(in srgb, var(--color-legacy-wash-mint) 16%, transparent),
         transparent 55%
       ),
-      #fff;
+      var(--color-white);
 
     transform-origin: 50% 50%;
     animation: driftSpin 10s ease-in-out infinite alternate;

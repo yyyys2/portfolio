@@ -1,8 +1,163 @@
 :root {
+  /* Color source of truth. Components and Tailwind reference these tokens.
+     Accent = vivid emphasis; gradient endpoints = muted brand treatment. */
+  /* Brand accents and gradients */
+  --color-accent: #ef4939;
+  --color-accent-text: #c45e49;
+  --color-accent-gradient-start: #bd5742;
+  --color-accent-gradient-end: #d98c7b;
+  --color-accent-button-start: #bc5844;
+  --color-accent-button-end: #d78e80;
+  --color-accent-connector: #d76b58;
+  --color-accent-home: #b9614c;
+  --color-accent-home-mid: #c97867;
+  --color-accent-home-light: #d59485;
+  --color-accent-home-gradient-start: #b95f49;
+  --color-accent-home-gradient-mid: #c67563;
+  --color-accent-home-gradient-end: #d49384;
+  --color-accent-home-hover-start: #af553f;
+  --color-accent-home-hover-mid: #bd6b59;
+  --color-accent-home-hover-end: #cc8879;
+  --color-accent-home-tile-end: #d89788;
+  --color-accent-home-decoration: #cf8c7d;
+  --color-accent-contact-button-start: #c65542;
+  --color-accent-contact-button-end: #de8878;
+  --color-accent-contact-decoration: #d97763;
+  --color-accent-resume-start: #be5844;
+  --color-accent-resume-end: #da8c7c;
+  --color-accent-summary: #bd604d;
+  --color-accent-summary-text: #a54e3c;
+  --color-accent-classic: #c98272;
+  --color-accent-classic-hover: #b97061;
+  --color-accent-classic-pressed: #a96255;
+  --color-accent-classic-strong: #c15c47;
+
+  /* Accent surfaces and borders */
+  --color-accent-surface: #fff3f0;
+  --color-accent-surface-hover: #fff0ed;
+  --color-accent-surface-focus: #fff7f5;
+  --color-accent-surface-selected: #fff2ef;
+  --color-accent-surface-subtle: #fff8f6;
+  --color-accent-surface-preview: #fff4f0;
+  --color-accent-surface-contact: #fff1ee;
+  --color-accent-surface-summary: #fff1eb;
+  --color-accent-surface-summary-end: #fffaf7;
+  --color-accent-soft: #f6dfda;
+  --color-accent-soft-home: #f4dfda;
+  --color-accent-soft-classic: #f2ddd7;
+  --color-accent-soft-tag: #fde9e6;
+  --color-accent-border: #ffd4cf;
+  --color-accent-border-summary: #e4cfc8;
+  --color-accent-border-divider: #e4d8d2;
+
+  /* Surfaces and text */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-page: #fbfaf8;
+  --color-page-classic: #f7f5f1;
+  --color-surface-classic: #fbfaf7;
+  --color-surface-code: #fafbfc;
+  --color-surface-tag: #f1efed;
+  --color-surface-control: #f4f3f2;
+  --color-surface-table: #f4f5f6;
+  --color-surface-decoration: #eee6e2;
+  --color-text: #101f2f;
+  --color-text-copy: #506985;
+  --color-text-copy-alt: #4c6480;
+  --color-text-muted: #738399;
+  --color-text-soft: #213b59;
+  --color-text-subtle: #9ca6b1;
+  --color-text-tag: #46566a;
+  --color-text-index: #8f9396;
+  --color-text-placeholder: #75879c;
+  --color-text-control: #697b90;
+  --color-text-caption: #64768a;
+  --color-text-meta: #60758c;
+  --color-text-preview: #405975;
+  --color-text-detail: #5f7288;
+  --color-text-product: #28445f;
+  --color-text-disabled: #9aa4af;
+  --color-surface-avatar: #9ca5af;
+  --color-text-classic: #17202a;
+  --color-text-classic-muted: #68778b;
+  --color-text-classic-subtle: #9097a0;
+  --color-code-text: #234c7c;
+  --color-code-keyword: #225da1;
+  --color-code-gutter: #6e88a4;
+  --color-code-tree: #45698e;
+  --color-code-toolbar: #38567a;
+  --color-code-more: #315173;
+
+  /* Borders and shadow sources */
+  --color-border: #ced6dc;
+  --color-border-panel: #cfd6dc;
+  --color-border-about: #d6dde3;
+  --color-border-soft: #e7eaed;
+  --color-border-input: #bfcde0;
+  --color-border-contact-input: #a9c1e5;
+  --color-border-contact-footer: #cdd8e2;
+  --color-border-table: #dde2e6;
+  --color-border-control: #d8dee4;
+  --color-border-cell: #e3e7ea;
+  --color-border-message: #d9dfe4;
+  --color-border-card: #dfe3e6;
+  --color-border-career: #e4e7e9;
+  --color-border-home: #d7d9da;
+  --color-border-home-soft: #e8e8e5;
+  --color-border-home-strong: #c8cdd1;
+  --color-border-classic: #d9d8d3;
+  --color-border-classic-strong: #b8bdc3;
+  --color-shadow-panel: #15283b;
+  --color-shadow-playground: #18283b;
+
+  /* Preview window indicators (independent of brand accents) */
+  --color-window-close: #ef4d44;
+  --color-window-minimize: #f3b82c;
+  --color-window-maximize: #31bd52;
+  --color-window-about-close: #ef4a43;
+  --color-window-about-minimize: #f2b92c;
+  --color-window-about-maximize: #29bf49;
+  --color-window-contact-close: #ef4238;
+  --color-window-contact-minimize: #f0b32a;
+  --color-window-contact-maximize: #2abd4c;
+  --color-window-career-close: #ee4139;
+  --color-window-career-minimize: #f1b42b;
+  --color-window-career-maximize: #2cbe4d;
+  --color-window-home-close: #e5554e;
+  --color-window-home-minimize: #f0b52d;
+  --color-window-home-maximize: #35b867;
+
+  /* Legacy Tailwind palette (kept for existing utility compatibility) */
+  --color-legacy-primary: #f4b6cf;
+  --color-legacy-primary-soft: #ffe4f0;
+  --color-legacy-primary-muted: #fad2e5;
+  --color-legacy-primary-strong: #e85c9e;
+  --color-legacy-accent: #7fe0c3;
+  --color-legacy-accent-soft: #e6fff7;
+  --color-legacy-secondary: #b8c0ff;
+  --color-legacy-secondary-soft: #eef0ff;
+  --color-legacy-neutral-50: #fafafc;
+  --color-legacy-neutral-100: #f4f5f8;
+  --color-legacy-neutral-200: #e6e8f0;
+  --color-legacy-neutral-300: #c9ccdb;
+  --color-legacy-neutral-400: #9ea3b5;
+  --color-legacy-neutral-500: #6b6f82;
+  --color-legacy-neutral-600: #4b4f63;
+  --color-legacy-neutral-700: #33364a;
+  --color-legacy-neutral-800: #1f2235;
+  --color-legacy-neutral-900: #141624;
+  --color-legacy-gradient-pink: #ff7eb6;
+  --color-legacy-glow-blue: #5e77ff;
+  --color-legacy-glow-pink: #f571b2;
+  --color-legacy-glow-mint: #55dcbd;
+  --color-legacy-wash-pink: #fadadd;
+  --color-legacy-wash-mint: #c5ffeb;
+
+
   /* Typography */
-  --font-sans: Pretendard, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: "Outfit", Pretendard, system-ui, sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, Inter, system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-sans);
   --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 
   --type-label: 0.75rem;
@@ -17,19 +172,19 @@
   --tracking-label: 0.08em;
 
   /* Core palette */
-  --portfolio-bg: #f7f5f1;
-  --portfolio-surface: #fbfaf7;
-  --portfolio-surface-strong: #ffffff;
-  --portfolio-text: #17202a;
-  --portfolio-text-muted: #68778b;
-  --portfolio-text-subtle: #9097a0;
-  --portfolio-accent: #c98272;
-  --portfolio-accent-hover: #b97061;
-  --portfolio-accent-pressed: #a96255;
-  --portfolio-accent-strong: #c15c47;
-  --portfolio-accent-soft: #f2ddd7;
-  --portfolio-border: #d9d8d3;
-  --portfolio-border-strong: #b8bdc3;
+  --portfolio-bg: var(--color-page-classic);
+  --portfolio-surface: var(--color-surface-classic);
+  --portfolio-surface-strong: var(--color-white);
+  --portfolio-text: var(--color-text-classic);
+  --portfolio-text-muted: var(--color-text-classic-muted);
+  --portfolio-text-subtle: var(--color-text-classic-subtle);
+  --portfolio-accent: var(--color-accent-classic);
+  --portfolio-accent-hover: var(--color-accent-classic-hover);
+  --portfolio-accent-pressed: var(--color-accent-classic-pressed);
+  --portfolio-accent-strong: var(--color-accent-classic-strong);
+  --portfolio-accent-soft: var(--color-accent-soft-classic);
+  --portfolio-border: var(--color-border-classic);
+  --portfolio-border-strong: var(--color-border-classic-strong);
 
   /* Layout */
   --portfolio-page-max: 1440px;
@@ -59,39 +214,40 @@
   --radius-md: 12px;
   --radius-panel: 18px;
   --radius-pill: 999px;
-  --portfolio-shadow: 0 18px 45px rgb(23 32 42 / 8%);
-  --portfolio-shadow-raised: 0 24px 70px rgb(23 32 42 / 12%);
+  --portfolio-shadow: 0 18px 45px color-mix(in srgb, var(--color-text-classic) 8%, transparent);
+  --portfolio-shadow-raised: 0 24px 70px color-mix(in srgb, var(--color-text-classic) 12%, transparent);
 
   /* Motion */
   --motion-fast: 180ms;
   --motion-base: 320ms;
   --motion-slow: 520ms;
   --motion-float: 5.2s;
+  --hero-preview-tilt: 1.5deg;
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Focus */
-  --focus-ring: 0 0 0 3px rgb(201 130 114 / 38%);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-accent-classic) 38%, transparent);
 
   /* Home aliases: page components consume these without duplicating values. */
-  --home-bg: #fbfaf8;
-  --home-surface: rgb(255 255 255 / 88%);
-  --home-surface-strong: #ffffff;
-  --home-text: #101f2f;
-  --home-text-soft: #213b59;
-  --home-text-muted: #506985;
-  --home-text-subtle: #9ca6b1;
-  --home-accent: #b9614c;
-  --home-accent-mid: #c97867;
-  --home-accent-light: #d59485;
-  --home-accent-soft: #f4dfda;
-  --home-accent-wash: rgb(207 140 125 / 14%);
-  --home-border: #d7d9da;
-  --home-border-soft: #e8e8e5;
-  --home-border-strong: #c8cdd1;
-  --home-grid: rgb(16 31 47 / 7%);
+  --home-bg: var(--color-page);
+  --home-surface: color-mix(in srgb, var(--color-white) 88%, transparent);
+  --home-surface-strong: var(--color-white);
+  --home-text: var(--color-text);
+  --home-text-soft: var(--color-text-soft);
+  --home-text-muted: var(--color-text-copy);
+  --home-text-subtle: var(--color-text-subtle);
+  --home-accent: var(--color-accent-home);
+  --home-accent-mid: var(--color-accent-home-mid);
+  --home-accent-light: var(--color-accent-home-light);
+  --home-accent-soft: var(--color-accent-soft-home);
+  --home-accent-wash: color-mix(in srgb, var(--color-accent-home-decoration) 14%, transparent);
+  --home-border: var(--color-border-home);
+  --home-border-soft: var(--color-border-home-soft);
+  --home-border-strong: var(--color-border-home-strong);
+  --home-grid: color-mix(in srgb, var(--color-text) 7%, transparent);
   --home-panel-radius: 16px;
-  --home-shadow: 0 22px 54px rgb(16 31 47 / 10%), 0 3px 10px rgb(16 31 47 / 5%);
+  --home-shadow: 0 22px 54px color-mix(in srgb, var(--color-text) 10%, transparent), 0 3px 10px color-mix(in srgb, var(--color-text) 5%, transparent);
   --home-page-max: 1366px;
   --home-page-padding: 60px;
   --home-header-height: 112px;

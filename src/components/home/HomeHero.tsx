@@ -28,6 +28,7 @@ export default function HomeHero() {
   const heroRef = useRef<HTMLElement>(null)
   const periodRef = useRef<HTMLSpanElement>(null)
   const panelAnchorRef = useRef<HTMLSpanElement>(null)
+  const measureConnectorRef = useRef<() => void>(() => {})
   const floatControlsRef = useRef<AnimationPlaybackControls | null>(null)
   const reducedMotion = useReducedMotion()
   const floatY = useMotionValue(0)
@@ -51,8 +52,10 @@ export default function HomeHero() {
 
         setGeometry({
           start: {
-            x: periodRect.right - heroRect.left,
-            y: periodRect.top + periodRect.height * 0.58 - heroRect.top,
+            // Begin just inside the dot's right edge so the visible curve
+            // leaves horizontally, before bending toward the panel.
+            x: periodRect.right - heroRect.left - 0.75,
+            y: periodRect.top + periodRect.height / 2 - heroRect.top,
           },
           end: {
             x: anchorRect.left + anchorRect.width / 2 - heroRect.left,
@@ -63,6 +66,8 @@ export default function HomeHero() {
         })
       })
     }
+
+    measureConnectorRef.current = measure
 
     const observer = new ResizeObserver(measure)
     observer.observe(hero)
@@ -136,10 +141,16 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.42, delay: 0.07 }}
+          onUpdate={() => measureConnectorRef.current()}
+          onAnimationComplete={() => measureConnectorRef.current()}
         >
           <span>Frontend</span>
           <span className="home-hero__title-accent">
-            Developer<span ref={periodRef} className="home-hero__period">.</span>
+            <span className="home-hero__title-word">Developer</span>
+            <span className="home-hero__period">
+              <span className="sr-only">.</span>
+              <span ref={periodRef} className="home-hero__period-dot" aria-hidden="true" />
+            </span>
           </span>
         </motion.h1>
         <motion.p

@@ -41,7 +41,7 @@ Search placeholder
 프로젝트명 또는 기술 검색
 
 Suggested searches
-React · 접근성 · AI Agent
+React · WebOS · AI Agent
 
 Featured label
 FEATURED PROJECT · AI AGENT
@@ -345,7 +345,7 @@ const pathD = useTransform([floatX, floatY], ([x, y]) =>
 - 접근 가능한 label: `프로젝트 검색`
 - placeholder: `프로젝트명 또는 기술 검색`
 - 검색 대상: 프로젝트명, 설명, 기능 키워드, 기술 스택
-- 추천 검색어: `React`, `접근성`, `AI Agent`
+- 추천 검색어: `React`, `WebOS`, `AI Agent`
 - 추천 검색어는 실제 `button`이며 누르면 즉시 같은 검색 로직을 실행한다.
 - `Cmd+K`와 `Ctrl+K`로 검색창에 focus한다. Mac이 아니어도 동작하도록 두 조합을 모두 지원한다.
 - 검색 중 `ArrowDown`/`ArrowUp`으로 결과를 이동하고 `Enter`로 선택하며 `Escape`로 닫는다.
@@ -378,7 +378,7 @@ const pathD = useTransform([floatX, floatY], ([x, y]) =>
     autoComplete="off"
   />
   <div aria-label="추천 검색어">
-    {['React', '접근성', 'AI Agent'].map((keyword) => (
+    {['React', 'WebOS', 'AI Agent'].map((keyword) => (
       <button type="button" onClick={() => search(keyword)} key={keyword}>
         {keyword}
       </button>

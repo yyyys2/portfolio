@@ -1,12 +1,18 @@
-import { motion } from "framer-motion"
-import { useEffect, useRef, useState } from "react"
+import { animate, motion, useMotionValue, useTransform } from "framer-motion"
+import type { AnimationPlaybackControls } from "framer-motion"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useReducedMotion } from "@/hooks/useReducedMotion"
+import { selectedProjects } from "@/data/selectedProjects"
+import type { ProjectId, SelectedProject } from "@/data/selectedProjects"
 
 type Career = {
-  id: string; index: string; period: string; company: string; role: string; duties: string[]; projects?: string[]; technologies: string[]
+  id: string; index: string; period: string; company: string; role: string; duties: string[]; projects?: SelectedProject[]; technologies: string[]
 }
 
+const ocubeProjectIds = new Set<ProjectId>(["ai-agent", "tv-overlay-shopping", "digital-signage-management"])
+
 const careers: Career[] = [
-  { id: "ocube", index: "01", period: "2021 — NOW", company: "주식회사 오큐브", role: "Senior Frontend Developer", duties: ["React·TypeScript 기반 웹 서비스 및 관리자 시스템 개발", "상태 관리 구조와 공통 UI 아키텍처 설계", "webOS 기반 디바이스 서비스 및 운영 화면 개발"], projects: ["webOS TV", "SmartSolution API Portal"], technologies: ["React", "TypeScript", "Zustand", "TanStack Query", "Svelte", "webOS"] },
+  { id: "ocube", index: "01", period: "2021 — NOW", company: "주식회사 오큐브", role: "Senior Frontend Developer", duties: ["React·TypeScript 기반 웹 서비스 및 관리자 시스템 개발", "상태 관리 구조와 공통 UI 아키텍처 설계", "webOS 기반 디바이스 서비스 및 운영 화면 개발"], projects: selectedProjects.filter(project => ocubeProjectIds.has(project.id)), technologies: ["React", "TypeScript", "Zustand", "TanStack Query", "Svelte", "webOS"] },
   { id: "academy", index: "02", period: "2020 — 2021", company: "엘컴퓨터학원", role: "Team Lead · Instructor", duties: ["HTML/CSS와 Spring Boot 기반 학생 관리 프로그램 개발", "교육 과정 운영과 개발 실습 지도"], technologies: ["HTML", "CSS", "JavaScript", "Spring Boot"] },
   { id: "ungim", index: "03", period: "2020", company: "운김", role: "Founder · Frontend Developer", duties: ["SI 프로젝트의 웹 기획·디자인·프론트엔드 개발", "프로젝트 일정과 고객 요구사항 조율"], technologies: ["JavaScript", "Vue", "UI Design"] },
   { id: "wecom", index: "04", period: "2018 — 2020", company: "위컴 WECOM", role: "Frontend Developer", duties: ["자사 솔루션 모바일 웹과 웹사이트 프론트엔드 개발", "운영 서비스 유지보수와 화면 개선"], technologies: ["JavaScript", "Vue", "SCSS"] },
@@ -15,27 +21,78 @@ const careers: Career[] = [
 export default function ExperienceView() {
   const [selectedId, setSelectedId] = useState("ocube")
   const [expandedId, setExpandedId] = useState<string | null>(null)
-  const [geometry, setGeometry] = useState({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } })
+  const geometry = useMotionValue({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } })
   const heroRef = useRef<HTMLElement>(null)
   const periodRef = useRef<HTMLSpanElement>(null)
-  const anchorRef = useRef<HTMLSpanElement>(null)
-  const selected = careers.find(item => item.id === selectedId) ?? careers[0]!
+  const anchorRefs = useRef<Record<string, HTMLSpanElement | null>>({})
+  const floatControlsRef = useRef<AnimationPlaybackControls | null>(null)
+  const [previewHovered, setPreviewHovered] = useState(false)
+  const [previewFocused, setPreviewFocused] = useState(false)
+  const reducedMotion = useReducedMotion()
+  const floatY = useMotionValue(0)
+  const selectedCareer = careers.find(career => career.id === selectedId) ?? careers[0]
+  const endpointX = useTransform(() => geometry.get().end.x)
+  const endpointY = useTransform(() => geometry.get().end.y + floatY.get())
+  const path = useTransform(() => {
+    const { start, end } = geometry.get()
+    const distance = Math.max(100, end.x - start.x)
+    const endY = end.y + floatY.get()
+    return `M ${start.x} ${start.y} C ${start.x + distance * .38} ${start.y}, ${end.x - distance * .35} ${endY + 4}, ${end.x} ${endY}`
+  })
+
+  useLayoutEffect(() => {
+    const hero = heroRef.current, period = periodRef.current, anchor = anchorRefs.current[selectedId]
+    if (!hero || !period || !anchor) return
+    let disposed = false
+    let frame = 0
+    const measure = () => {
+      // Font/resize callbacks can outlive a selection. Never measure a stale node.
+      if (disposed || !hero.isConnected || !period.isConnected || !anchor.isConnected) return
+      const h = hero.getBoundingClientRect(), p = period.getBoundingClientRect(), a = anchor.getBoundingClientRect()
+      if (!a.width || !a.height) return
+      // Publish both endpoints together; the path and dot subscribe to this same value.
+      geometry.set({ start: { x: p.right - h.left - .8, y: p.top + p.height / 2 - h.top }, end: { x: a.left + a.width / 2 - h.left, y: a.top + a.height / 2 - h.top - floatY.get() } })
+    }
+    const scheduleMeasure = () => {
+      if (disposed) return
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(measure)
+    }
+    const observer = new ResizeObserver(scheduleMeasure)
+    observer.observe(hero); observer.observe(period); observer.observe(anchor)
+    window.addEventListener("resize", scheduleMeasure)
+    document.fonts.ready.then(scheduleMeasure)
+    // Update before paint, including when hovering/focusing pauses the float animation.
+    measure()
+    return () => {
+      disposed = true
+      cancelAnimationFrame(frame)
+      observer.disconnect()
+      window.removeEventListener("resize", scheduleMeasure)
+    }
+  }, [selectedId, floatY, geometry])
 
   useEffect(() => {
-    const hero = heroRef.current, period = periodRef.current, anchor = anchorRef.current
-    if (!hero || !period || !anchor) return
-    let frame = 0
-    const measure = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => {
-      const h = hero.getBoundingClientRect(), p = period.getBoundingClientRect(), a = anchor.getBoundingClientRect()
-      setGeometry({ start: { x: p.right - h.left, y: p.top + p.height * .72 - h.top }, end: { x: a.left + a.width / 2 - h.left, y: a.top + a.height / 2 - h.top } })
-    }) }
-    const observer = new ResizeObserver(measure); observer.observe(hero); observer.observe(period); observer.observe(anchor)
-    window.addEventListener("resize", measure); document.fonts.ready.then(measure); measure()
-    return () => { cancelAnimationFrame(frame); observer.disconnect(); window.removeEventListener("resize", measure) }
-  }, [selectedId])
+    floatY.set(0)
+    if (reducedMotion) return
 
-  const distance = Math.max(100, geometry.end.x - geometry.start.x)
-  const path = `M ${geometry.start.x} ${geometry.start.y} C ${geometry.start.x + distance * .38} ${geometry.start.y}, ${geometry.end.x - distance * .35} ${geometry.end.y + 4}, ${geometry.end.x} ${geometry.end.y}`
+    const controls = animate(floatY, [0, -8, 0, 6, 0], {
+      duration: 5.2,
+      ease: "easeInOut",
+      repeat: Infinity,
+    })
+    floatControlsRef.current = controls
+    return () => {
+      controls.stop()
+      floatControlsRef.current = null
+    }
+  }, [floatY, reducedMotion])
+
+  useEffect(() => {
+    const controls = floatControlsRef.current
+    if (previewHovered || previewFocused) controls?.pause()
+    else controls?.play()
+  }, [previewHovered, previewFocused, reducedMotion])
 
   const openDetail = (id: string) => {
     setSelectedId(id)
@@ -45,23 +102,58 @@ export default function ExperienceView() {
 
   return <main className="experience-main">
     <section ref={heroRef} className="experience-hero" aria-labelledby="experience-page-title">
-      <div className="experience-hero__circle experience-hero__circle--one" aria-hidden="true" /><div className="experience-hero__circle experience-hero__circle--two" aria-hidden="true" />
-      <div className="experience-hero__copy"><p>EXPERIENCE · CAREER</p><h1 id="experience-page-title">Experience<span ref={periodRef}>.</span></h1><strong>2018 — NOW</strong><div>웹 서비스 구축부터 운영·유지보수까지의 경험을 정리했습니다.</div></div>
-      <div className="career-preview">
-        <div className="career-preview__chrome"><i /><i /><i /><strong>CAREER PREVIEW</strong><b>● INTERACTIVE</b><span>•••</span></div>
-        <p>회사를 선택하면 요약이 바뀝니다.</p>
-        <div className="career-preview__list">
-          <article className="career-preview__selected">
-            <span ref={anchorRef} className="career-preview__anchor" aria-hidden="true" />
-            <header><i /><b>{selected.period}</b><div><strong>{selected.company}</strong><span>{selected.role}</span></div><em>선택됨</em></header>
-            <ul>{selected.duties.slice(0,3).map(item => <li key={item}>{item}</li>)}</ul>
-            {selected.projects && <footer><span>RELATED PROJECTS</span><div>{selected.projects.map(p => <a key={p} href="#/projects">{p} →</a>)}</div></footer>}
-          </article>
-          {careers.filter(item => item.id !== selectedId).map(item => <button key={item.id} type="button" onClick={() => setSelectedId(item.id)}><i /><span>{item.period}</span><b>{item.company}<small>{item.role}</small></b><em>보기 →</em></button>)}
+      <div className="experience-hero__copy"><p>EXPERIENCE · CAREER</p><h1 id="experience-page-title">Experience<span className="experience-hero__period"><span className="sr-only">.</span><span ref={periodRef} className="experience-hero__period-dot" aria-hidden="true" /></span></h1><strong>2018 — NOW</strong><div>웹 서비스 구축부터 운영·유지보수까지의 경험을 정리했습니다.</div></div>
+      <motion.div
+        className="career-preview"
+        style={{ y: floatY, rotate: "var(--hero-preview-tilt)" }}
+        onPointerEnter={() => setPreviewHovered(true)}
+        onPointerLeave={() => setPreviewHovered(false)}
+        onFocusCapture={() => setPreviewFocused(true)}
+        onBlurCapture={event => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setPreviewFocused(false)
+        }}
+      >
+        <div className="career-preview__chrome">
+          <div className="career-preview__window-dots" aria-hidden="true"><i /><i /><i /></div>
+          <strong>CAREER OVERVIEW</strong><span>2018 — NOW</span>
         </div>
-        <button className="career-preview__cta" type="button" onClick={() => openDetail(selectedId)}>선택한 경력 상세 보기 ↓</button>
-      </div>
-      <svg className="experience-connector" aria-hidden="true"><path d={path} /><circle cx={geometry.end.x} cy={geometry.end.y} r="7.5" /><circle className="inner" cx={geometry.end.x} cy={geometry.end.y} r="2.5" /></svg>
+        <div className="career-preview__body">
+          <nav className="career-preview__navigation" aria-label="미리볼 경력 선택">
+            <p>커리어 타임라인 <span>{String(careers.length).padStart(2, "0")}</span></p>
+            <div className="career-preview__choices">
+              {careers.map(item => <button
+                key={item.id}
+                type="button"
+                className="career-preview__choice"
+                aria-pressed={selectedId === item.id}
+                aria-controls="career-preview-summary"
+                onClick={() => setSelectedId(item.id)}
+              >
+                <span ref={node => { anchorRefs.current[item.id] = node }} className="career-preview__anchor" aria-hidden="true" />
+                <span className="career-preview__number" aria-hidden="true">{item.index}</span>
+                <span className="career-preview__company"><strong>{item.company}</strong><small>{item.period}</small></span>
+                <span className="career-preview__arrow" aria-hidden="true">↗</span>
+              </button>)}
+            </div>
+          </nav>
+          <section id="career-preview-summary" className="career-preview__summary" aria-labelledby="career-preview-company">
+            <div className="career-preview__summary-content" key={selectedCareer.id}>
+              <header><h2 id="career-preview-company">{selectedCareer.company}</h2><p>{selectedCareer.role}</p></header>
+              <ul className="career-preview__duties">{selectedCareer.duties.map(duty => <li key={duty}>{duty}</li>)}</ul>
+              {selectedCareer.projects ? <div className="career-preview__projects">
+                <h3>대표 프로젝트</h3>
+                <div>{selectedCareer.projects.map(project => <a key={project.id} href={`#/projects?project=${project.id}`}>{project.title}<span aria-hidden="true">↗</span></a>)}</div>
+              </div> : <div className="career-preview__technologies">
+                <h3>사용 기술</h3><ul>{selectedCareer.technologies.map(technology => <li key={technology}>{technology}</li>)}</ul>
+              </div>}
+            </div>
+            <button className="career-preview__cta" type="button" aria-expanded={expandedId === selectedId} aria-controls={`career-detail-${selectedId}`} onClick={() => openDetail(selectedId)}>
+              {expandedId === selectedId ? "경력 상세 접기" : "이 경력 자세히 보기"}<span aria-hidden="true">{expandedId === selectedId ? "↑" : "↓"}</span>
+            </button>
+          </section>
+        </div>
+      </motion.div>
+      <svg className="experience-connector" aria-hidden="true"><motion.path d={path} /><motion.circle cx={endpointX} cy={endpointY} r="7.5" /><motion.circle className="inner" cx={endpointX} cy={endpointY} r="2.5" /></svg>
     </section>
 
     <section className="career-list" aria-label="경력 목록">
@@ -72,7 +164,7 @@ export default function ExperienceView() {
         {expandedId === career.id && <CareerDetail career={career} />}
       </div>)}
     </section>
-    <section className="experience-resume"><div><p>RESUME</p><h2>전체 경력과 기술 스택</h2></div><a href={`${import.meta.env.BASE_URL}assets/resume/kim_yun_young_resume.pdf`} download="kim_yun_young_resume.pdf">이력서 다운로드 ↓</a></section>
+    <section className="experience-resume" aria-labelledby="experience-resume-title"><p>RESUME</p><h2 id="experience-resume-title">PDF 이력서 다운로드</h2><a href={`${import.meta.env.BASE_URL}assets/resume/kim_yun_young_resume.pdf`} download="kim_yun_young_resume.pdf">이력서 다운로드 ↓</a></section>
     <footer className="experience-footer"><a href="#/contact">CONTACT ↗</a><span>bellelaide1005@gmail.com</span><p>© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.</p></footer>
   </main>
 }
@@ -81,7 +173,7 @@ function CareerDetail({ career }: { career: Career }) {
   return <motion.section id={`career-detail-${career.id}`} className="career-detail" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
     <header><p>{career.period} · {career.role}</p><h2>{career.company}</h2><span>서비스의 구조와 운영 흐름을 이해하며 프론트엔드 구현을 담당했습니다.</span></header>
     <section><h3>주요 업무</h3><ul>{career.duties.map(item => <li key={item}>{item}</li>)}</ul></section>
-    {career.projects && <section><h3>주요 프로젝트</h3><div className="career-detail__projects">{career.projects.map(project => <div key={project}><strong>{project}</strong><span>Frontend Development</span><span>React · TypeScript</span><a href="#/projects">프로젝트 보기 →</a></div>)}</div></section>}
+    {career.projects && <section><h3>대표 프로젝트 · {career.projects.length}</h3><div className="career-detail__projects">{career.projects.map(project => <div key={project.id}><strong>{project.title}</strong><span>Frontend Development</span><span>{project.tags.join(" · ")}</span><a href={`#/projects?project=${project.id}`}>프로젝트 보기 →</a></div>)}</div></section>}
     <section><h3>기술</h3><div className="career-detail__tech">{career.technologies.map(item => <span key={item}>{item}</span>)}</div></section>
   </motion.section>
 }

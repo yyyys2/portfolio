@@ -495,7 +495,7 @@ Desktop 기준 Hero는 container 내부의 독립 좌표계를 사용한다.
 }
 ```
 
-- 추천어 순서: `React / 접근성 / AI Agent`
+- 추천어 순서: `React / WebOS / AI Agent`
 - label과 chip의 baseline이 수평으로 맞아야 한다.
 - chip 높이와 간격을 임의로 크게 만들지 않는다.
 

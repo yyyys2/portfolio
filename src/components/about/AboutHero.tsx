@@ -3,6 +3,7 @@ import type { AnimationPlaybackControls } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
 import { useReducedMotion } from "@/hooks/useReducedMotion"
 import ComponentPlayground from "@/components/about/ComponentPlayground"
+import type { ComponentId } from "@/components/about/ComponentPlayground"
 
 type Point = { x: number; y: number }
 type Geometry = { start: Point; end: Point }
@@ -13,12 +14,13 @@ function createPath(geometry: Geometry, offsetY = 0) {
   const { start, end } = geometry
   const endY = end.y + offsetY
   const distance = Math.max(100, end.x - start.x)
-  return `M ${start.x} ${start.y} C ${start.x + distance * 0.34} ${start.y + 18}, ${end.x - distance * 0.28} ${endY - 22}, ${end.x} ${endY}`
+  return `M ${start.x} ${start.y} C ${start.x + distance * 0.38} ${start.y}, ${end.x - distance * 0.35} ${endY + 4}, ${end.x} ${endY}`
 }
 
 export default function AboutHero() {
   const [geometry, setGeometry] = useState(emptyGeometry)
   const [paused, setPaused] = useState(false)
+  const [selectedComponent, setSelectedComponent] = useState<ComponentId>("button")
   const heroRef = useRef<HTMLElement>(null)
   const periodRef = useRef<HTMLSpanElement>(null)
   const targetRef = useRef<HTMLSpanElement>(null)
@@ -44,8 +46,8 @@ export default function AboutHero() {
         const currentFloatY = floatY.get()
         setGeometry({
           start: {
-            x: periodRect.right - heroRect.left,
-            y: periodRect.top + periodRect.height * 0.62 - heroRect.top,
+            x: periodRect.right - heroRect.left - 0.8,
+            y: periodRect.top + periodRect.height / 2 - heroRect.top,
           },
           end: {
             x: targetRect.left + targetRect.width / 2 - heroRect.left,
@@ -67,42 +69,46 @@ export default function AboutHero() {
       observer.disconnect()
       window.removeEventListener("resize", measure)
     }
-  }, [floatY])
+  }, [floatY, selectedComponent])
 
   useEffect(() => {
     floatY.set(0)
     if (reducedMotion) return
-    const controls = animate(floatY, [0, -5, 0, 4, 0], {
-      duration: 6,
+    const controls = animate(floatY, [0, -8, 0, 6, 0], {
+      duration: 5.2,
       ease: "easeInOut",
       repeat: Infinity,
     })
     controlsRef.current = controls
-    return () => controls.stop()
+    return () => {
+      controls.stop()
+      controlsRef.current = null
+    }
   }, [floatY, reducedMotion])
 
   useEffect(() => {
     if (!controlsRef.current) return
     if (paused) controlsRef.current.pause()
     else controlsRef.current.play()
-  }, [paused])
+  }, [paused, reducedMotion])
 
   return (
     <section ref={heroRef} className="about-hero" aria-labelledby="about-title">
-      <div className="about-hero__ornament about-hero__ornament--upper" aria-hidden="true" />
-      <div className="about-hero__ornament about-hero__ornament--lower" aria-hidden="true" />
-      <div className="about-hero__ornament about-hero__ornament--line" aria-hidden="true" />
-      <div className="about-hero__idea" aria-hidden="true">IDEAS<br />INTO<br />USABLE<br />EXPERIENCES<br />—</div>
-
       <div className="about-hero__copy">
         <p className="about-hero__eyebrow">ABOUT · FRONTEND DEVELOPER</p>
         <h1 id="about-title" className="about-hero__title">
-          <span>화면을 만드는</span>
-          <span className="about-hero__accent">방식<span ref={periodRef} className="about-hero__period">.</span></span>
+          <span>About</span>
+          <span className="about-hero__accent">
+            <span className="about-hero__word">Me</span>
+            <span className="about-hero__period">
+              <span className="sr-only">.</span>
+              <span ref={periodRef} className="about-hero__period-dot" aria-hidden="true" />
+            </span>
+          </span>
         </h1>
         <p className="about-hero__description">
-          React와 TypeScript를 중심으로 웹 서비스를 개발해왔습니다.<br />
-          신규 구축부터 운영·유지보수, Svelte 기반 webOS 프로젝트를 경험했습니다.
+          서비스를 이해하고, 오래 쓰이는 UI를 만듭니다. <br />
+          프론트엔드 개발자 김윤영입니다.
         </p>
       </div>
 
@@ -116,7 +122,7 @@ export default function AboutHero() {
           if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false)
         }}
       >
-        <div className="about-playground-shell"><ComponentPlayground anchorRef={targetRef} /></div>
+        <div className="about-playground-shell"><ComponentPlayground anchorRef={targetRef} selectedComponent={selectedComponent} onSelectComponent={setSelectedComponent} /></div>
       </motion.div>
 
       <svg className="about-hero__connector" aria-hidden="true">

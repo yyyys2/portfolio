@@ -1,7 +1,7 @@
 const strengths = [
-  { index: "01", title: "제품 UI", description: <>기획 의도와 실제 사용 흐름을<br />확인하며 화면을 구현합니다.</>, icon: "screen" },
-  { index: "02", title: "프론트엔드 구조", description: <>기능 추가와 변경에 대응하기 쉬운<br />컴포넌트 구조를 설계합니다.</>, icon: "code" },
-  { index: "03", title: "접근성과 인터랙션", description: <>키보드 조작과 포커스 이동 등<br />기본적인 접근성을 확인합니다.</>, icon: "access" },
+  { index: "01", title: "서비스 중심의 UI", description: "실서비스와 관리자 시스템에서 사용자의 업무 흐름을 이해하고 화면으로 연결합니다.", icon: "screen" },
+  { index: "02", title: "구조와 상태 관리", description: "React·TypeScript를 바탕으로 컴포넌트, 서버 데이터와 UI 상태의 역할을 정리합니다.", icon: "code" },
+  { index: "03", title: "운영과 사용성", description: "데이터 동기화와 예외 처리, 키보드·리모컨 포커스까지 실제 사용 환경을 고려합니다.", icon: "access" },
 ]
 
 function StrengthIcon({ type }: { type: string }) {

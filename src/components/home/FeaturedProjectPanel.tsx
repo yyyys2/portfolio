@@ -8,7 +8,7 @@ type FeaturedProjectPanelProps = {
   anchorRef: React.RefObject<HTMLSpanElement | null>
 }
 
-const suggestedSearches = ["React", "접근성", "AI Agent"]
+const suggestedSearches = ["React", "WebOS", "AI Agent"]
 
 export default function FeaturedProjectPanel({
   projects,

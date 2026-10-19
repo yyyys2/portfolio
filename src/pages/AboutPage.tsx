@@ -16,7 +16,7 @@ export default function AboutPage() {
         <CoreStrengths />
         <AboutProfile />
         <ExperienceCta />
-        <footer className="about-footer"><a href="#/contact">CONTACT ↗</a><span>bellelaide1005@gmail.com</span><p>© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.</p></footer>
+        <footer className="about-footer"><a href="#/contact">CONTACT ↗</a><span>bellelaide1005@gmail.com</span><p>© 2026 KIM YUN YOUNG. ALL RIGHTS RESERVED.</p></footer>
       </main>
     </div>
   )

@@ -2,7 +2,7 @@
 
 먼저 기존 코드베이스의 프레임워크, 라우팅, 스타일 방식, 공통 Header/Footer, 디자인 토큰, Home/About/Projects에서 사용한 온점 연결선과 floating 구현, 애니메이션 라이브러리, 경력·프로젝트 데이터 구조를 확인해. 기존 방식을 우선 사용하고 요청 범위는 Experience 페이지로 제한해. 사용자의 기존 변경사항이나 다른 페이지는 임의로 수정하지 마. 참고 PNG 전체를 이미지로 삽입하지 말고 React + TypeScript 컴포넌트, CSS, SVG로 재현해.
 
-Header는 `KIM YOON YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 EXPERIENCE를 활성 표시해. Hero 고정 문구는 `EXPERIENCE · CAREER`, `Experience.`, `2018 — NOW`, `웹 서비스 구축부터 운영·유지보수까지의 경험을 정리했습니다.`야. 한글은 기존 Pretendard 계열 산세리프를 사용하고 명조체나 필기체를 추가하지 마.
+Header는 `KIM YUN YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 EXPERIENCE를 활성 표시해. Hero 고정 문구는 `EXPERIENCE · CAREER`, `Experience.`, `2018 — NOW`, `웹 서비스 구축부터 운영·유지보수까지의 경험을 정리했습니다.`야. 한글은 기존 Pretendard 계열 산세리프를 사용하고 명조체나 필기체를 추가하지 마.
 
 기본 화면은 Hero 좌측과 `CAREER PREVIEW / ● INTERACTIVE` 패널 우측이 일부 겹치는 비대칭 레이아웃이야. 이 패널은 장식 이미지가 아니라 실제로 조작 가능한 UI이며, 회사를 빠르게 선택하고 요약을 보는 Preview야. 전체 경력 상세를 패널 안에 담지 마. 안내 문구는 `회사를 선택하면 요약이 바뀝니다.`로 표시해. 회사 행을 hover하거나 keyboard focus하면 Preview 대상만 바뀌고, 클릭·Enter·Space로 선택하면 해당 회사의 요약을 고정해. 자동 carousel은 사용하지 마.
 

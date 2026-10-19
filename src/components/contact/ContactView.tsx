@@ -102,6 +102,6 @@ export default function ContactView() {
       </motion.section>
       <svg className="contact-connector" aria-hidden="true"><motion.path d={path} initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: .45 }} /><motion.circle cx={geometry.end.x} cy={endY} r="7.5" /><motion.circle className="inner" cx={geometry.end.x} cy={endY} r="2.5" /></svg>
     </main>
-    <footer className="contact-footer">© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.</footer>
+    <footer className="contact-footer">© 2026 KIM YUN YOUNG. ALL RIGHTS RESERVED.</footer>
   </>
 }

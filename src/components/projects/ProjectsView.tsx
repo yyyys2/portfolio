@@ -271,7 +271,7 @@ export default function ProjectsView() {
         </button>
         <div id="projects-archive-list" className="projects-archive__body" hidden={!archiveOpen}><ul>{projectArchive.map((project) => <li key={project.id}><div><strong>{project.title}</strong><p>{project.summary}</p></div><span>{project.role}</span><span>{project.stack.join(" · ")}</span></li>)}</ul></div>
       </section>
-      <footer className="projects-footer"><a href="#/contact">CONTACT ↗</a><span>bellelaide1005@gmail.com</span><p>© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.</p></footer>
+      <footer className="projects-footer"><a href="#/contact">CONTACT ↗</a><span>bellelaide1005@gmail.com</span><p>© 2026 KIM YUN YOUNG. ALL RIGHTS RESERVED.</p></footer>
     </main>
   )
 }

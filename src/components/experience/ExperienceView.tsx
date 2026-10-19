@@ -165,7 +165,7 @@ export default function ExperienceView() {
       </div>)}
     </section>
     <section className="experience-resume" aria-labelledby="experience-resume-title"><p>RESUME</p><h2 id="experience-resume-title">PDF 이력서 다운로드</h2><a href={`${import.meta.env.BASE_URL}assets/resume/kim_yun_young_resume.pdf`} download="kim_yun_young_resume.pdf">이력서 다운로드 ↓</a></section>
-    <footer className="experience-footer"><a href="#/contact">CONTACT ↗</a><span>bellelaide1005@gmail.com</span><p>© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.</p></footer>
+    <footer className="experience-footer"><a href="#/contact">CONTACT ↗</a><span>bellelaide1005@gmail.com</span><p>© 2026 KIM YUN YOUNG. ALL RIGHTS RESERVED.</p></footer>
   </main>
 }
 

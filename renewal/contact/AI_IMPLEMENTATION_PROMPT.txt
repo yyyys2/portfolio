@@ -2,9 +2,9 @@
 
 먼저 기존 코드베이스의 프레임워크, 라우팅, 스타일 방식, 공통 Header/Footer, 디자인 토큰, Home/About/Projects/Experience에서 사용한 온점 connector와 floating 구현, reduced-motion 처리, 이력서 asset 경로를 확인해. 기존 방식을 우선 사용하고 요청 범위는 Contact 페이지로 제한해. 다른 페이지와 사용자의 기존 변경사항은 임의로 수정하지 마. 참고 PNG 전체를 이미지로 삽입하지 말고 React + TypeScript 컴포넌트, CSS, SVG로 재현해.
 
-Header는 `KIM YOON YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 CONTACT를 활성 표시해. Hero 고정 문구는 `CONTACT · GET IN TOUCH`, `Contact.`, `채용 및 프로젝트 관련 연락을 기다립니다.`야. 별도의 감성 문구, 연락 가능 상태, 전화번호, 주소, 프로필 사진을 추가하지 마.
+Header는 `KIM YUN YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 CONTACT를 활성 표시해. Hero 고정 문구는 `CONTACT · GET IN TOUCH`, `Contact.`, `채용 및 프로젝트 관련 연락을 기다립니다.`야. 별도의 감성 문구, 연락 가능 상태, 전화번호, 주소, 프로필 사진을 추가하지 마.
 
-Desktop은 왼쪽 Hero와 오른쪽 `QUICK CONTACT / ● INTERACTIVE` 패널을 viewport 중앙에 넉넉하게 배치해. 화면 하단에는 별도 EMAIL/GITHUB/RESUME 목록, Contact CTA, 반복 이메일을 만들지 마. Footer에는 `© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.`만 남겨. 콘텐츠가 적다는 이유로 새 카드나 장식 섹션을 추가하지 마.
+Desktop은 왼쪽 Hero와 오른쪽 `QUICK CONTACT / ● INTERACTIVE` 패널을 viewport 중앙에 넉넉하게 배치해. 화면 하단에는 별도 EMAIL/GITHUB/RESUME 목록, Contact CTA, 반복 이메일을 만들지 마. Footer에는 `© 2026 KIM YUN YOUNG. ALL RIGHTS RESERVED.`만 남겨. 콘텐츠가 적다는 이유로 새 카드나 장식 섹션을 추가하지 마.
 
 `Contact.`의 실제 마지막 온점 하나를 connector 시작 anchor로 사용해. 별도 시작 dot을 추가하지 말고 온점 오른쪽 중앙에서 Preview panel의 왼쪽 node까지 SVG curve를 연결해. panel의 floating transform과 connector endpoint가 같은 motion 값을 사용하도록 구현해. font ready, ResizeObserver, viewport resize, panel 크기 변경 완료 시 좌표를 갱신하고 scroll이나 animation frame마다 DOM layout을 측정하지 마.
 

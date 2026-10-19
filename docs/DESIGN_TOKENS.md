@@ -7,7 +7,7 @@
 
 | 토큰 | 용도 |
 | --- | --- |
-| `--color-accent` | 강조 라벨, 온점, 연결선, 선택 상태, 포커스 효과의 코랄 색상 |
+| `--color-accent` | 강조 라벨, 온점, 연결선, 선택 상태, 포커스 효과의 옥스블러드 색상 (`#762c35`) |
 | `--color-accent-gradient-start`, `--color-accent-gradient-end` | About·Projects·Experience hero 제목 그라데이션 |
 | `--color-accent-home-gradient-*` | Home 제목과 기본 버튼 그라데이션 |
 | `--color-accent-button-*` | About 데모와 경력 보기 버튼 그라데이션 |
@@ -19,8 +19,9 @@
 | `--color-text-copy`, `--color-text-copy-alt` | 본문 텍스트 |
 | `--color-border`, `--color-border-panel` | 구분선과 패널 테두리 |
 
-현재 디자인의 페이지별 색상 차이를 보존했다. 선명한 강조색, 차분한
-그라데이션, 옅은 배경색은 서로 다른 역할이므로 별도 토큰이다. 브랜드 전체를
+브랜드 포인트는 옥스블러드 `#762c35`이며 그라데이션은 `#8c3b44`까지 사용한다.
+호버와 눌림 상태는 더 어두운 레드, 배경과 테두리는 옅은 같은 계열로 맞춘다.
+강조색, 그라데이션, 옅은 배경색은 서로 다른 역할이므로 별도 토큰이다. 브랜드 전체를
 변경할 때는 `Brand accents and gradients`와 `Accent surfaces and borders`
 그룹을 함께 조정한다. `--color-accent`만 바꾸면 그 색상을 사용하는 강조 요소와
 해당 색상의 반투명 효과가 모든 페이지에서 함께 변경된다.

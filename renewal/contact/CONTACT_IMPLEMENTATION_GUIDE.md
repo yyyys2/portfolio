@@ -20,7 +20,7 @@ Contact는 포트폴리오의 마지막 화면이다. 한 화면에서 이메일
 
 ### Header
 
-- Logo: `KIM YOON YOUNG`
+- Logo: `KIM YUN YOUNG`
 - Nav: `PROJECTS / EXPERIENCE / ABOUT / CONTACT`
 - Active: `CONTACT`
 
@@ -39,7 +39,7 @@ Contact는 포트폴리오의 마지막 화면이다. 한 화면에서 이메일
 
 ### Footer
 
-- `© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.`
+- `© 2026 KIM YUN YOUNG. ALL RIGHTS RESERVED.`
 - Footer에 이메일이나 Contact link를 다시 넣지 않는다.
 
 ## 4. 페이지 레이아웃

@@ -25,7 +25,7 @@ export default function SiteHeader() {
     <header className="renewal-header">
       <div className="renewal-header__inner">
         <a className="renewal-header__logo" href="#/" aria-label="홈으로 이동">
-          KIM YOON YOUNG
+          KIM YUN YOUNG
         </a>
 
         <nav className="renewal-header__nav" aria-label="주요 메뉴">

@@ -2,7 +2,7 @@
 
 먼저 기존 코드베이스의 프레임워크, 라우팅, 스타일 방식, 공통 Header/Footer, 디자인 토큰, Home/About의 온점 연결선과 floating 구현, 애니메이션 라이브러리, 프로젝트 데이터 구조를 확인해. 기존 방식을 우선 사용하고 요청 범위는 Projects 페이지로 제한해. 다른 페이지와 사용자의 기존 변경사항은 수정하지 마. 참고 PNG 전체를 페이지에 삽입하지 말고 React + TypeScript 컴포넌트, CSS, SVG로 재현해.
 
-Header는 `KIM YOON YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 PROJECTS를 활성 표시해. Hero 고정 문구는 `PROJECTS · SELECTED WORK`, `Selected` / `Projects.`, `참여한 프로젝트의 담당 업무와 문제 해결 과정을 정리했습니다.`야. 한글은 Pretendard 계열 산세리프를 사용하고 명조체나 필기체를 사용하지 마.
+Header는 `KIM YUN YOUNG / PROJECTS EXPERIENCE ABOUT CONTACT`이며 PROJECTS를 활성 표시해. Hero 고정 문구는 `PROJECTS · SELECTED WORK`, `Selected` / `Projects.`, `참여한 프로젝트의 담당 업무와 문제 해결 과정을 정리했습니다.`야. 한글은 Pretendard 계열 산세리프를 사용하고 명조체나 필기체를 사용하지 마.
 
 기본 화면은 Hero 좌측과 `● LIVE PREVIEW` 우측이 일부 겹치는 비대칭 레이아웃이야. 4개 프로젝트는 둥근 카드가 아닌 구분선 기반의 가로 행으로 보여줘. 프로젝트명, 설명, 기술 스택은 가이드의 고정 콘텐츠를 사용해. 현재 Preview 대상 행은 옅은 코랄 배경과 좌측 코랄 선으로 표시하고 action은 `상세 보기 ↓`로 표시해. hover와 keyboard focus에서 동일하게 Preview가 바뀌어야 하며 자동 carousel은 사용하지 마.
 

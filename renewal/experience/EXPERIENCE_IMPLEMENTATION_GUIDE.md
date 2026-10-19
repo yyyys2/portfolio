@@ -21,7 +21,7 @@ Projects의 문제 해결 사례를 반복하지 않는다. Experience에서는 
 
 ### Header
 
-- Logo: `KIM YOON YOUNG`
+- Logo: `KIM YUN YOUNG`
 - Nav: `PROJECTS / EXPERIENCE / ABOUT / CONTACT`
 - Active: `EXPERIENCE`
 

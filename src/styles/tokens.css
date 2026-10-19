@@ -1,54 +1,54 @@
 :root {
   /* Color source of truth. Components and Tailwind reference these tokens.
-     Accent = vivid emphasis; gradient endpoints = muted brand treatment. */
+     Accent = oxblood (#762c35); gradient endpoints stay in the same red family. */
   /* Brand accents and gradients */
-  --color-accent: #ef4939;
-  --color-accent-text: #c45e49;
-  --color-accent-gradient-start: #bd5742;
-  --color-accent-gradient-end: #d98c7b;
-  --color-accent-button-start: #bc5844;
-  --color-accent-button-end: #d78e80;
-  --color-accent-connector: #d76b58;
-  --color-accent-home: #b9614c;
-  --color-accent-home-mid: #c97867;
-  --color-accent-home-light: #d59485;
-  --color-accent-home-gradient-start: #b95f49;
-  --color-accent-home-gradient-mid: #c67563;
-  --color-accent-home-gradient-end: #d49384;
-  --color-accent-home-hover-start: #af553f;
-  --color-accent-home-hover-mid: #bd6b59;
-  --color-accent-home-hover-end: #cc8879;
-  --color-accent-home-tile-end: #d89788;
-  --color-accent-home-decoration: #cf8c7d;
-  --color-accent-contact-button-start: #c65542;
-  --color-accent-contact-button-end: #de8878;
-  --color-accent-contact-decoration: #d97763;
-  --color-accent-resume-start: #be5844;
-  --color-accent-resume-end: #da8c7c;
-  --color-accent-summary: #bd604d;
-  --color-accent-summary-text: #a54e3c;
-  --color-accent-classic: #c98272;
-  --color-accent-classic-hover: #b97061;
-  --color-accent-classic-pressed: #a96255;
-  --color-accent-classic-strong: #c15c47;
+  --color-accent: #762c35;
+  --color-accent-text: #762c35;
+  --color-accent-gradient-start: #762c35;
+  --color-accent-gradient-end: #8c3b44;
+  --color-accent-button-start: #762c35;
+  --color-accent-button-end: #8c3b44;
+  --color-accent-connector: #8c3b44;
+  --color-accent-home: #762c35;
+  --color-accent-home-mid: #81343d;
+  --color-accent-home-light: #a26169;
+  --color-accent-home-gradient-start: #762c35;
+  --color-accent-home-gradient-mid: #81343d;
+  --color-accent-home-gradient-end: #8c3b44;
+  --color-accent-home-hover-start: #65232b;
+  --color-accent-home-hover-mid: #702b33;
+  --color-accent-home-hover-end: #7c323b;
+  --color-accent-home-tile-end: #8c3b44;
+  --color-accent-home-decoration: #a26169;
+  --color-accent-contact-button-start: #762c35;
+  --color-accent-contact-button-end: #8c3b44;
+  --color-accent-contact-decoration: #a26169;
+  --color-accent-resume-start: #762c35;
+  --color-accent-resume-end: #8c3b44;
+  --color-accent-summary: #762c35;
+  --color-accent-summary-text: #65232b;
+  --color-accent-classic: #762c35;
+  --color-accent-classic-hover: #65232b;
+  --color-accent-classic-pressed: #541c23;
+  --color-accent-classic-strong: #762c35;
 
   /* Accent surfaces and borders */
-  --color-accent-surface: #fff3f0;
-  --color-accent-surface-hover: #fff0ed;
-  --color-accent-surface-focus: #fff7f5;
-  --color-accent-surface-selected: #fff2ef;
-  --color-accent-surface-subtle: #fff8f6;
-  --color-accent-surface-preview: #fff4f0;
-  --color-accent-surface-contact: #fff1ee;
-  --color-accent-surface-summary: #fff1eb;
-  --color-accent-surface-summary-end: #fffaf7;
-  --color-accent-soft: #f6dfda;
-  --color-accent-soft-home: #f4dfda;
-  --color-accent-soft-classic: #f2ddd7;
-  --color-accent-soft-tag: #fde9e6;
-  --color-accent-border: #ffd4cf;
-  --color-accent-border-summary: #e4cfc8;
-  --color-accent-border-divider: #e4d8d2;
+  --color-accent-surface: #f8eff0;
+  --color-accent-surface-hover: #f5e8ea;
+  --color-accent-surface-focus: #fbf5f6;
+  --color-accent-surface-selected: #f6ebed;
+  --color-accent-surface-subtle: #fcf8f8;
+  --color-accent-surface-preview: #f9f1f2;
+  --color-accent-surface-contact: #f7edef;
+  --color-accent-surface-summary: #f6ebed;
+  --color-accent-surface-summary-end: #fcf8f8;
+  --color-accent-soft: #edd9dc;
+  --color-accent-soft-home: #edd9dc;
+  --color-accent-soft-classic: #e9d4d8;
+  --color-accent-soft-tag: #f2e2e5;
+  --color-accent-border: #dfbfc5;
+  --color-accent-border-summary: #deccd0;
+  --color-accent-border-divider: #e4d8db;
 
   /* Surfaces and text */
   --color-white: #ffffff;

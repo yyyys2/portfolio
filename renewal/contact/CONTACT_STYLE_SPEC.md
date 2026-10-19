@@ -261,7 +261,7 @@ Panel은 정확한 50:50 column이 아니라 Hero보다 위쪽에 배치된다.
 
 - copyright baseline은 약 `y: 974px`.
 - email, Contact link, social icon을 footer 좌측에 추가하지 않는다.
-- copyright: `© 2026 KIM YOON YOUNG. ALL RIGHTS RESERVED.`
+- copyright: `© 2026 KIM YUN YOUNG. ALL RIGHTS RESERVED.`
 
 ## 13. Motion과 상태
 
